@@ -1,0 +1,14 @@
+{
+  "name": "benepisyo-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test --no-warnings test/worker.test.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute benepisyo --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.20.0"
+  }
+}

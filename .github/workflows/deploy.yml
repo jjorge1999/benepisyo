@@ -1,0 +1,42 @@
+name: Test and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [content-published]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --test site/test/match.test.js site/test/i18n.test.js
+      - run: npm ci --prefix worker && npm test --prefix worker
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci --prefix worker
+      - name: Deploy API worker
+        run: npx --prefix worker wrangler deploy --config worker/wrangler.toml
+      - name: Build site from published content
+        run: node site/src/build.js
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          API_BASE: ${{ vars.API_BASE }}
+          BENEFITS_URL: ${{ vars.BENEFITS_URL }}
+      - name: Deploy site to Cloudflare Pages
+        run: npx --prefix worker wrangler pages deploy site/dist --project-name=benepisyo --branch=main

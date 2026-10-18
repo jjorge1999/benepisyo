@@ -1,0 +1,68 @@
+[
+  {
+    "id": "osca-calamba",
+    "city": "calamba",
+    "name": { "tl": "OSCA (Office of Senior Citizens Affairs), Calamba", "en": "OSCA (Office of Senior Citizens Affairs), Calamba" },
+    "place": { "tl": "Calamba City Hall (Office of the City Mayor – OSCA)", "en": "Calamba City Hall (Office of the City Mayor – OSCA)" },
+    "map_query": "Calamba City Hall, Calamba, Laguna",
+    "source_url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=187"
+  },
+  {
+    "id": "pdao-calamba",
+    "city": "calamba",
+    "name": { "tl": "PDAO (Persons with Disability Affairs Office), Calamba", "en": "PDAO (Persons with Disability Affairs Office), Calamba" },
+    "place": { "tl": "Calamba City Hall", "en": "Calamba City Hall" },
+    "map_query": "Calamba City Hall, Calamba, Laguna",
+    "source_url": "https://calambacity.gov.ph/maincss/assets/citizencharter/PERSONS_WITH_DISABILITY_AFFAIRS_OFFICE.pdf"
+  },
+  {
+    "id": "csso-calamba",
+    "city": "calamba",
+    "name": { "tl": "City Social Services – Family & Community Welfare Division, Calamba", "en": "City Social Services – Family & Community Welfare Division, Calamba" },
+    "place": { "tl": "Calamba City Hall", "en": "Calamba City Hall" },
+    "map_query": "Calamba City Hall, Calamba, Laguna",
+    "source_url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=60"
+  },
+  {
+    "id": "barangay",
+    "city": "calamba",
+    "name": { "tl": "Barangay hall ninyo", "en": "Your barangay hall" },
+    "place": { "tl": "Ang barangay kung saan kayo nakatira sa Calamba", "en": "The barangay where you live in Calamba" },
+    "map_query": "Barangay Hall, Calamba, Laguna",
+    "source_url": "https://journalnews.com.ph/calamba-scs-to-receive-birthday-cash-gifts/"
+  },
+  {
+    "id": "ccc",
+    "city": "calamba",
+    "name": { "tl": "City College of Calamba (CCC)", "en": "City College of Calamba (CCC)" },
+    "place": { "tl": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba", "en": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba" },
+    "map_query": "City College of Calamba, Burgos St, Calamba, Laguna",
+    "web": "https://ccc.edu.ph/",
+    "source_url": "https://ccc.edu.ph/"
+  },
+  {
+    "id": "yakap-clinic",
+    "city": null,
+    "name": { "tl": "PhilHealth YAKAP clinic na pinili ninyo", "en": "Your chosen PhilHealth YAKAP clinic" },
+    "place": { "tl": "Isang YAKAP-accredited na klinika; magparehistro sa PhilHealth office, eGovPH app, o Member Portal", "en": "A YAKAP-accredited clinic; register at a PhilHealth office, the eGovPH app, or the Member Portal" },
+    "map_query": "PhilHealth YAKAP clinic Calamba Laguna",
+    "web": "https://www.philhealth.gov.ph/",
+    "source_url": "https://www.sunstar.com.ph/pampanga/philhealth-yakap-gamotlaunched-in-zambales"
+  },
+  {
+    "id": "employer-sss",
+    "city": null,
+    "name": { "tl": "Employer ninyo (at SSS para sa private sector)", "en": "Your employer (and SSS for private-sector workers)" },
+    "place": { "tl": "HR o opisina ng employer ninyo", "en": "Your employer's HR or office" },
+    "map_query": null,
+    "source_url": "https://lawphil.net/statutes/repacts/ra2019/ra_11210_2019.html"
+  },
+  {
+    "id": "sucs",
+    "city": null,
+    "name": { "tl": "State university, state college, o local college", "en": "State university, state college, or local college" },
+    "place": { "tl": "Registrar ng paaralang papasukan", "en": "The registrar of the school you will enroll in" },
+    "map_query": null,
+    "source_url": "https://lawphil.net/statutes/repacts/ra2017/ra_10931_2017.html"
+  }
+]

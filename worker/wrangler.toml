@@ -1,0 +1,32 @@
+name = "benepisyo-api"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+
+# Purge optional report contact details older than 90 days, every day at 03:15 Manila time (19:15 UTC).
+[triggers]
+crons = ["15 19 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "benepisyo"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Optional: private storage for report photos. Remove this block if you don't want photo uploads.
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "benepisyo-files"
+
+[vars]
+# Public site origin(s) allowed to call the API (comma separated).
+SITE_ORIGIN = "https://benepisyo.ph"
+# Editors allowed into /admin (their Cloudflare Access emails, comma separated).
+EDITORS = ""
+REPORT_LIMIT = "10"
+CHECKIN_LIMIT = "30"
+# Set to "true" only while you are the only editor. Normally a second editor must publish.
+ALLOW_SELF_REVIEW = "false"
+DEV_AUTH = "false"
+
+# Secrets (set with `npx wrangler secret put NAME`):
+#   RATE_SALT        random string used to hash client IPs for rate limiting
+#   DEPLOY_HOOK_URL  Cloudflare Pages deploy hook, called after publishing

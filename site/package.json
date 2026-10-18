@@ -1,0 +1,11 @@
+{
+  "name": "benepisyo-site",
+  "private": true,
+  "scripts": {
+    "build": "node src/build.js",
+    "build:preview": "node src/build.js --links=file",
+    "test": "node --test test/match.test.js test/i18n.test.js",
+    "test:e2e": "python3 test/e2e.py http://localhost:8765 test-shots",
+    "serve": "python3 -m http.server 8765 --directory dist"
+  }
+}

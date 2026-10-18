@@ -1,0 +1,7 @@
+node_modules/
+site/dist/
+site/dist-preview/
+site/dist-live/
+site/test-shots/
+worker/.wrangler/
+.dev.vars
