@@ -14,7 +14,7 @@ const LINKS = args.links === 'file' ? 'file' : 'pretty';
 const ROOT = path.resolve(__dirname, '..');
 const DATA = path.resolve(ROOT, '..', 'data');
 const OUT = path.resolve(ROOT, args.out || (LINKS === 'file' ? 'dist-preview' : 'dist'));
-const SITE_URL = (process.env.SITE_URL || 'https://benepisyo.ph').replace(/\/$/, '');
+const SITE_URL = (process.env.SITE_URL || 'https://benepisyo.pages.dev').replace(/\/$/, '');
 const API_BASE = process.env.API_BASE || '';
 
 const read = (p) => fs.readFileSync(p, 'utf8');
@@ -25,7 +25,9 @@ async function loadBenefits() {
   if (process.env.BENEFITS_URL) {
     const res = await fetch(process.env.BENEFITS_URL);
     if (!res.ok) throw new Error('Could not load published benefits: HTTP ' + res.status);
-    return (await res.json()).benefits;
+    const list = (await res.json()).benefits || [];
+    if (list.length) return list;
+    console.warn('Published feed is empty; building from data/benefits.json instead.');
   }
   return JSON.parse(read(path.join(DATA, 'benefits.json')));
 }

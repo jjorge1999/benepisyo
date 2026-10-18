@@ -656,7 +656,7 @@
         ctx.font = '400 30px ' + body;
         var foot = t('checked', { date: fmtDate(checked) }) + ' · ' + t('card_confirm');
         wrapText(ctx, foot, CW).forEach(function (ln) { if (draw) { ctx.fillStyle = C.muted; ctx.fillText(ln, PAD, y); } y += 42; });
-        if (draw) { ctx.fillStyle = C.accent; ctx.font = '700 30px ' + body; ctx.fillText('benepisyo.ph', PAD, y + 8); }
+        if (draw) { ctx.fillStyle = C.accent; ctx.font = '700 30px ' + body; ctx.fillText('benepisyo.pages.dev', PAD, y + 8); }
         y += 60;
         return y;
       }

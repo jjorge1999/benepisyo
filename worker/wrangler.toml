@@ -9,16 +9,18 @@ crons = ["15 19 * * *"]
 [[d1_databases]]
 binding = "DB"
 database_name = "benepisyo"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "b010b7f1-fdda-4668-baff-e16cfcd4d383"
 
-# Optional: private storage for report photos. Remove this block if you don't want photo uploads.
-[[r2_buckets]]
-binding = "FILES"
-bucket_name = "benepisyo-files"
+# Optional: private storage for report photos. R2 must be enabled on your Cloudflare account first.
+# Uncomment after creating the bucket (`npx wrangler r2 bucket create benepisyo-files`).
+# Without it, reports still work; attached photos are simply not stored.
+# [[r2_buckets]]
+# binding = "FILES"
+# bucket_name = "benepisyo-files"
 
 [vars]
 # Public site origin(s) allowed to call the API (comma separated).
-SITE_ORIGIN = "https://benepisyo.ph"
+SITE_ORIGIN = "https://benepisyo.pages.dev"
 # Editors allowed into /admin (their Cloudflare Access emails, comma separated).
 EDITORS = ""
 REPORT_LIMIT = "10"
