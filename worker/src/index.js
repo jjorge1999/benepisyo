@@ -68,7 +68,7 @@ export function validateBenefit(b, { forPublish = false } = {}) {
   const bi = (o, name) => { if (!o || !str(o.tl, 2000) || !str(o.en, 2000)) errors.push(`${name} needs Tagalog and English`); };
   if (!b || typeof b !== 'object') return ['Benefit must be an object'];
   if (!ID_RE.test(b.id || '')) errors.push('id must be lowercase letters, digits and dashes (3–64)');
-  if (!['local', 'national'].includes(b.level)) errors.push('level must be local or national');
+  if (!['local', 'lgu', 'national'].includes(b.level)) errors.push('level must be local, lgu (every city and town) or national');
   if (b.level === 'local' && !b.city) errors.push('local benefits need a city');
   if (!Array.isArray(b.groups) || !b.groups.length) errors.push('groups must list at least one group');
   bi(b.title, 'title');
