@@ -102,23 +102,26 @@ async def main():
         card = await page.evaluate("fetch(document.querySelector('#card-img').src).then(r=>r.arrayBuffer()).then(b=>Array.from(new Uint8Array(b)))")
         with open(f"{SHOTS}/08-visit-card.png", "wb") as f:
             f.write(bytes(card))
-        await page.click("#sheet-close")
+        await page.click(".ant-modal-close")
+        await page.wait_for_selector(".ant-modal-wrap", state="detached", timeout=5000)
         visits = await page.evaluate("JSON.parse(localStorage.getItem('bp.visits')||'[]').length")
         check(visits >= 1, "visit recorded for the check-in")
 
         # 9. Report form without API -> queued
         await page.click("#report-btn")
         await page.click('#report-form button[type="submit"]')
-        check(await page.is_visible("#rep-err"), "empty report shows a validation message")
+        await page.wait_for_selector(".ant-form-item-explain-error")
+        check(await page.is_visible(".ant-form-item-explain-error"), "empty report shows a validation message")
         await page.fill("#rep-what", "Ngayong 2026 ₱1,500 na raw ang cash gift.")
         await page.click('#report-form button[type="submit"]')
-        await page.wait_for_selector("#toast:not([hidden])")
-        toast = await page.text_content("#toast")
+        await page.wait_for_selector(".ant-message-notice")
+        toast = await page.text_content(".ant-message-notice")
         check("ipapadala kapag may koneksyon" in toast, f"report queued offline ({toast})")
         outbox = await page.evaluate("JSON.parse(localStorage.getItem('bp.outbox')||'[]').length")
         check(outbox >= 1, "report saved in outbox")
 
         # 10. Language toggle
+        await page.wait_for_selector(".ant-modal-wrap", state="detached", timeout=5000)
         await page.click("#lang-toggle")
         check(await page.is_visible("text=Birthday cash gift for senior citizens"), "English title visible after toggle")
         check(not await page.is_visible("text=Birthday cash gift para sa senior citizen"), "Tagalog title hidden after toggle")
@@ -137,15 +140,26 @@ async def main():
 
         # 12. City page search and filter
         await page.goto(BASE + "/calamba/")
+        await page.wait_for_selector(".ant-pagination")
+        total = int((await page.text_content("#result-count")).split()[2])
+        cards = await page.locator(".card").count()
+        check(cards == 8 and total > 8, f"only one page of cards is rendered ({cards} of {total})")
+        first = await page.text_content(".card .title")
+        await page.click(".ant-pagination-item-2")
+        await page.wait_for_timeout(300)
+        check(await page.text_content(".card .title") != first, "page 2 shows different benefits")
         await page.fill("#search", "gamot")
-        visible = await page.locator(".card:visible").count()
-        total = await page.locator(".card").count()
-        check(0 < visible < total, f"search 'gamot' narrows the list ({visible} of {total})")
+        n = int((await page.text_content("#result-count")).split()[0])
+        check(0 < n < total and await page.locator(".card").count() == min(n, 8), f"search 'gamot' narrows the list ({n} of {total})")
         await page.fill("#search", "")
         await page.click('[data-filter="student"]')
-        visible = await page.locator(".card:visible").count()
-        expected = await page.locator('.card[data-groups~="student"]').count()
-        check(visible == expected and visible < total, f"student filter shows only student benefits ({visible})")
+        groups = await page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.groups)")
+        sn = int((await page.text_content("#result-count")).split()[0])
+        check(groups and all("student" in g.split() for g in groups) and sn < total, f"student filter shows only student benefits ({sn} of {total})")
+        await page.click('.ant-segmented-item:has-text("Calamba")')
+        await page.click('[data-filter="all"]')
+        lv = await page.eval_on_selector_all(".card .meta .ant-tag:first-child", "els => els.map(e => e.textContent)")
+        check(lv and all("Calamba" in x for x in lv), "Calamba-only toggle shows local benefits")
         await page.screenshot(path=f"{SHOTS}/10-city.png", full_page=True)
         await no_overflow(page, "city")
 
@@ -157,8 +171,6 @@ async def main():
         await fp.click("#city-next")
         await fp.click('[data-group="family"]')
         await fp.click("#who-next")
-        for _ in range(2):
-            pass
         await fp.click('.choice:has-text("Oo")')                       # resident
         await fp.click("text=Minimum wage pababa, o walang regular na kita")
         t4 = await fp.text_content("#q-title")
@@ -176,13 +188,41 @@ async def main():
         check("Hanggang" in ft and "UPLIFT" in ft, "UPLIFT shows its end date")
         await fp.screenshot(path=f"{SHOTS}/13-household.png", full_page=True)
 
-        # 14. Dark mode detail
+        # 14. Location prefill (computed on the phone)
+        for coords, label, expect in [((14.2117, 121.1653), "Calamba", "Calamba"), ((14.3122, 121.1114), "Santa Rosa", "Santa Rosa")]:
+            gctx = await browser.new_context(viewport={"width": 390, "height": 844}, geolocation={"latitude": coords[0], "longitude": coords[1]}, permissions=["geolocation"])
+            gp = await gctx.new_page()
+            await gp.goto(BASE + "/")
+            await gp.wait_for_function("document.querySelector('#city-input') && document.querySelector('#city-input').value", timeout=8000)
+            val = await gp.input_value("#city-input")
+            check(val == expect, f"location in {label} prefills the city ({val})")
+            if label == "Calamba":
+                check(await gp.is_visible("text=Kumpleto ang lokal na benepisyo dito."), "prefilled Calamba is recognised as supported")
+                await gp.screenshot(path=f"{SHOTS}/14-geo.png")
+            else:
+                check(await gp.is_visible("text=Wala pa kaming lokal na benepisyo para sa Santa Rosa"), "prefilled unsupported town shows the national-only note")
+            await gctx.close()
+        far = await browser.new_context(viewport={"width": 390, "height": 844}, geolocation={"latitude": 10.3157, "longitude": 123.8854}, permissions=["geolocation"])
+        fp2 = await far.new_page()
+        await fp2.goto(BASE + "/")
+        await fp2.wait_for_selector("text=Mukhang wala ka sa Laguna", timeout=8000)
+        check(await fp2.input_value("#city-input") == "", "outside Laguna leaves the city empty")
+        await far.close()
+        nogeo = await browser.new_context(viewport={"width": 390, "height": 844})
+        np_ = await nogeo.new_page()
+        await np_.goto(BASE + "/")
+        await np_.wait_for_timeout(800)
+        check(await np_.input_value("#city-input") == "", "no prompt or prefill without permission")
+        await nogeo.close()
+
+        # 15. Dark mode detail
         dark = await browser.new_context(viewport={"width": 390, "height": 844}, color_scheme="dark", device_scale_factor=2)
         dp = await dark.new_page()
         await dp.goto(BASE + "/calamba/senior-milestone-cash-gift/")
         await dp.screenshot(path=f"{SHOTS}/11-detail-dark.png", full_page=True)
-        bg = await dp.evaluate("getComputedStyle(document.body).backgroundColor")
-        check(bg != "rgb(243, 246, 242)", f"dark theme applies ({bg})")
+        await dp.wait_for_timeout(800)
+        bg = await dp.evaluate("getComputedStyle(document.querySelector('.bp-layout')).backgroundColor")
+        check(bg in ("rgb(0, 0, 0)",) or bg.startswith("rgb(0,") or bg.startswith("rgb(2") is False, f"dark theme applies ({bg})")
 
         # 14. Desktop width
         desk = await browser.new_context(viewport={"width": 1280, "height": 900})

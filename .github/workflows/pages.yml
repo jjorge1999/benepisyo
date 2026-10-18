@@ -25,6 +25,9 @@ jobs:
       - name: Test API
         working-directory: worker
         run: npm ci && npm test
+      - name: Install site dependencies (React, Ant Design, esbuild)
+        working-directory: site
+        run: npm ci
       - name: Build site
         run: node site/src/build.js
         env:

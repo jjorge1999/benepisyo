@@ -7,7 +7,7 @@ A free, Tagalog-first web app that shows Filipinos every government benefit they
 | Folder | What it is |
 | --- | --- |
 | `data/` | The content: `benefits.json` (17 benefits), `offices.json`, `meta.json` (cities, groups, documents) |
-| `site/` | Public site: a zero-dependency static generator (`src/build.js`) that writes one indexable page per benefit, plus the installable offline web app (`src/app.js`) |
+| `site/` | Public site built with React + Ant Design (`src/ui/`). `src/build.js` bundles it with esbuild, pre-renders one indexable page per benefit (with its antd styles inlined), and the browser hydrates each page. One small script per page type; offline via service worker. Run `npm ci` in `site/` first. |
 | `worker/` | Cloudflare Worker API and editor admin: reports, post-visit check-ins, city requests, verification queue, four-eyes publishing, D1 schema |
 | `.github/workflows/deploy.yml` | Tests on every push; deploys the Worker and the site on `main` |
 

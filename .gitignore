@@ -1,7 +1,9 @@
+.dev.vars
 node_modules/
-site/dist/
-site/dist-preview/
+site/.build/
 site/dist-live/
+site/dist-preview/
+site/dist/
+site/node_modules/
 site/test-shots/
 worker/.wrangler/
-.dev.vars

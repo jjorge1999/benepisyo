@@ -7,5 +7,12 @@
     "test": "node --test test/match.test.js test/i18n.test.js",
     "test:e2e": "python3 test/e2e.py http://localhost:8765 test-shots",
     "serve": "python3 -m http.server 8765 --directory dist"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "antd": "^6.6.6",
+    "esbuild": "^0.28.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   }
 }
