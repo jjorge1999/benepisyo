@@ -61,8 +61,9 @@
    * Evaluate one benefit for one person.
    * Returns { fit: 'yes' | 'maybe' | 'no', why: [reasonKey...], unknown: [ruleKey...], missing: [[doc,...],...] }
    */
-  function evaluate(benefit, person) {
+  function evaluate(benefit, person, today) {
     var out = { fit: 'yes', why: [], unknown: [], missing: [] };
+    if (benefit.expires_on && today && benefit.expires_on < today) { out.fit = 'no'; return out; }
     var groups = person.groups || [];
     var a = person.answers || {};
     var r = benefit.rules || {};
@@ -117,6 +118,24 @@
       else unknown('employed');
     }
 
+    if (r.four_ps === true || r.four_ps === false) {
+      if (a.four_ps === r.four_ps) out.why.push(r.four_ps ? 'four_ps' : 'not_four_ps');
+      else if (a.four_ps === true || a.four_ps === false) { out.fit = 'no'; return out; }
+      else unknown('four_ps');
+    }
+
+    if (r.children === true) {
+      if (a.children === true) out.why.push('children');
+      else if (a.children === false) { out.fit = 'no'; return out; }
+      else unknown('children');
+    }
+
+    if (r.lost_job === true) {
+      if (a.lost_job === true) out.why.push('lost_job');
+      else if (a.lost_job === false) { out.fit = 'no'; return out; }
+      else unknown('lost_job');
+    }
+
     out.missing = missingNeeds(benefit, person);
     return out;
   }
@@ -148,12 +167,12 @@
    * blocked: [{key, docs:[...], unlocker, items:[{benefit,result}]}]  grouped by the first missing document
    * guides:  ID benefits the person can apply for (they also appear in ready)
    */
-  function buildResults(benefits, person) {
+  function buildResults(benefits, person, today) {
     var ready = [];
     var blockedMap = {};
     var blockedOrder = [];
     benefits.forEach(function (b) {
-      var res = evaluate(b, person);
+      var res = evaluate(b, person, today);
       if (res.fit === 'no') return;
       var item = { benefit: b, result: res };
       if (!res.missing.length) { ready.push(item); return; }
@@ -180,7 +199,8 @@
     if (g.indexOf('senior') !== -1) q.push('age_band');
     if (g.indexOf('senior') !== -1 && person.answers && (person.answers.age_band === '80_99' || person.answers.age_band === '100plus')) q.push('milestone');
     if (cityId) q.push('resident');
-    if (g.indexOf('senior') !== -1 || g.indexOf('solo_parent') !== -1) q.push('income');
+    if (g.indexOf('senior') !== -1 || g.indexOf('solo_parent') !== -1 || g.indexOf('family') !== -1) q.push('income');
+    if (g.indexOf('family') !== -1) { q.push('four_ps'); q.push('children'); q.push('lost_job'); }
     if (g.indexOf('senior') !== -1) q.push('pension');
     if (g.indexOf('solo_parent') !== -1 || g.indexOf('mother') !== -1) q.push('employed');
     return q.slice(0, 5).concat(['docs']);

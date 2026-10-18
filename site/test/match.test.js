@@ -89,3 +89,35 @@ test('every benefit has at least one source and a check date', () => {
     assert.ok(b.title.tl && b.title.en && b.summary.tl && b.summary.en, b.id + ' bilingual');
   }
 });
+
+test('low-income 4Ps family with indigency certificate', () => {
+  const p = { city: 'calamba', groups: ['family'], docs: ['indigency', 'philhealth'], answers: { resident: true, income: 'low', four_ps: true, children: true, lost_job: false } };
+  const r = M.buildResults(benefits, p, '2026-10-19');
+  const ready = ids(r.ready);
+  ['calamba-burial-aid', 'calamba-hospital-aid', 'lifeline-rate', 'aics', 'philhealth-gamot'].forEach((id) => assert.ok(ready.includes(id), id));
+  assert.ok(!ready.includes('four-ps'), 'already in 4Ps');
+  assert.ok(!ready.includes('uplift-2026'), 'UPLIFT is for families not in 4Ps');
+  assert.ok(!ready.includes('tupad'), 'did not lose a job');
+  assert.ok(!ready.includes('calamba-indigency-certificate'), 'already has the certificate');
+});
+
+test('family not in 4Ps sees 4Ps and UPLIFT, and UPLIFT ends after December 2026', () => {
+  const p = { city: 'calamba', groups: ['family'], docs: [], answers: { resident: true, income: 'low', four_ps: false, children: true, lost_job: true } };
+  let ready = ids(M.buildResults(benefits, p, '2026-10-19').ready);
+  ['four-ps', 'uplift-2026', 'tupad', 'calamba-indigency-certificate'].forEach((id) => assert.ok(ready.includes(id), id));
+  ready = ids(M.buildResults(benefits, p, '2027-01-05').ready);
+  assert.ok(!ready.includes('uplift-2026'), 'expired program disappears');
+});
+
+test('city financial aid waits on the Certificate of Indigency', () => {
+  const p = { city: 'calamba', groups: ['family'], docs: [], answers: { resident: true, income: 'low' } };
+  const g = M.buildResults(benefits, p, '2026-10-19').blocked.find((x) => x.key === 'indigency');
+  assert.ok(g, 'blocked by indigency');
+  assert.equal(g.unlocker.id, 'calamba-indigency-certificate');
+  assert.ok(g.items.length >= 5, 'unlocks the city aid programs: ' + g.items.length);
+});
+
+test('household questions stay within six', () => {
+  const q = M.questionsFor({ groups: ['family'], answers: {} }, 'calamba');
+  assert.deepEqual(q, ['resident', 'income', 'four_ps', 'children', 'lost_job', 'docs']);
+});

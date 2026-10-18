@@ -141,6 +141,7 @@ function cardHtml(b, rootPrefix) {
   <a class="title" href="${url}">${bi(b.title)}</a>
   ${amountHtml(b)}
   <div class="muted small">${bi(b.frequency)}</div>
+  ${b.expires_on ? `<div class="maybe">${biKey('ends_on', { date: fmtDate(b.expires_on, 'tl') })}</div>` : ''}
   <div class="meta">${levelTag(b)}${badge(b)}<span>${biKey('checked', { date: fmtDate(b.verification.checked_on, 'tl') })}</span></div>
 </li>`;
 }
@@ -220,6 +221,8 @@ function detailPage(b, cityId, benefits) {
       <p class="muted">${bi(b.frequency)}</p>
       <div class="meta">${badge(b)}<span>${biKey('checked', { date: fmtDate(b.verification.checked_on, 'tl') })}</span><span id="checkin-count"></span></div>
       ${warn}
+      ${b.expires_on ? `<p class="note warn">${biKey('ends_on', { date: fmtDate(b.expires_on, 'tl') })}</p>` : ''}
+      ${b.no_apply ? `<p class="note">${biKey('no_apply')}</p>` : ''}
       <p>${bi(b.summary)}</p>
     </header>
     <div id="why-slot"></div>
@@ -375,7 +378,7 @@ function writeFile(rel, content) {
 }
 
 async function main() {
-  const benefits = await loadBenefits();
+  const benefits = (await loadBenefits()).filter((b) => !b.expires_on || b.expires_on >= today);
   fs.rmSync(OUT, { recursive: true, force: true });
   fs.mkdirSync(OUT, { recursive: true });
   const pagePaths = [''];

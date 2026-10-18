@@ -175,11 +175,13 @@
   function cardHtml(item) {
     var b = item.benefit;
     return '<li class="card"><a class="title" href="' + h(benefitUrl(b)) + '">' + h(L(b.title)) + '</a>' + amountHtml(b) +
-      '<div class="muted small">' + h(L(b.frequency)) + '</div>' + maybeLine(item.result) +
+      '<div class="muted small">' + h(L(b.frequency)) + '</div>' +
+      (b.expires_on ? '<div class="maybe">' + h(t('ends_on', { date: fmtDate(b.expires_on) })) + '</div>' : '') +
+      (b.no_apply ? '<div class="muted small">' + h(t('no_apply')) + '</div>' : '') + maybeLine(item.result) +
       '<div class="meta">' + levelTag(b) + badgeHtml(b) + '<span>' + h(t('checked', { date: fmtDate(b.verification.checked_on) })) + '</span></div></li>';
   }
   function resultsHtml(p) {
-    var r = M.buildResults(DATA.benefits, p);
+    var r = M.buildResults(DATA.benefits, p, TODAY);
     var countKey = p.self ? 'results_count_self' : (p.name ? 'results_count_other' : 'results_count_plain');
     var html = '<div class="result-head"><h2>' + h(personLabel(p)) + '</h2><p class="muted">' + h(t(countKey, { n: r.total, name: p.name })) +
       (p.city ? '' : ' · ' + h(t('tag_national'))) + '</p></div>';
@@ -372,7 +374,7 @@
       var lastSeen = store.get('lastSeen', null);
       var ids = [];
       list.forEach(function (p) {
-        var r = M.buildResults(DATA.benefits, p);
+        var r = M.buildResults(DATA.benefits, p, TODAY);
         r.ready.forEach(function (x) { ids.push(x.benefit.id); });
         r.blocked.forEach(function (g) { g.items.forEach(function (x) { ids.push(x.benefit.id); }); });
       });
@@ -384,7 +386,7 @@
       }
       html += '<div class="result-head"><h2>' + h(t('family_title')) + '</h2><p class="muted small">' + h(t('family_sub')) + '</p></div><div class="family">';
       list.forEach(function (p) {
-        var r = M.buildResults(DATA.benefits, p);
+        var r = M.buildResults(DATA.benefits, p, TODAY);
         var blocked = r.blocked.reduce(function (n, g) { return n + g.items.length; }, 0);
         var label = p.self ? t('results_for_self') : (p.name || t('who_family'));
         html += '<div class="person"><div class="who"><b>' + h(label) + '</b><p class="muted small">' + h(p.city ? cityName(p.city) : p.cityLabel) + ' · ' + h(p.groups.map(function (g) { return t('group_' + g); }).join(', ')) + '</p><p class="small">' + h(t('family_counts', { ready: r.ready.length, blocked: blocked })) + '</p></div>' +
@@ -459,7 +461,7 @@
     function renderWhy() {
       var slot = $('#why-slot'); slot.innerHTML = '';
       if (!p) return;
-      var res = M.evaluate(b, p);
+      var res = M.evaluate(b, p, TODAY);
       if (res.fit === 'no') return;
       var c = p.city ? cityName(p.city) : p.cityLabel;
       var items = res.why.map(function (w) {
@@ -471,6 +473,10 @@
         if (parts[0] === 'income') return t('why_income_' + parts[1]);
         if (parts[0] === 'no_pension') return t('why_no_pension');
         if (parts[0] === 'employed') return t('why_employed');
+        if (parts[0] === 'four_ps') return t('why_four_ps');
+        if (parts[0] === 'not_four_ps') return t('why_not_four_ps');
+        if (parts[0] === 'children') return t('why_children');
+        if (parts[0] === 'lost_job') return t('why_lost_job');
         return null;
       }).filter(Boolean);
       (p.docs || []).forEach(function (d) { if ((b.needs || []).some(function (g) { return g.indexOf(d) !== -1; })) items.push(t('why_has', { doc: docName(d) })); });
@@ -551,7 +557,7 @@
     var others = DATA.benefits.filter(function (x) {
       if (x.id === b.id || x.office !== b.office) return false;
       if (!p) return M.appliesToCity(x, 'calamba');
-      var res = M.evaluate(x, p); return res.fit !== 'no' && !res.missing.length;
+      var res = M.evaluate(x, p, TODAY); return res.fit !== 'no' && !res.missing.length;
     });
     var chosen = [b];
     var withName = false;

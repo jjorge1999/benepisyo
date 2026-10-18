@@ -3,260 +3,672 @@
     "id": "calamba-senior-birthday-cash",
     "level": "local",
     "city": "calamba",
-    "groups": ["senior"],
+    "groups": [
+      "senior"
+    ],
     "kind": "cash",
-    "title": { "tl": "Birthday cash gift para sa senior citizen", "en": "Birthday cash gift for senior citizens" },
+    "title": {
+      "tl": "Birthday cash gift para sa senior citizen",
+      "en": "Birthday cash gift for senior citizens"
+    },
     "amount_php": 1000,
-    "frequency": { "tl": "Isang beses kada taon, sa buwan ng kaarawan", "en": "Once a year, in the birthday month" },
+    "frequency": {
+      "tl": "Isang beses kada taon, sa buwan ng kaarawan",
+      "en": "Once a year, in the birthday month"
+    },
     "summary": {
       "tl": "Cash gift ng Lungsod ng Calamba para sa mga senior citizen sa buwan ng kanilang kaarawan. Ayon sa ulat noong 2022, itinaas ito mula ₱500 tungong ₱1,000 at ipinamimigay sa mga barangay.",
       "en": "A City of Calamba cash gift for senior citizens in their birthday month. A 2022 report says it was raised from ₱500 to ₱1,000 and is handed out at the barangays."
     },
-    "who": { "tl": "Senior citizen (60 pataas) na taga-Calamba.", "en": "Senior citizens (60 and up) living in Calamba." },
-    "rules": { "age_min": 60, "resident": true },
-    "needs": [["senior_id"]],
+    "who": {
+      "tl": "Senior citizen (60 pataas) na taga-Calamba.",
+      "en": "Senior citizens (60 and up) living in Calamba."
+    },
+    "rules": {
+      "age_min": 60,
+      "resident": true
+    },
+    "needs": [
+      [
+        "senior_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "senior_id", "tl": "Calamba Senior Citizen ID (OSCA)", "en": "Calamba Senior Citizen ID (OSCA)", "note": { "tl": "Kumpirmahin sa barangay o OSCA kung ano pa ang hinihingi.", "en": "Confirm with the barangay or OSCA what else is required." } }
+      {
+        "doc": "senior_id",
+        "tl": "Calamba Senior Citizen ID (OSCA)",
+        "en": "Calamba Senior Citizen ID (OSCA)",
+        "note": {
+          "tl": "Kumpirmahin sa barangay o OSCA kung ano pa ang hinihingi.",
+          "en": "Confirm with the barangay or OSCA what else is required."
+        }
+      }
     ],
     "office": "barangay",
     "steps": [
-      { "tl": "Siguraduhing may Calamba Senior Citizen ID.", "en": "Make sure you have a Calamba Senior Citizen ID." },
-      { "tl": "Abangan ang anunsyo ng barangay para sa schedule ng inyong birth month.", "en": "Watch for your barangay's announcement of the schedule for your birth month." },
-      { "tl": "Pumunta sa barangay hall sa araw ng pamimigay dala ang ID.", "en": "Go to the barangay hall on distribution day with your ID." }
+      {
+        "tl": "Siguraduhing may Calamba Senior Citizen ID.",
+        "en": "Make sure you have a Calamba Senior Citizen ID."
+      },
+      {
+        "tl": "Abangan ang anunsyo ng barangay para sa schedule ng inyong birth month.",
+        "en": "Watch for your barangay's announcement of the schedule for your birth month."
+      },
+      {
+        "tl": "Pumunta sa barangay hall sa araw ng pamimigay dala ang ID.",
+        "en": "Go to the barangay hall on distribution day with your ID."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "news", "label": "Journal News Online – Calamba SCs to receive birthday cash gifts (2022)", "url": "https://journalnews.com.ph/calamba-scs-to-receive-birthday-cash-gifts/" }
+      {
+        "type": "news",
+        "label": "Journal News Online – Calamba SCs to receive birthday cash gifts (2022)",
+        "url": "https://journalnews.com.ph/calamba-scs-to-receive-birthday-cash-gifts/"
+      }
     ],
-    "verification": { "status": "reported", "checked_on": "2026-10-19", "method": { "tl": "Galing sa balita noong 2022; wala pang opisyal na ordinansa o post na nakita. Kumpirmahin ang kasalukuyang halaga sa OSCA.", "en": "From a 2022 news report; no official ordinance or post found yet. Confirm the current amount with OSCA." } },
-    "keywords": ["birthday", "kaarawan", "cash gift", "pera", "regalo", "senior", "lolo", "lola"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa ulat ng balita.", "en": "Added from a news report." }]
+    "verification": {
+      "status": "reported",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Galing sa balita noong 2022; wala pang opisyal na ordinansa o post na nakita. Kumpirmahin ang kasalukuyang halaga sa OSCA.",
+        "en": "From a 2022 news report; no official ordinance or post found yet. Confirm the current amount with OSCA."
+      }
+    },
+    "keywords": [
+      "birthday",
+      "kaarawan",
+      "cash gift",
+      "pera",
+      "regalo",
+      "senior",
+      "lolo",
+      "lola"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa ulat ng balita.",
+        "en": "Added from a news report."
+      }
+    ]
   },
   {
     "id": "calamba-senior-id",
     "level": "local",
     "city": "calamba",
-    "groups": ["senior"],
+    "groups": [
+      "senior"
+    ],
     "kind": "id",
     "guide": true,
     "provides": "senior_id",
-    "title": { "tl": "Senior Citizen ID at Grocery/Medicine Booklet", "en": "Senior Citizen ID and Grocery/Medicine Booklet" },
+    "title": {
+      "tl": "Senior Citizen ID at Grocery/Medicine Booklet",
+      "en": "Senior Citizen ID and Grocery/Medicine Booklet"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng ID at booklet; susi sa 20% discount at iba pang benepisyo", "en": "Free ID and booklet; the key to the 20% discount and other benefits" },
-    "frequency": { "tl": "Isang beses (ID na pangmatagalan)", "en": "Once (long-term ID)" },
+    "value": {
+      "tl": "Libreng ID at booklet; susi sa 20% discount at iba pang benepisyo",
+      "en": "Free ID and booklet; the key to the 20% discount and other benefits"
+    },
+    "frequency": {
+      "tl": "Isang beses (ID na pangmatagalan)",
+      "en": "Once (long-term ID)"
+    },
     "summary": {
       "tl": "Ang OSCA ng Calamba ang nagbibigay ng Senior Citizen ID kasama ang Grocery/Medicine Booklet. Walang bayad.",
       "en": "Calamba's OSCA issues the Senior Citizen ID together with a Grocery/Medicine Booklet. It is free."
     },
-    "who": { "tl": "Mamamayan ng Calamba na 60 taong gulang pataas.", "en": "Calamba residents aged 60 and above." },
-    "rules": { "age_min": 60, "resident": true },
+    "who": {
+      "tl": "Mamamayan ng Calamba na 60 taong gulang pataas.",
+      "en": "Calamba residents aged 60 and above."
+    },
+    "rules": {
+      "age_min": 60,
+      "resident": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Accomplished application form (makukuha sa OSCA)", "en": "Accomplished application form (available at OSCA)" },
-      { "tl": "Citizen's ID, kung mayroon", "en": "Citizen's ID, if available" },
-      { "tl": "Cancellation letter o certificate mula sa dating lungsod, kung lumipat", "en": "Cancellation letter or certificate from your previous city, if you moved" },
-      { "tl": "Para sa dual citizen: dual citizenship certificate (photocopy) at valid ID", "en": "For dual citizens: dual citizenship certificate (photocopy) and a valid ID" }
+      {
+        "tl": "Accomplished application form (makukuha sa OSCA)",
+        "en": "Accomplished application form (available at OSCA)"
+      },
+      {
+        "tl": "Citizen's ID, kung mayroon",
+        "en": "Citizen's ID, if available"
+      },
+      {
+        "tl": "Cancellation letter o certificate mula sa dating lungsod, kung lumipat",
+        "en": "Cancellation letter or certificate from your previous city, if you moved"
+      },
+      {
+        "tl": "Para sa dual citizen: dual citizenship certificate (photocopy) at valid ID",
+        "en": "For dual citizens: dual citizenship certificate (photocopy) and a valid ID"
+      }
     ],
     "office": "osca-calamba",
     "steps": [
-      { "tl": "Kumuha at sagutan ang application form sa OSCA.", "en": "Get and fill out the application form at OSCA." },
-      { "tl": "Isumite ang form at mga dokumento sa OSCA staff.", "en": "Submit the form and documents to the OSCA staff." },
-      { "tl": "Tanggapin ang Senior Citizen ID at Grocery/Medicine Booklet, at pumirma sa logbook.", "en": "Receive the Senior Citizen ID and Grocery/Medicine Booklet, and sign the logbook." }
+      {
+        "tl": "Kumuha at sagutan ang application form sa OSCA.",
+        "en": "Get and fill out the application form at OSCA."
+      },
+      {
+        "tl": "Isumite ang form at mga dokumento sa OSCA staff.",
+        "en": "Submit the form and documents to the OSCA staff."
+      },
+      {
+        "tl": "Tanggapin ang Senior Citizen ID at Grocery/Medicine Booklet, at pumirma sa logbook.",
+        "en": "Receive the Senior Citizen ID and Grocery/Medicine Booklet, and sign the logbook."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "official_site", "label": "City Government of Calamba – Senior Citizens ID (Citizen's Charter)", "url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=187" }
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – Senior Citizens ID (Citizen's Charter)",
+        "url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=187"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na website ng Lungsod ng Calamba.", "en": "Official City of Calamba website." } },
-    "keywords": ["senior id", "osca", "id", "booklet", "lolo", "lola", "matanda"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa Citizen's Charter ng Calamba.", "en": "Added from Calamba's Citizen's Charter." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na website ng Lungsod ng Calamba.",
+        "en": "Official City of Calamba website."
+      }
+    },
+    "keywords": [
+      "senior id",
+      "osca",
+      "id",
+      "booklet",
+      "lolo",
+      "lola",
+      "matanda"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng Calamba.",
+        "en": "Added from Calamba's Citizen's Charter."
+      }
+    ]
   },
   {
     "id": "calamba-pwd-id",
     "level": "local",
     "city": "calamba",
-    "groups": ["pwd"],
+    "groups": [
+      "pwd"
+    ],
     "kind": "id",
     "guide": true,
     "provides": "pwd_id",
-    "title": { "tl": "PWD ID, Medicine at Purchase Booklet", "en": "PWD ID, Medicine and Purchase Booklet" },
+    "title": {
+      "tl": "PWD ID, Medicine at Purchase Booklet",
+      "en": "PWD ID, Medicine and Purchase Booklet"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng ID at booklet; susi sa 20% discount", "en": "Free ID and booklet; the key to the 20% discount" },
-    "frequency": { "tl": "Isang beses, may renewal", "en": "Once, with renewal" },
+    "value": {
+      "tl": "Libreng ID at booklet; susi sa 20% discount",
+      "en": "Free ID and booklet; the key to the 20% discount"
+    },
+    "frequency": {
+      "tl": "Isang beses, may renewal",
+      "en": "Once, with renewal"
+    },
     "summary": {
       "tl": "Ang PDAO ng Calamba ang nagbibigay ng PWD ID kasama ang Medicine at Purchase Booklet.",
       "en": "Calamba's PDAO issues the PWD ID together with a Medicine and Purchase Booklet."
     },
-    "who": { "tl": "Taga-Calamba na may kapansanan.", "en": "Calamba residents with a disability." },
-    "rules": { "resident": true },
+    "who": {
+      "tl": "Taga-Calamba na may kapansanan.",
+      "en": "Calamba residents with a disability."
+    },
+    "rules": {
+      "resident": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Valid ID na may patunay ng address sa Calamba", "en": "Valid ID with proof of Calamba residency" },
-      { "tl": "Iba pang hinihingi ayon sa Citizen's Charter ng PDAO (hal. medical certificate para sa hindi halatang kapansanan)", "en": "Other items per PDAO's Citizen's Charter (e.g. a medical certificate for non-apparent disabilities)", "note": { "tl": "Kumpirmahin sa PDAO.", "en": "Confirm with PDAO." } }
+      {
+        "tl": "Valid ID na may patunay ng address sa Calamba",
+        "en": "Valid ID with proof of Calamba residency"
+      },
+      {
+        "tl": "Iba pang hinihingi ayon sa Citizen's Charter ng PDAO (hal. medical certificate para sa hindi halatang kapansanan)",
+        "en": "Other items per PDAO's Citizen's Charter (e.g. a medical certificate for non-apparent disabilities)",
+        "note": {
+          "tl": "Kumpirmahin sa PDAO.",
+          "en": "Confirm with PDAO."
+        }
+      }
     ],
     "office": "pdao-calamba",
     "steps": [
-      { "tl": "Pumunta sa PDAO dala ang valid ID na may address sa Calamba.", "en": "Go to PDAO with a valid ID showing your Calamba address." },
-      { "tl": "Sagutan ang application at ipasa ang mga dokumento.", "en": "Fill out the application and submit your documents." },
-      { "tl": "Tanggapin ang PWD ID at mga booklet.", "en": "Receive the PWD ID and booklets." }
+      {
+        "tl": "Pumunta sa PDAO dala ang valid ID na may address sa Calamba.",
+        "en": "Go to PDAO with a valid ID showing your Calamba address."
+      },
+      {
+        "tl": "Sagutan ang application at ipasa ang mga dokumento.",
+        "en": "Fill out the application and submit your documents."
+      },
+      {
+        "tl": "Tanggapin ang PWD ID at mga booklet.",
+        "en": "Receive the PWD ID and booklets."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "official_site", "label": "City Government of Calamba – PDAO Citizen's Charter (PDF)", "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/PERSONS_WITH_DISABILITY_AFFAIRS_OFFICE.pdf" }
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – PDAO Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/PERSONS_WITH_DISABILITY_AFFAIRS_OFFICE.pdf"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na Citizen's Charter ng Calamba.", "en": "Official Calamba Citizen's Charter." } },
-    "keywords": ["pwd id", "pdao", "kapansanan", "disability", "booklet"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa Citizen's Charter ng PDAO.", "en": "Added from PDAO's Citizen's Charter." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "pwd id",
+      "pdao",
+      "kapansanan",
+      "disability",
+      "booklet"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng PDAO.",
+        "en": "Added from PDAO's Citizen's Charter."
+      }
+    ]
   },
   {
     "id": "calamba-solo-parent-id",
     "level": "local",
     "city": "calamba",
-    "groups": ["solo_parent"],
+    "groups": [
+      "solo_parent"
+    ],
     "kind": "id",
     "guide": true,
     "provides": "solo_parent_id",
-    "title": { "tl": "Solo Parent ID", "en": "Solo Parent ID" },
+    "title": {
+      "tl": "Solo Parent ID",
+      "en": "Solo Parent ID"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng ID; susi sa mga benepisyo ng solo parent", "en": "Free ID; the key to solo parent benefits" },
-    "frequency": { "tl": "Isang beses, may renewal", "en": "Once, with renewal" },
+    "value": {
+      "tl": "Libreng ID; susi sa mga benepisyo ng solo parent",
+      "en": "Free ID; the key to solo parent benefits"
+    },
+    "frequency": {
+      "tl": "Isang beses, may renewal",
+      "en": "Once, with renewal"
+    },
     "summary": {
       "tl": "Ipinoproseso ng City Social Services ng Calamba. Makukuha sa loob ng hindi hihigit sa 20 araw dahil may pre-assessment, evaluation at home visit.",
       "en": "Processed by Calamba's City Social Services. Released within 20 days at most because of pre-assessment, evaluation and a home visit."
     },
-    "who": { "tl": "Solo parent na taga-Calamba.", "en": "Solo parents living in Calamba." },
-    "rules": { "resident": true },
+    "who": {
+      "tl": "Solo parent na taga-Calamba.",
+      "en": "Solo parents living in Calamba."
+    },
+    "rules": {
+      "resident": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Solo Parent Application Form (makukuha sa City Social Services)", "en": "Solo Parent Application Form (from City Social Services)" },
-      { "doc": "psa_birth", "tl": "Photocopy ng birth certificate ng mga anak na menor de edad (PSA o City Civil Registry)", "en": "Photocopy of minor children's birth certificates (PSA or City Civil Registry)" },
-      { "tl": "Photocopy ng PWD ID ng anak, kung mayroon", "en": "Photocopy of the child's PWD ID, if any" },
-      { "tl": "Photocopy ng death certificate, kung balo", "en": "Photocopy of the death certificate, if widowed" },
-      { "tl": "Original na dokumentong nagpapatunay ng inyong sitwasyon bilang solo parent (hal. medical certificate kung ang asawa ay PWD na hindi na makapagtrabaho)", "en": "Original document proving your solo parent situation (e.g. a medical certificate if your spouse is a PWD who can no longer work)" }
+      {
+        "tl": "Solo Parent Application Form (makukuha sa City Social Services)",
+        "en": "Solo Parent Application Form (from City Social Services)"
+      },
+      {
+        "doc": "psa_birth",
+        "tl": "Photocopy ng birth certificate ng mga anak na menor de edad (PSA o City Civil Registry)",
+        "en": "Photocopy of minor children's birth certificates (PSA or City Civil Registry)"
+      },
+      {
+        "tl": "Photocopy ng PWD ID ng anak, kung mayroon",
+        "en": "Photocopy of the child's PWD ID, if any"
+      },
+      {
+        "tl": "Photocopy ng death certificate, kung balo",
+        "en": "Photocopy of the death certificate, if widowed"
+      },
+      {
+        "tl": "Original na dokumentong nagpapatunay ng inyong sitwasyon bilang solo parent (hal. medical certificate kung ang asawa ay PWD na hindi na makapagtrabaho)",
+        "en": "Original document proving your solo parent situation (e.g. a medical certificate if your spouse is a PWD who can no longer work)"
+      }
     ],
     "office": "csso-calamba",
     "steps": [
-      { "tl": "Kumuha ng application form sa City Social Services.", "en": "Get the application form from City Social Services." },
-      { "tl": "Isumite ang form at mga dokumento sa social worker.", "en": "Submit the form and documents to the social worker." },
-      { "tl": "Hintayin ang assessment at home visit.", "en": "Wait for the assessment and home visit." },
-      { "tl": "Kunin ang Solo Parent ID sa loob ng hanggang 20 araw.", "en": "Collect your Solo Parent ID within up to 20 days." }
+      {
+        "tl": "Kumuha ng application form sa City Social Services.",
+        "en": "Get the application form from City Social Services."
+      },
+      {
+        "tl": "Isumite ang form at mga dokumento sa social worker.",
+        "en": "Submit the form and documents to the social worker."
+      },
+      {
+        "tl": "Hintayin ang assessment at home visit.",
+        "en": "Wait for the assessment and home visit."
+      },
+      {
+        "tl": "Kunin ang Solo Parent ID sa loob ng hanggang 20 araw.",
+        "en": "Collect your Solo Parent ID within up to 20 days."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "official_site", "label": "City Government of Calamba – Processing and Issuance of Solo Parent ID", "url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=60" }
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – Processing and Issuance of Solo Parent ID",
+        "url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=60"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na website ng Lungsod ng Calamba.", "en": "Official City of Calamba website." } },
-    "keywords": ["solo parent id", "single parent", "nanay", "tatay", "id"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa Citizen's Charter ng Calamba.", "en": "Added from Calamba's Citizen's Charter." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na website ng Lungsod ng Calamba.",
+        "en": "Official City of Calamba website."
+      }
+    },
+    "keywords": [
+      "solo parent id",
+      "single parent",
+      "nanay",
+      "tatay",
+      "id"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng Calamba.",
+        "en": "Added from Calamba's Citizen's Charter."
+      }
+    ]
   },
   {
     "id": "calamba-ccc-free-tuition",
     "level": "local",
     "city": "calamba",
-    "groups": ["student"],
+    "groups": [
+      "student"
+    ],
     "kind": "education",
-    "title": { "tl": "Libreng tuition sa City College of Calamba", "en": "Free tuition at City College of Calamba" },
+    "title": {
+      "tl": "Libreng tuition sa City College of Calamba",
+      "en": "Free tuition at City College of Calamba"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng tuition (city scholar)", "en": "Free tuition (city scholar)" },
-    "frequency": { "tl": "Bawat semestre habang naka-enroll", "en": "Every semester while enrolled" },
+    "value": {
+      "tl": "Libreng tuition (city scholar)",
+      "en": "Free tuition (city scholar)"
+    },
+    "frequency": {
+      "tl": "Bawat semestre habang naka-enroll",
+      "en": "Every semester while enrolled"
+    },
     "summary": {
       "tl": "Ang City College of Calamba ay pampublikong kolehiyo na sinusuportahan ng lungsod at nag-aalok ng libreng tuition. Kabilang ang accountancy, computer science, education at psychology.",
       "en": "City College of Calamba is a public college subsidized by the city that offers free tuition. Programs include accountancy, computer science, education and psychology."
     },
-    "who": { "tl": "Mga estudyante ng Calamba na papasok sa kolehiyo; may application process.", "en": "Calamba students entering college; there is an application process." },
-    "rules": { "resident": true },
+    "who": {
+      "tl": "Mga estudyante ng Calamba na papasok sa kolehiyo; may application process.",
+      "en": "Calamba students entering college; there is an application process."
+    },
+    "rules": {
+      "resident": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Tingnan ang application requirements at proseso sa website ng CCC", "en": "See the application requirements and process on the CCC website" }
+      {
+        "tl": "Tingnan ang application requirements at proseso sa website ng CCC",
+        "en": "See the application requirements and process on the CCC website"
+      }
     ],
     "office": "ccc",
     "steps": [
-      { "tl": "Basahin ang application process sa ccc.edu.ph.", "en": "Read the application process at ccc.edu.ph." },
-      { "tl": "Ihanda ang mga hinihinging dokumento at mag-apply.", "en": "Prepare the required documents and apply." }
+      {
+        "tl": "Basahin ang application process sa ccc.edu.ph.",
+        "en": "Read the application process at ccc.edu.ph."
+      },
+      {
+        "tl": "Ihanda ang mga hinihinging dokumento at mag-apply.",
+        "en": "Prepare the required documents and apply."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "official_site", "label": "City College of Calamba – official website", "url": "https://ccc.edu.ph/" }
+      {
+        "type": "official_site",
+        "label": "City College of Calamba – official website",
+        "url": "https://ccc.edu.ph/"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na website ng CCC.", "en": "Official CCC website." } },
-    "keywords": ["college", "kolehiyo", "tuition", "libre", "scholarship", "estudyante", "student", "ccc"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa website ng CCC.", "en": "Added from the CCC website." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na website ng CCC.",
+        "en": "Official CCC website."
+      }
+    },
+    "keywords": [
+      "college",
+      "kolehiyo",
+      "tuition",
+      "libre",
+      "scholarship",
+      "estudyante",
+      "student",
+      "ccc"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa website ng CCC.",
+        "en": "Added from the CCC website."
+      }
+    ]
   },
   {
     "id": "calamba-city-scholarship",
     "level": "local",
     "city": "calamba",
-    "groups": ["student"],
+    "groups": [
+      "student"
+    ],
     "kind": "education",
-    "title": { "tl": "Calamba City Scholarship Program", "en": "Calamba City Scholarship Program" },
+    "title": {
+      "tl": "Calamba City Scholarship Program",
+      "en": "Calamba City Scholarship Program"
+    },
     "amount_php": null,
-    "value": { "tl": "Halaga at saklaw: kumpirmahin sa lungsod", "en": "Amount and coverage: confirm with the city" },
-    "frequency": { "tl": "Kumpirmahin sa lungsod", "en": "Confirm with the city" },
+    "value": {
+      "tl": "Halaga at saklaw: kumpirmahin sa lungsod",
+      "en": "Amount and coverage: confirm with the city"
+    },
+    "frequency": {
+      "tl": "Kumpirmahin sa lungsod",
+      "en": "Confirm with the city"
+    },
     "summary": {
       "tl": "Grant ng lungsod para sa mga estudyanteng pasok sa requirements. Nakalista bilang opsyon ng scholarship sa Letran Calamba; wala pang opisyal na detalye mula sa lungsod.",
       "en": "A city grant for students who meet its requirements. Listed as a scholarship option by Letran Calamba; no official details from the city yet."
     },
-    "who": { "tl": "Estudyanteng taga-Calamba na pasok sa requirements ng lungsod.", "en": "Calamba students who meet the city's requirements." },
-    "rules": { "resident": true },
+    "who": {
+      "tl": "Estudyanteng taga-Calamba na pasok sa requirements ng lungsod.",
+      "en": "Calamba students who meet the city's requirements."
+    },
+    "rules": {
+      "resident": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Kumpirmahin ang requirements sa City Social Services o sa paaralan", "en": "Confirm the requirements with City Social Services or your school" }
+      {
+        "tl": "Kumpirmahin ang requirements sa City Social Services o sa paaralan",
+        "en": "Confirm the requirements with City Social Services or your school"
+      }
     ],
     "office": "csso-calamba",
     "steps": [
-      { "tl": "Magtanong sa City Social Services o sa scholarship office ng paaralan tungkol sa susunod na application period.", "en": "Ask City Social Services or your school's scholarship office about the next application period." }
+      {
+        "tl": "Magtanong sa City Social Services o sa scholarship office ng paaralan tungkol sa susunod na application period.",
+        "en": "Ask City Social Services or your school's scholarship office about the next application period."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "secondary", "label": "Colegio de San Juan de Letran Calamba – List of Scholarships", "url": "https://letran-calamba.edu.ph/view-unit/odG3d8/marketing-and-admissions-office/jdLxdV/scholarships" }
+      {
+        "type": "secondary",
+        "label": "Colegio de San Juan de Letran Calamba – List of Scholarships",
+        "url": "https://letran-calamba.edu.ph/view-unit/odG3d8/marketing-and-admissions-office/jdLxdV/scholarships"
+      }
     ],
-    "verification": { "status": "reported", "checked_on": "2026-10-19", "method": { "tl": "Galing sa listahan ng isang paaralan; hindi pa kumpirmado ng lungsod.", "en": "From a school's list; not yet confirmed by the city." } },
-    "keywords": ["scholarship", "iskolar", "estudyante", "student", "allowance"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag bilang ulat; kailangan pang kumpirmahin.", "en": "Added as a report; needs confirmation." }]
+    "verification": {
+      "status": "reported",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Galing sa listahan ng isang paaralan; hindi pa kumpirmado ng lungsod.",
+        "en": "From a school's list; not yet confirmed by the city."
+      }
+    },
+    "keywords": [
+      "scholarship",
+      "iskolar",
+      "estudyante",
+      "student",
+      "allowance"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag bilang ulat; kailangan pang kumpirmahin.",
+        "en": "Added as a report; needs confirmation."
+      }
+    ]
   },
   {
     "id": "senior-discount",
     "level": "national",
     "city": null,
-    "groups": ["senior"],
+    "groups": [
+      "senior"
+    ],
     "kind": "discount",
-    "title": { "tl": "20% discount at VAT exemption ng senior citizen", "en": "Senior citizen 20% discount and VAT exemption" },
+    "title": {
+      "tl": "20% discount at VAT exemption ng senior citizen",
+      "en": "Senior citizen 20% discount and VAT exemption"
+    },
     "amount_php": null,
-    "value": { "tl": "20% discount + walang VAT", "en": "20% discount + no VAT" },
-    "frequency": { "tl": "Tuwing bibili o gagamit ng serbisyo", "en": "Every purchase or service" },
+    "value": {
+      "tl": "20% discount + walang VAT",
+      "en": "20% discount + no VAT"
+    },
+    "frequency": {
+      "tl": "Tuwing bibili o gagamit ng serbisyo",
+      "en": "Every purchase or service"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 9994, may 20% discount at VAT exemption ang senior citizen sa gamot, medical at dental services, pamasahe, hotel, restaurant, recreation at funeral services.",
       "en": "Under RA 9994, senior citizens get a 20% discount and VAT exemption on medicines, medical and dental services, transport fares, hotels, restaurants, recreation and funeral services."
     },
-    "who": { "tl": "Pilipinong senior citizen (60 pataas) na nakatira sa Pilipinas.", "en": "Filipino senior citizens (60 and up) living in the Philippines." },
-    "rules": { "age_min": 60 },
-    "needs": [["senior_id"]],
+    "who": {
+      "tl": "Pilipinong senior citizen (60 pataas) na nakatira sa Pilipinas.",
+      "en": "Filipino senior citizens (60 and up) living in the Philippines."
+    },
+    "rules": {
+      "age_min": 60
+    },
+    "needs": [
+      [
+        "senior_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "senior_id", "tl": "Senior Citizen ID (ipakita bago magbayad)", "en": "Senior Citizen ID (show it before paying)" },
-      { "tl": "Grocery/Medicine Booklet, para sa gamot at grocery", "en": "Grocery/Medicine Booklet, for medicines and groceries" }
+      {
+        "doc": "senior_id",
+        "tl": "Senior Citizen ID (ipakita bago magbayad)",
+        "en": "Senior Citizen ID (show it before paying)"
+      },
+      {
+        "tl": "Grocery/Medicine Booklet, para sa gamot at grocery",
+        "en": "Grocery/Medicine Booklet, for medicines and groceries"
+      }
     ],
     "office": "osca-calamba",
     "steps": [
-      { "tl": "Ipakita ang Senior Citizen ID bago magbayad.", "en": "Show your Senior Citizen ID before paying." },
-      { "tl": "Siguraduhing nakalagay ang discount sa resibo.", "en": "Make sure the discount appears on the receipt." }
+      {
+        "tl": "Ipakita ang Senior Citizen ID bago magbayad.",
+        "en": "Show your Senior Citizen ID before paying."
+      },
+      {
+        "tl": "Siguraduhing nakalagay ang discount sa resibo.",
+        "en": "Make sure the discount appears on the receipt."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 9994 – Expanded Senior Citizens Act of 2010", "url": "https://lawphil.net/statutes/repacts/ra2010/ra_9994_2010.html" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 9994 – Expanded Senior Citizens Act of 2010",
+        "url": "https://lawphil.net/statutes/repacts/ra2010/ra_9994_2010.html"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 9994).", "en": "Law (RA 9994)." } },
-    "keywords": ["discount", "gamot", "medicine", "pamasahe", "fare", "restaurant", "vat", "senior"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 9994.", "en": "Added from RA 9994." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 9994).",
+        "en": "Law (RA 9994)."
+      }
+    },
+    "keywords": [
+      "discount",
+      "gamot",
+      "medicine",
+      "pamasahe",
+      "fare",
+      "restaurant",
+      "vat",
+      "senior"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 9994.",
+        "en": "Added from RA 9994."
+      }
+    ]
   },
   {
     "id": "senior-social-pension",
     "level": "national",
     "city": null,
-    "groups": ["senior"],
+    "groups": [
+      "senior"
+    ],
     "kind": "cash",
-    "title": { "tl": "Social pension para sa indigent senior citizen", "en": "Social pension for indigent senior citizens" },
+    "title": {
+      "tl": "Social pension para sa indigent senior citizen",
+      "en": "Social pension for indigent senior citizens"
+    },
     "amount_php": 1000,
-    "frequency": { "tl": "Buwan-buwan (karaniwang ibinibigay kada quarter)", "en": "Monthly (usually released quarterly)" },
+    "frequency": {
+      "tl": "Buwan-buwan (karaniwang ibinibigay kada quarter)",
+      "en": "Monthly (usually released quarterly)"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 11916, ang indigent senior citizen ay may buwanang social pension na hindi bababa sa ₱1,000.",
       "en": "Under RA 11916, indigent senior citizens receive a monthly social pension of at least ₱1,000."
@@ -265,109 +677,301 @@
       "tl": "Senior citizen na mahina o maysakit, walang pension (SSS/GSIS), walang regular na kita, at walang regular na suporta mula sa pamilya.",
       "en": "Senior citizens who are frail or sickly, have no pension (SSS/GSIS), no regular income, and no regular support from family."
     },
-    "rules": { "age_min": 60, "income": ["low"], "pension": false },
+    "rules": {
+      "age_min": 60,
+      "income": [
+        "low"
+      ],
+      "pension": false
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Valid ID na nagpapakita ng edad, hal. Senior Citizen ID", "en": "Valid ID showing age, e.g. Senior Citizen ID" },
-      { "tl": "Social case study ng social worker (home visit)", "en": "Social case study by a social worker (home visit)" }
+      {
+        "tl": "Valid ID na nagpapakita ng edad, hal. Senior Citizen ID",
+        "en": "Valid ID showing age, e.g. Senior Citizen ID"
+      },
+      {
+        "tl": "Social case study ng social worker (home visit)",
+        "en": "Social case study by a social worker (home visit)"
+      }
     ],
     "office": "csso-calamba",
     "steps": [
-      { "tl": "Magparehistro sa social welfare office ng lungsod (City Social Services).", "en": "Register at the city's social welfare office (City Social Services)." },
-      { "tl": "Hintayin ang home visit at assessment ng social worker.", "en": "Wait for the social worker's home visit and assessment." },
-      { "tl": "Kapag naaprubahan, abangan ang schedule ng payout.", "en": "Once approved, watch for the payout schedule." }
+      {
+        "tl": "Magparehistro sa social welfare office ng lungsod (City Social Services).",
+        "en": "Register at the city's social welfare office (City Social Services)."
+      },
+      {
+        "tl": "Hintayin ang home visit at assessment ng social worker.",
+        "en": "Wait for the social worker's home visit and assessment."
+      },
+      {
+        "tl": "Kapag naaprubahan, abangan ang schedule ng payout.",
+        "en": "Once approved, watch for the payout schedule."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11916 – Increasing the Social Pension of Indigent Senior Citizens", "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/95598" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11916 – Increasing the Social Pension of Indigent Senior Citizens",
+        "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocsfriendly/2/95598"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11916).", "en": "Law (RA 11916)." } },
-    "keywords": ["pension", "socpen", "pera", "buwanan", "indigent", "mahirap", "senior"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11916.", "en": "Added from RA 11916." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11916).",
+        "en": "Law (RA 11916)."
+      }
+    },
+    "keywords": [
+      "pension",
+      "socpen",
+      "pera",
+      "buwanan",
+      "indigent",
+      "mahirap",
+      "senior"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11916.",
+        "en": "Added from RA 11916."
+      }
+    ]
   },
   {
     "id": "senior-milestone-cash-gift",
     "level": "national",
     "city": null,
-    "groups": ["senior"],
+    "groups": [
+      "senior"
+    ],
     "kind": "cash",
-    "title": { "tl": "Cash gift sa edad 80, 85, 90, 95 at 100", "en": "Cash gift at ages 80, 85, 90, 95 and 100" },
+    "title": {
+      "tl": "Cash gift sa edad 80, 85, 90, 95 at 100",
+      "en": "Cash gift at ages 80, 85, 90, 95 and 100"
+    },
     "amount_php": 10000,
-    "amount_note": { "tl": "₱10,000 sa 80, 85, 90 at 95; ₱100,000 at sulat mula sa Pangulo sa 100", "en": "₱10,000 at 80, 85, 90 and 95; ₱100,000 plus a letter from the President at 100" },
-    "frequency": { "tl": "Isang beses sa bawat milestone; i-claim sa loob ng 1 taon", "en": "Once per milestone; claim within 1 year" },
+    "amount_note": {
+      "tl": "₱10,000 sa 80, 85, 90 at 95; ₱100,000 at sulat mula sa Pangulo sa 100",
+      "en": "₱10,000 at 80, 85, 90 and 95; ₱100,000 plus a letter from the President at 100"
+    },
+    "frequency": {
+      "tl": "Isang beses sa bawat milestone; i-claim sa loob ng 1 taon",
+      "en": "Once per milestone; claim within 1 year"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 11982 (Expanded Centenarians Act), may cash gift ang mga Pilipinong umabot sa 80, 85, 90, 95 at 100 taong gulang.",
       "en": "Under RA 11982 (Expanded Centenarians Act), Filipinos who reach 80, 85, 90, 95 and 100 receive a cash gift."
     },
-    "who": { "tl": "Pilipinong aabot o umabot sa 80, 85, 90, 95 o 100 sa loob ng nakaraang 1 taon.", "en": "Filipinos who reach or reached 80, 85, 90, 95 or 100 within the past year." },
-    "rules": { "age_min": 80, "milestone": true },
-    "needs": [["national_id", "psa_birth"]],
+    "who": {
+      "tl": "Pilipinong aabot o umabot sa 80, 85, 90, 95 o 100 sa loob ng nakaraang 1 taon.",
+      "en": "Filipinos who reach or reached 80, 85, 90, 95 or 100 within the past year."
+    },
+    "rules": {
+      "age_min": 80,
+      "milestone": true
+    },
+    "needs": [
+      [
+        "national_id",
+        "psa_birth"
+      ]
+    ],
     "requirements": [
-      { "tl": "Application form (mula sa ncsc.gov.ph o sa OSCA)", "en": "Application form (from ncsc.gov.ph or OSCA)" },
-      { "doc": "national_id|psa_birth", "tl": "Photocopy ng National ID, o PSA birth certificate (original o certified true copy)", "en": "Photocopy of National ID, or PSA birth certificate (original or certified true copy)" },
-      { "tl": "Bagong 2x2 ID photo at full body picture na naka-print sa A4", "en": "Recent 2x2 ID photo and a full-body picture printed on A4" },
-      { "tl": "Endorsement letter", "en": "Endorsement letter" }
+      {
+        "tl": "Application form (mula sa ncsc.gov.ph o sa OSCA)",
+        "en": "Application form (from ncsc.gov.ph or OSCA)"
+      },
+      {
+        "doc": "national_id|psa_birth",
+        "tl": "Photocopy ng National ID, o PSA birth certificate (original o certified true copy)",
+        "en": "Photocopy of National ID, or PSA birth certificate (original or certified true copy)"
+      },
+      {
+        "tl": "Bagong 2x2 ID photo at full body picture na naka-print sa A4",
+        "en": "Recent 2x2 ID photo and a full-body picture printed on A4"
+      },
+      {
+        "tl": "Endorsement letter",
+        "en": "Endorsement letter"
+      }
     ],
     "office": "osca-calamba",
     "steps": [
-      { "tl": "Kumuha at sagutan ang form (ncsc.gov.ph o OSCA).", "en": "Get and fill out the form (ncsc.gov.ph or OSCA)." },
-      { "tl": "Ipasa ang form at mga dokumento sa OSCA o social welfare office.", "en": "Submit the form and documents to OSCA or the social welfare office." },
-      { "tl": "Hintayin ang abiso ng NCSC sa schedule ng distribution.", "en": "Wait for NCSC's notice of the distribution schedule." },
-      { "tl": "Sa araw ng distribution, dalhin ang original at photocopy ng OSCA ID.", "en": "On distribution day, bring the original and a photocopy of the OSCA ID." }
+      {
+        "tl": "Kumuha at sagutan ang form (ncsc.gov.ph o OSCA).",
+        "en": "Get and fill out the form (ncsc.gov.ph or OSCA)."
+      },
+      {
+        "tl": "Ipasa ang form at mga dokumento sa OSCA o social welfare office.",
+        "en": "Submit the form and documents to OSCA or the social welfare office."
+      },
+      {
+        "tl": "Hintayin ang abiso ng NCSC sa schedule ng distribution.",
+        "en": "Wait for NCSC's notice of the distribution schedule."
+      },
+      {
+        "tl": "Sa araw ng distribution, dalhin ang original at photocopy ng OSCA ID.",
+        "en": "On distribution day, bring the original and a photocopy of the OSCA ID."
+      }
     ],
     "free": true,
-    "free_note": { "tl": "Ilegal ang anumang singil o kaltas sa cash gift.", "en": "Any fee or deduction from the cash gift is illegal." },
+    "free_note": {
+      "tl": "Ilegal ang anumang singil o kaltas sa cash gift.",
+      "en": "Any fee or deduction from the cash gift is illegal."
+    },
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11982 – Expanded Centenarians Act", "url": "https://lawphil.net/statutes/repacts/ra2024/ra_11982_2024.html" },
-      { "type": "official_site", "label": "NCSC – Expanded Centenarians Act application", "url": "https://www.ncsc.gov.ph/expandedcentenariansact-application" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11982 – Expanded Centenarians Act",
+        "url": "https://lawphil.net/statutes/repacts/ra2024/ra_11982_2024.html"
+      },
+      {
+        "type": "official_site",
+        "label": "NCSC – Expanded Centenarians Act application",
+        "url": "https://www.ncsc.gov.ph/expandedcentenariansact-application"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11982) at website ng NCSC.", "en": "Law (RA 11982) and NCSC website." } },
-    "keywords": ["80", "85", "90", "95", "100", "centenarian", "cash gift", "ncsc", "lolo", "lola"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11982 at NCSC.", "en": "Added from RA 11982 and NCSC." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11982) at website ng NCSC.",
+        "en": "Law (RA 11982) and NCSC website."
+      }
+    },
+    "keywords": [
+      "80",
+      "85",
+      "90",
+      "95",
+      "100",
+      "centenarian",
+      "cash gift",
+      "ncsc",
+      "lolo",
+      "lola"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11982 at NCSC.",
+        "en": "Added from RA 11982 and NCSC."
+      }
+    ]
   },
   {
     "id": "pwd-discount",
     "level": "national",
     "city": null,
-    "groups": ["pwd"],
+    "groups": [
+      "pwd"
+    ],
     "kind": "discount",
-    "title": { "tl": "20% discount at VAT exemption ng PWD", "en": "PWD 20% discount and VAT exemption" },
+    "title": {
+      "tl": "20% discount at VAT exemption ng PWD",
+      "en": "PWD 20% discount and VAT exemption"
+    },
     "amount_php": null,
-    "value": { "tl": "20% discount + walang VAT", "en": "20% discount + no VAT" },
-    "frequency": { "tl": "Tuwing bibili o gagamit ng serbisyo", "en": "Every purchase or service" },
+    "value": {
+      "tl": "20% discount + walang VAT",
+      "en": "20% discount + no VAT"
+    },
+    "frequency": {
+      "tl": "Tuwing bibili o gagamit ng serbisyo",
+      "en": "Every purchase or service"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 10754, may 20% discount at VAT exemption ang PWD sa gamot, medical at dental services, pamasahe, hotel, restaurant, recreation at funeral services.",
       "en": "Under RA 10754, PWDs get a 20% discount and VAT exemption on medicines, medical and dental services, transport fares, hotels, restaurants, recreation and funeral services."
     },
-    "who": { "tl": "Taong may kapansanan na may PWD ID.", "en": "Persons with disability who hold a PWD ID." },
+    "who": {
+      "tl": "Taong may kapansanan na may PWD ID.",
+      "en": "Persons with disability who hold a PWD ID."
+    },
     "rules": {},
-    "needs": [["pwd_id"]],
+    "needs": [
+      [
+        "pwd_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "pwd_id", "tl": "PWD ID (ipakita bago magbayad)", "en": "PWD ID (show it before paying)" },
-      { "tl": "Medicine/Purchase Booklet, para sa gamot", "en": "Medicine/Purchase Booklet, for medicines" }
+      {
+        "doc": "pwd_id",
+        "tl": "PWD ID (ipakita bago magbayad)",
+        "en": "PWD ID (show it before paying)"
+      },
+      {
+        "tl": "Medicine/Purchase Booklet, para sa gamot",
+        "en": "Medicine/Purchase Booklet, for medicines"
+      }
     ],
     "office": "pdao-calamba",
     "steps": [
-      { "tl": "Ipakita ang PWD ID bago magbayad.", "en": "Show your PWD ID before paying." },
-      { "tl": "Siguraduhing nakalagay ang discount sa resibo.", "en": "Make sure the discount appears on the receipt." }
+      {
+        "tl": "Ipakita ang PWD ID bago magbayad.",
+        "en": "Show your PWD ID before paying."
+      },
+      {
+        "tl": "Siguraduhing nakalagay ang discount sa resibo.",
+        "en": "Make sure the discount appears on the receipt."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 10754 – Expanding the Benefits and Privileges of PWD", "url": "https://issuances-library.senate.gov.ph/legislative-issuance/republic-act-no-10754" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 10754 – Expanding the Benefits and Privileges of PWD",
+        "url": "https://issuances-library.senate.gov.ph/legislative-issuance/republic-act-no-10754"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 10754).", "en": "Law (RA 10754)." } },
-    "keywords": ["discount", "gamot", "medicine", "pamasahe", "vat", "pwd", "kapansanan"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 10754.", "en": "Added from RA 10754." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 10754).",
+        "en": "Law (RA 10754)."
+      }
+    },
+    "keywords": [
+      "discount",
+      "gamot",
+      "medicine",
+      "pamasahe",
+      "vat",
+      "pwd",
+      "kapansanan"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 10754.",
+        "en": "Added from RA 10754."
+      }
+    ]
   },
   {
     "id": "solo-parent-subsidy",
     "level": "national",
     "city": null,
-    "groups": ["solo_parent"],
+    "groups": [
+      "solo_parent"
+    ],
     "kind": "cash",
-    "title": { "tl": "₱1,000 buwanang subsidy ng solo parent", "en": "₱1,000 monthly solo parent subsidy" },
+    "title": {
+      "tl": "₱1,000 buwanang subsidy ng solo parent",
+      "en": "₱1,000 monthly solo parent subsidy"
+    },
     "amount_php": 1000,
-    "frequency": { "tl": "Buwan-buwan", "en": "Monthly" },
+    "frequency": {
+      "tl": "Buwan-buwan",
+      "en": "Monthly"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 11861, ang solo parent na kumikita ng minimum wage pababa ay may ₱1,000 buwanang subsidy na mula sa pondo ng lungsod o munisipyo.",
       "en": "Under RA 11861, solo parents earning minimum wage or less get a ₱1,000 monthly subsidy funded by their city or municipality."
@@ -376,226 +980,2019 @@
       "tl": "Solo parent na minimum wage pababa ang kita at hindi tumatanggap ng ibang cash assistance mula sa gobyerno. Puwedeng ituloy ang senior o PWD benefits.",
       "en": "Solo parents earning minimum wage or less who receive no other government cash assistance. Senior or PWD benefits may continue."
     },
-    "rules": { "income": ["low"], "resident": true },
-    "needs": [["solo_parent_id"]],
+    "rules": {
+      "income": [
+        "low"
+      ],
+      "resident": true
+    },
+    "needs": [
+      [
+        "solo_parent_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "solo_parent_id", "tl": "Solo Parent ID", "en": "Solo Parent ID" },
-      { "tl": "Patunay ng kita (ayon sa hihingin ng City Social Services)", "en": "Proof of income (as City Social Services requires)" }
+      {
+        "doc": "solo_parent_id",
+        "tl": "Solo Parent ID",
+        "en": "Solo Parent ID"
+      },
+      {
+        "tl": "Patunay ng kita (ayon sa hihingin ng City Social Services)",
+        "en": "Proof of income (as City Social Services requires)"
+      }
     ],
     "office": "csso-calamba",
     "steps": [
-      { "tl": "Kumuha muna ng Solo Parent ID.", "en": "Get your Solo Parent ID first." },
-      { "tl": "Magtanong sa City Social Services kung paano mapabilang sa listahan ng subsidy.", "en": "Ask City Social Services how to be included in the subsidy list." }
+      {
+        "tl": "Kumuha muna ng Solo Parent ID.",
+        "en": "Get your Solo Parent ID first."
+      },
+      {
+        "tl": "Magtanong sa City Social Services kung paano mapabilang sa listahan ng subsidy.",
+        "en": "Ask City Social Services how to be included in the subsidy list."
+      }
     ],
     "free": true,
-    "free_note": { "tl": "Depende sa pondo at listahan ng lungsod.", "en": "Depends on the city's budget and beneficiary list." },
+    "free_note": {
+      "tl": "Depende sa pondo at listahan ng lungsod.",
+      "en": "Depends on the city's budget and beneficiary list."
+    },
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)", "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)",
+        "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11861). Kumpirmahin sa lungsod kung kailan ang release.", "en": "Law (RA 11861). Confirm release dates with the city." } },
-    "keywords": ["subsidy", "pera", "buwanan", "solo parent", "single parent", "ayuda"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11861.", "en": "Added from RA 11861." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11861). Kumpirmahin sa lungsod kung kailan ang release.",
+        "en": "Law (RA 11861). Confirm release dates with the city."
+      }
+    },
+    "keywords": [
+      "subsidy",
+      "pera",
+      "buwanan",
+      "solo parent",
+      "single parent",
+      "ayuda"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11861.",
+        "en": "Added from RA 11861."
+      }
+    ]
   },
   {
     "id": "solo-parent-discount",
     "level": "national",
     "city": null,
-    "groups": ["solo_parent"],
+    "groups": [
+      "solo_parent"
+    ],
     "kind": "discount",
-    "title": { "tl": "10% discount at VAT exemption sa gamit ng anak", "en": "10% discount and VAT exemption on child essentials" },
+    "title": {
+      "tl": "10% discount at VAT exemption sa gamit ng anak",
+      "en": "10% discount and VAT exemption on child essentials"
+    },
     "amount_php": null,
-    "value": { "tl": "10% discount + walang VAT", "en": "10% discount + no VAT" },
-    "frequency": { "tl": "Tuwing bibili", "en": "Every purchase" },
+    "value": {
+      "tl": "10% discount + walang VAT",
+      "en": "10% discount + no VAT"
+    },
+    "frequency": {
+      "tl": "Tuwing bibili",
+      "en": "Every purchase"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 11861, may 10% discount at VAT exemption ang solo parent sa gatas, pagkain, diaper, gamot at supplements ng anak na hanggang 6 taong gulang.",
       "en": "Under RA 11861, solo parents get a 10% discount and VAT exemption on milk, food, diapers, medicines and supplements for a child up to 6 years old."
     },
-    "who": { "tl": "Solo parent na kumikita ng hanggang ₱250,000 kada taon, may anak na hanggang 6 taong gulang.", "en": "Solo parents earning up to ₱250,000 a year, with a child up to 6 years old." },
-    "rules": { "income": ["low", "mid"] },
-    "needs": [["solo_parent_id"]],
+    "who": {
+      "tl": "Solo parent na kumikita ng hanggang ₱250,000 kada taon, may anak na hanggang 6 taong gulang.",
+      "en": "Solo parents earning up to ₱250,000 a year, with a child up to 6 years old."
+    },
+    "rules": {
+      "income": [
+        "low",
+        "mid"
+      ]
+    },
+    "needs": [
+      [
+        "solo_parent_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "solo_parent_id", "tl": "Solo Parent ID at booklet", "en": "Solo Parent ID and booklet" }
+      {
+        "doc": "solo_parent_id",
+        "tl": "Solo Parent ID at booklet",
+        "en": "Solo Parent ID and booklet"
+      }
     ],
     "office": "csso-calamba",
     "steps": [
-      { "tl": "Ipakita ang Solo Parent ID at booklet bago magbayad.", "en": "Show your Solo Parent ID and booklet before paying." }
+      {
+        "tl": "Ipakita ang Solo Parent ID at booklet bago magbayad.",
+        "en": "Show your Solo Parent ID and booklet before paying."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)", "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/" },
-      { "type": "secondary", "label": "PEP – Benefits under the Expanded Solo Parents Welfare Act", "url": "https://www.pep.ph/pepalerts/fyi/194054/benefits-expanded-solo-parents-welfare-act-a717-20261001" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)",
+        "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/"
+      },
+      {
+        "type": "secondary",
+        "label": "PEP – Benefits under the Expanded Solo Parents Welfare Act",
+        "url": "https://www.pep.ph/pepalerts/fyi/194054/benefits-expanded-solo-parents-welfare-act-a717-20261001"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11861).", "en": "Law (RA 11861)." } },
-    "keywords": ["gatas", "milk", "diaper", "gamot", "discount", "anak", "baby", "solo parent"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11861.", "en": "Added from RA 11861." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11861).",
+        "en": "Law (RA 11861)."
+      }
+    },
+    "keywords": [
+      "gatas",
+      "milk",
+      "diaper",
+      "gamot",
+      "discount",
+      "anak",
+      "baby",
+      "solo parent"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11861.",
+        "en": "Added from RA 11861."
+      }
+    ]
   },
   {
     "id": "solo-parent-leave",
     "level": "national",
     "city": null,
-    "groups": ["solo_parent"],
+    "groups": [
+      "solo_parent"
+    ],
     "kind": "leave",
-    "title": { "tl": "7 araw na parental leave ng solo parent", "en": "7-day solo parent parental leave" },
+    "title": {
+      "tl": "7 araw na parental leave ng solo parent",
+      "en": "7-day solo parent parental leave"
+    },
     "amount_php": null,
-    "value": { "tl": "Hanggang 7 araw na may bayad na leave kada taon", "en": "Up to 7 days of paid leave a year" },
-    "frequency": { "tl": "Kada taon", "en": "Every year" },
+    "value": {
+      "tl": "Hanggang 7 araw na may bayad na leave kada taon",
+      "en": "Up to 7 days of paid leave a year"
+    },
+    "frequency": {
+      "tl": "Kada taon",
+      "en": "Every year"
+    },
     "summary": {
       "tl": "Ang solo parent na empleyado na may hindi bababa sa 6 na buwang serbisyo ay may hanggang 7 araw na parental leave kada taon.",
       "en": "Solo parent employees with at least 6 months of service get up to 7 days of parental leave a year."
     },
-    "who": { "tl": "Solo parent na empleyado, 6 na buwan o higit pa sa trabaho.", "en": "Solo parent employees with 6 months or more of service." },
-    "rules": { "employed": true },
-    "needs": [["solo_parent_id"]],
+    "who": {
+      "tl": "Solo parent na empleyado, 6 na buwan o higit pa sa trabaho.",
+      "en": "Solo parent employees with 6 months or more of service."
+    },
+    "rules": {
+      "employed": true
+    },
+    "needs": [
+      [
+        "solo_parent_id"
+      ]
+    ],
     "requirements": [
-      { "doc": "solo_parent_id", "tl": "Solo Parent ID (ipakita sa employer)", "en": "Solo Parent ID (show it to your employer)" }
+      {
+        "doc": "solo_parent_id",
+        "tl": "Solo Parent ID (ipakita sa employer)",
+        "en": "Solo Parent ID (show it to your employer)"
+      }
     ],
     "office": "employer-sss",
     "steps": [
-      { "tl": "Ipaalam sa HR ng employer at ipakita ang Solo Parent ID.", "en": "Notify your employer's HR and show your Solo Parent ID." }
+      {
+        "tl": "Ipaalam sa HR ng employer at ipakita ang Solo Parent ID.",
+        "en": "Notify your employer's HR and show your Solo Parent ID."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)", "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11861 – Expanded Solo Parents Welfare Act (PCW)",
+        "url": "https://pcw.gov.ph/republic-act-no-11861-expanded-solo-parents-welfare-act/"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11861).", "en": "Law (RA 11861)." } },
-    "keywords": ["leave", "trabaho", "work", "solo parent"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11861.", "en": "Added from RA 11861." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11861).",
+        "en": "Law (RA 11861)."
+      }
+    },
+    "keywords": [
+      "leave",
+      "trabaho",
+      "work",
+      "solo parent"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11861.",
+        "en": "Added from RA 11861."
+      }
+    ]
   },
   {
     "id": "maternity-leave",
     "level": "national",
     "city": null,
-    "groups": ["mother"],
+    "groups": [
+      "mother"
+    ],
     "kind": "leave",
-    "title": { "tl": "105 araw na maternity leave", "en": "105-day maternity leave" },
+    "title": {
+      "tl": "105 araw na maternity leave",
+      "en": "105-day maternity leave"
+    },
     "amount_php": null,
-    "value": { "tl": "105 araw na may bayad na leave", "en": "105 days of paid leave" },
-    "frequency": { "tl": "Bawat panganganak", "en": "Each childbirth" },
+    "value": {
+      "tl": "105 araw na may bayad na leave",
+      "en": "105 days of paid leave"
+    },
+    "frequency": {
+      "tl": "Bawat panganganak",
+      "en": "Each childbirth"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 11210, may 105 araw na paid maternity leave ang mga babaeng manggagawa, anuman ang sektor o civil status.",
       "en": "Under RA 11210, working women get 105 days of paid maternity leave, regardless of sector or civil status."
     },
-    "who": { "tl": "Babaeng manggagawa sa gobyerno o private sector.", "en": "Women working in government or the private sector." },
-    "rules": { "employed": true },
+    "who": {
+      "tl": "Babaeng manggagawa sa gobyerno o private sector.",
+      "en": "Women working in government or the private sector."
+    },
+    "rules": {
+      "employed": true
+    },
     "needs": [],
     "requirements": [
-      { "tl": "Abisuhan ang employer tungkol sa pagbubuntis", "en": "Notify your employer of your pregnancy" },
-      { "tl": "Para sa private sector: maternity notification sa SSS", "en": "For private-sector workers: maternity notification to SSS" }
+      {
+        "tl": "Abisuhan ang employer tungkol sa pagbubuntis",
+        "en": "Notify your employer of your pregnancy"
+      },
+      {
+        "tl": "Para sa private sector: maternity notification sa SSS",
+        "en": "For private-sector workers: maternity notification to SSS"
+      }
     ],
     "office": "employer-sss",
     "steps": [
-      { "tl": "Ipaalam sa employer ang pagbubuntis at inaasahang petsa ng panganganak.", "en": "Tell your employer about the pregnancy and expected delivery date." },
-      { "tl": "Kung private sector, ipasa ang maternity notification sa SSS.", "en": "If in the private sector, file the maternity notification with SSS." }
+      {
+        "tl": "Ipaalam sa employer ang pagbubuntis at inaasahang petsa ng panganganak.",
+        "en": "Tell your employer about the pregnancy and expected delivery date."
+      },
+      {
+        "tl": "Kung private sector, ipasa ang maternity notification sa SSS.",
+        "en": "If in the private sector, file the maternity notification with SSS."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 11210 – 105-Day Expanded Maternity Leave Law", "url": "https://lawphil.net/statutes/repacts/ra2019/ra_11210_2019.html" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 11210 – 105-Day Expanded Maternity Leave Law",
+        "url": "https://lawphil.net/statutes/repacts/ra2019/ra_11210_2019.html"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 11210).", "en": "Law (RA 11210)." } },
-    "keywords": ["maternity", "buntis", "panganganak", "leave", "nanay", "mother"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 11210.", "en": "Added from RA 11210." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11210).",
+        "en": "Law (RA 11210)."
+      }
+    },
+    "keywords": [
+      "maternity",
+      "buntis",
+      "panganganak",
+      "leave",
+      "nanay",
+      "mother"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11210.",
+        "en": "Added from RA 11210."
+      }
+    ]
   },
   {
     "id": "philhealth-yakap",
     "level": "national",
     "city": null,
-    "groups": ["senior", "pwd", "solo_parent", "student", "mother"],
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
     "kind": "service",
-    "title": { "tl": "PhilHealth YAKAP: libreng check-up, lab at 21 gamot", "en": "PhilHealth YAKAP: free check-up, lab tests and 21 medicines" },
+    "title": {
+      "tl": "PhilHealth YAKAP: libreng check-up, lab at 21 gamot",
+      "en": "PhilHealth YAKAP: free check-up, lab tests and 21 medicines"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng health screening, check-up, laboratory at 21 essential na gamot", "en": "Free health screening, check-up, lab tests and 21 essential medicines" },
-    "frequency": { "tl": "Kapag kailangan, sa YAKAP clinic na pinili ninyo", "en": "As needed, at your chosen YAKAP clinic" },
+    "value": {
+      "tl": "Libreng health screening, check-up, laboratory at 21 essential na gamot",
+      "en": "Free health screening, check-up, lab tests and 21 essential medicines"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan, sa YAKAP clinic na pinili ninyo",
+      "en": "As needed, at your chosen YAKAP clinic"
+    },
     "summary": {
       "tl": "Ang YAKAP ng PhilHealth ay libreng primary care: health screening, check-up, laboratory at 21 essential na gamot sa accredited na klinika.",
       "en": "PhilHealth's YAKAP is free primary care: health screening, check-up, lab tests and 21 essential medicines at an accredited clinic."
     },
-    "who": { "tl": "PhilHealth member at kanilang dependents na nakarehistro sa isang YAKAP clinic.", "en": "PhilHealth members and dependents registered with a YAKAP clinic." },
+    "who": {
+      "tl": "PhilHealth member at kanilang dependents na nakarehistro sa isang YAKAP clinic.",
+      "en": "PhilHealth members and dependents registered with a YAKAP clinic."
+    },
     "rules": {},
-    "needs": [["philhealth"]],
+    "needs": [
+      [
+        "philhealth"
+      ]
+    ],
     "requirements": [
-      { "doc": "philhealth", "tl": "PhilHealth membership (PIN)", "en": "PhilHealth membership (PIN)" },
-      { "tl": "Pagrehistro sa YAKAP clinic (sa PhilHealth office, eGovPH app, o Member Portal)", "en": "Registration with a YAKAP clinic (at a PhilHealth office, the eGovPH app, or the Member Portal)" }
+      {
+        "doc": "philhealth",
+        "tl": "PhilHealth membership (PIN)",
+        "en": "PhilHealth membership (PIN)"
+      },
+      {
+        "tl": "Pagrehistro sa YAKAP clinic (sa PhilHealth office, eGovPH app, o Member Portal)",
+        "en": "Registration with a YAKAP clinic (at a PhilHealth office, the eGovPH app, or the Member Portal)"
+      }
     ],
     "office": "yakap-clinic",
     "steps": [
-      { "tl": "Pumili at magparehistro sa isang YAKAP clinic.", "en": "Choose and register with a YAKAP clinic." },
-      { "tl": "Magpa-check-up at screening sa klinika.", "en": "Get your check-up and screening at the clinic." }
+      {
+        "tl": "Pumili at magparehistro sa isang YAKAP clinic.",
+        "en": "Choose and register with a YAKAP clinic."
+      },
+      {
+        "tl": "Magpa-check-up at screening sa klinika.",
+        "en": "Get your check-up and screening at the clinic."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "news", "label": "SunStar – PhilHealth YAKAP, GAMOT launched (with PhilHealth registration steps)", "url": "https://www.sunstar.com.ph/pampanga/philhealth-yakap-gamotlaunched-in-zambales" },
-      { "type": "official_site", "label": "PhilHealth – GAMOT program news (2026)", "url": "https://www.philhealth.gov.ph/news/up/article/2026/news_6a193dac651d8.php" }
+      {
+        "type": "news",
+        "label": "SunStar – PhilHealth YAKAP, GAMOT launched (with PhilHealth registration steps)",
+        "url": "https://www.sunstar.com.ph/pampanga/philhealth-yakap-gamotlaunched-in-zambales"
+      },
+      {
+        "type": "official_site",
+        "label": "PhilHealth – GAMOT program news (2026)",
+        "url": "https://www.philhealth.gov.ph/news/up/article/2026/news_6a193dac651d8.php"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na balita ng PhilHealth (2026).", "en": "Official PhilHealth news (2026)." } },
-    "keywords": ["philhealth", "check-up", "doktor", "doctor", "lab", "gamot", "medicine", "libre", "yakap", "konsulta"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa PhilHealth.", "en": "Added from PhilHealth." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na balita ng PhilHealth (2026).",
+        "en": "Official PhilHealth news (2026)."
+      }
+    },
+    "keywords": [
+      "philhealth",
+      "check-up",
+      "doktor",
+      "doctor",
+      "lab",
+      "gamot",
+      "medicine",
+      "libre",
+      "yakap",
+      "konsulta"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa PhilHealth.",
+        "en": "Added from PhilHealth."
+      }
+    ]
   },
   {
     "id": "philhealth-gamot",
     "level": "national",
     "city": null,
-    "groups": ["senior", "pwd", "solo_parent", "student", "mother"],
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
     "kind": "service",
-    "title": { "tl": "PhilHealth GAMOT: hanggang ₱20,000 na libreng gamot kada taon", "en": "PhilHealth GAMOT: up to ₱20,000 in free medicines a year" },
+    "title": {
+      "tl": "PhilHealth GAMOT: hanggang ₱20,000 na libreng gamot kada taon",
+      "en": "PhilHealth GAMOT: up to ₱20,000 in free medicines a year"
+    },
     "amount_php": 20000,
-    "amount_note": { "tl": "hanggang, kada taon, kada member", "en": "up to, a year, per member" },
-    "frequency": { "tl": "Kada taon", "en": "Every year" },
+    "amount_note": {
+      "tl": "hanggang, kada taon, kada member",
+      "en": "up to, a year, per member"
+    },
+    "frequency": {
+      "tl": "Kada taon",
+      "en": "Every year"
+    },
     "summary": {
       "tl": "Sa GAMOT program, makakakuha ng libreng maintenance at acute na gamot (54 na gamot) sa accredited na GAMOT pharmacy, gamit ang reseta ng YAKAP doctor.",
       "en": "Through the GAMOT program, you get free maintenance and acute medicines (54 medicines) at an accredited GAMOT pharmacy, using a YAKAP doctor's prescription."
     },
-    "who": { "tl": "PhilHealth member at kwalipikadong dependents na may reseta mula sa YAKAP doctor.", "en": "PhilHealth members and qualified dependents with a prescription from a YAKAP doctor." },
+    "who": {
+      "tl": "PhilHealth member at kwalipikadong dependents na may reseta mula sa YAKAP doctor.",
+      "en": "PhilHealth members and qualified dependents with a prescription from a YAKAP doctor."
+    },
     "rules": {},
-    "needs": [["philhealth"]],
+    "needs": [
+      [
+        "philhealth"
+      ]
+    ],
     "requirements": [
-      { "doc": "philhealth", "tl": "PhilHealth membership (PIN)", "en": "PhilHealth membership (PIN)" },
-      { "tl": "Reseta mula sa accredited na YAKAP doctor (electronic prescription)", "en": "Prescription from an accredited YAKAP doctor (electronic prescription)" }
+      {
+        "doc": "philhealth",
+        "tl": "PhilHealth membership (PIN)",
+        "en": "PhilHealth membership (PIN)"
+      },
+      {
+        "tl": "Reseta mula sa accredited na YAKAP doctor (electronic prescription)",
+        "en": "Prescription from an accredited YAKAP doctor (electronic prescription)"
+      }
     ],
     "office": "yakap-clinic",
     "steps": [
-      { "tl": "Magpa-konsulta sa inyong YAKAP doctor.", "en": "Consult your YAKAP doctor." },
-      { "tl": "Kunin ang reseta na naka-record sa GAMOT system.", "en": "Get the prescription recorded in the GAMOT system." },
-      { "tl": "Kunin ang gamot sa accredited na GAMOT pharmacy.", "en": "Pick up the medicines at an accredited GAMOT pharmacy." }
+      {
+        "tl": "Magpa-konsulta sa inyong YAKAP doctor.",
+        "en": "Consult your YAKAP doctor."
+      },
+      {
+        "tl": "Kunin ang reseta na naka-record sa GAMOT system.",
+        "en": "Get the prescription recorded in the GAMOT system."
+      },
+      {
+        "tl": "Kunin ang gamot sa accredited na GAMOT pharmacy.",
+        "en": "Pick up the medicines at an accredited GAMOT pharmacy."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "official_site", "label": "PhilHealth – GAMOT Program launch, Zamboanga City (May 2026)", "url": "https://www.philhealth.gov.ph/news/up/article/2026/news_6a193dac651d8.php" }
+      {
+        "type": "official_site",
+        "label": "PhilHealth – GAMOT Program launch, Zamboanga City (May 2026)",
+        "url": "https://www.philhealth.gov.ph/news/up/article/2026/news_6a193dac651d8.php"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Opisyal na balita ng PhilHealth (2026). Kumpirmahin ang mga GAMOT pharmacy sa Calamba.", "en": "Official PhilHealth news (2026). Confirm GAMOT pharmacies in Calamba." } },
-    "keywords": ["gamot", "medicine", "maintenance", "libre", "philhealth", "pharmacy", "botika", "reseta"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa PhilHealth.", "en": "Added from PhilHealth." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na balita ng PhilHealth (2026). Kumpirmahin ang mga GAMOT pharmacy sa Calamba.",
+        "en": "Official PhilHealth news (2026). Confirm GAMOT pharmacies in Calamba."
+      }
+    },
+    "keywords": [
+      "gamot",
+      "medicine",
+      "maintenance",
+      "libre",
+      "philhealth",
+      "pharmacy",
+      "botika",
+      "reseta"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa PhilHealth.",
+        "en": "Added from PhilHealth."
+      }
+    ]
   },
   {
     "id": "free-tuition-sucs",
     "level": "national",
     "city": null,
-    "groups": ["student"],
+    "groups": [
+      "student"
+    ],
     "kind": "education",
-    "title": { "tl": "Libreng tuition sa state at local na kolehiyo", "en": "Free tuition at state and local colleges" },
+    "title": {
+      "tl": "Libreng tuition sa state at local na kolehiyo",
+      "en": "Free tuition at state and local colleges"
+    },
     "amount_php": null,
-    "value": { "tl": "Libreng tuition at miscellaneous fees", "en": "Free tuition and miscellaneous fees" },
-    "frequency": { "tl": "Bawat semestre", "en": "Every semester" },
+    "value": {
+      "tl": "Libreng tuition at miscellaneous fees",
+      "en": "Free tuition and miscellaneous fees"
+    },
+    "frequency": {
+      "tl": "Bawat semestre",
+      "en": "Every semester"
+    },
     "summary": {
       "tl": "Sa ilalim ng RA 10931 (Universal Access to Quality Tertiary Education Act), libre ang tuition sa mga state universities and colleges at kwalipikadong local universities and colleges.",
       "en": "Under RA 10931 (Universal Access to Quality Tertiary Education Act), tuition is free at state universities and colleges and qualified local universities and colleges."
     },
-    "who": { "tl": "Pilipinong estudyante na pumasa sa admission ng SUC o LUC.", "en": "Filipino students admitted to an SUC or LUC." },
+    "who": {
+      "tl": "Pilipinong estudyante na pumasa sa admission ng SUC o LUC.",
+      "en": "Filipino students admitted to an SUC or LUC."
+    },
     "rules": {},
     "needs": [],
     "requirements": [
-      { "doc": "psa_birth", "tl": "Mga requirement sa admission ng paaralan (karaniwang PSA birth certificate at report card)", "en": "The school's admission requirements (usually PSA birth certificate and report card)" }
+      {
+        "doc": "psa_birth",
+        "tl": "Mga requirement sa admission ng paaralan (karaniwang PSA birth certificate at report card)",
+        "en": "The school's admission requirements (usually PSA birth certificate and report card)"
+      }
     ],
     "office": "sucs",
     "steps": [
-      { "tl": "Mag-apply at pumasa sa admission ng paaralan.", "en": "Apply and pass the school's admission." },
-      { "tl": "Mag-enroll; awtomatikong sakop ng free tuition kung kwalipikado.", "en": "Enroll; free tuition applies automatically if you qualify." }
+      {
+        "tl": "Mag-apply at pumasa sa admission ng paaralan.",
+        "en": "Apply and pass the school's admission."
+      },
+      {
+        "tl": "Mag-enroll; awtomatikong sakop ng free tuition kung kwalipikado.",
+        "en": "Enroll; free tuition applies automatically if you qualify."
+      }
     ],
     "free": true,
     "sources": [
-      { "type": "law", "label": "Republic Act No. 10931 – Universal Access to Quality Tertiary Education Act", "url": "https://lawphil.net/statutes/repacts/ra2017/ra_10931_2017.html" }
+      {
+        "type": "law",
+        "label": "Republic Act No. 10931 – Universal Access to Quality Tertiary Education Act",
+        "url": "https://lawphil.net/statutes/repacts/ra2017/ra_10931_2017.html"
+      }
     ],
-    "verification": { "status": "confirmed", "checked_on": "2026-10-19", "method": { "tl": "Batas (RA 10931).", "en": "Law (RA 10931)." } },
-    "keywords": ["tuition", "kolehiyo", "college", "libre", "estudyante", "student", "suc"],
-    "history": [{ "date": "2026-10-19", "tl": "Idinagdag mula sa RA 10931.", "en": "Added from RA 10931." }]
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 10931).",
+        "en": "Law (RA 10931)."
+      }
+    },
+    "keywords": [
+      "tuition",
+      "kolehiyo",
+      "college",
+      "libre",
+      "estudyante",
+      "student",
+      "suc"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 10931.",
+        "en": "Added from RA 10931."
+      }
+    ]
+  },
+  {
+    "id": "calamba-burial-aid",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Tulong pinansyal sa pagpapalibing",
+      "en": "Burial financial aid"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Tulong ng Lungsod ng Calamba sa gastos sa burol at libing para sa mga pamilyang may Certificate of Indigency. Walang bayad ang pag-apply.",
+      "en": "City of Calamba help with wake and funeral costs for families with a Certificate of Indigency. Applying is free."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Original o certified true copy ng funeral contract",
+        "en": "Original or certified true copy of the funeral contract"
+      },
+      {
+        "tl": "Original o certified true copy ng death registration",
+        "en": "Original or certified true copy of the death registration"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Hintayin ang release (hanggang 20 araw, dumadaan sa Mayor's Office, Budget, Accounting at Treasury).",
+        "en": "Wait for release (up to 20 days; it passes through the Mayor's Office, Budget, Accounting and Treasury)."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "libing",
+      "burial",
+      "burol",
+      "patay",
+      "funeral",
+      "namatay"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-hospital-aid",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Tulong pinansyal sa ospital at guarantee letter",
+      "en": "Hospital financial aid and guarantee letter"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Tulong ng Calamba sa hospital bill. Kung naka-confine pa o may utang pa sa ospital, puwedeng humingi ng guarantee letter sa City Social Services.",
+      "en": "Calamba help with hospital bills. If still admitted or discharged with an unpaid bill, you can ask City Social Services for a guarantee letter."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Original o certified true copy ng hospital bill, promissory note, treatment protocol o diagnostic request",
+        "en": "Original or certified true copy of the hospital bill, promissory note, treatment protocol or diagnostic request"
+      },
+      {
+        "tl": "Original o certified true copy ng medical record o medical abstract",
+        "en": "Original or certified true copy of the medical record or medical abstract"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Para sa guarantee letter: sagutan ang intake sheet sa City Social Services at dalhin ang clinical abstract o bill na may pirma ng doktor.",
+        "en": "For a guarantee letter: fill out the intake sheet at City Social Services and bring the clinical abstract or bill signed by the doctor."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "ospital",
+      "hospital",
+      "bill",
+      "confine",
+      "guarantee letter",
+      "gamot"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-medical-aid",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Tulong pinansyal sa gamot at serbisyong medikal",
+      "en": "Financial aid for medicines and medical services"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Tulong ng Calamba sa gastos sa gamot at serbisyong medikal para sa mga pamilyang may Certificate of Indigency.",
+      "en": "Calamba help with medicine and medical service costs for families with a Certificate of Indigency."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Original o certified true copy ng medical record o medical abstract",
+        "en": "Original or certified true copy of the medical record or medical abstract"
+      },
+      {
+        "tl": "Original o certified true copy ng pinakabagong reseta ng doktor",
+        "en": "Original or certified true copy of the latest doctor's prescription"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Hintayin ang release (hanggang 20 araw, dumadaan sa Mayor's Office, Budget, Accounting at Treasury).",
+        "en": "Wait for release (up to 20 days; it passes through the Mayor's Office, Budget, Accounting and Treasury)."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "gamot",
+      "medicine",
+      "reseta",
+      "prescription",
+      "doktor",
+      "medical"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-calamity-aid",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Tulong sa nasunugan o naapektuhan ng kalamidad",
+      "en": "Aid for fire and calamity victims"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Tulong pinansyal ng Calamba para sa mga pamilyang nasunugan o naapektuhan ng bagyo, baha at iba pang kalamidad.",
+      "en": "Calamba financial aid for families hit by fire, typhoons, floods and other calamities."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Para sa sunog: fire report ng BFP at barangay blotter o affidavit ng nasirang ari-arian",
+        "en": "For fire: BFP fire report and a barangay blotter or affidavit of damaged property"
+      },
+      {
+        "tl": "Para sa kalamidad: sulat na naglalarawan ng epekto at litrato ng pinsala",
+        "en": "For a calamity: a letter describing the impact and photos of the damage"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Hintayin ang release (hanggang 20 araw, dumadaan sa Mayor's Office, Budget, Accounting at Treasury).",
+        "en": "Wait for release (up to 20 days; it passes through the Mayor's Office, Budget, Accounting and Treasury)."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "sunog",
+      "fire",
+      "baha",
+      "flood",
+      "bagyo",
+      "typhoon",
+      "kalamidad",
+      "calamity"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-balik-probinsya",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Tulong pamasahe pauwi sa probinsya",
+      "en": "Fare assistance to return to your home province"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Tulong ng Calamba sa pamasahe para makauwi sa sariling probinsya.",
+      "en": "Calamba help with fare to return to your home province."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Kumpirmadong pamasahe mula sa bus company",
+        "en": "Confirmed bus fare from the bus company"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Hintayin ang release (hanggang 20 araw, dumadaan sa Mayor's Office, Budget, Accounting at Treasury).",
+        "en": "Wait for release (up to 20 days; it passes through the Mayor's Office, Budget, Accounting and Treasury)."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "pamasahe",
+      "fare",
+      "uwi",
+      "probinsya",
+      "bus"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-livelihood-capital",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "solo_parent",
+      "pwd",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "Puhunan sa kabuhayan at tulong sa distressed OFW",
+      "en": "Livelihood capital and aid for distressed OFWs"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Halaga: ayon sa assessment ng social worker",
+      "en": "Amount: based on the social worker's assessment"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan",
+      "en": "When needed"
+    },
+    "summary": {
+      "tl": "Special assistance ng Calamba para sa distressed o repatriated na OFW, at puhunan para makapagsimula ng kabuhayan.",
+      "en": "Calamba special assistance for distressed or repatriated OFWs, and capital to start a livelihood."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na may Certificate of Indigency.",
+      "en": "Calamba residents with a Certificate of Indigency."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [
+      [
+        "indigency"
+      ]
+    ],
+    "requirements": [
+      {
+        "tl": "Barangay clearance",
+        "en": "Barangay clearance"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Certificate of Indigency mula sa barangay",
+        "en": "Certificate of Indigency from your barangay"
+      },
+      {
+        "tl": "Para sa OFW: kopya ng passport o travel document at work contract",
+        "en": "For OFWs: copy of passport or travel document and work contract"
+      },
+      {
+        "tl": "Para sa puhunan: sulat na naglalarawan ng kalagayan at paggagamitan ng pondo",
+        "en": "For capital: a letter describing your situation and how the funds will be used"
+      },
+      {
+        "tl": "Valid ID (photocopy)",
+        "en": "Valid ID (photocopy)"
+      }
+    ],
+    "office": "csso-fcwd-calamba",
+    "steps": [
+      {
+        "tl": "Kumuha ng barangay clearance at Certificate of Indigency sa barangay.",
+        "en": "Get a barangay clearance and Certificate of Indigency from your barangay."
+      },
+      {
+        "tl": "Dalhin ang mga dokumento sa City Social Services (Family & Community Welfare Division).",
+        "en": "Bring the documents to City Social Services (Family & Community Welfare Division)."
+      },
+      {
+        "tl": "Makipag-usap sa social worker para sa assessment.",
+        "en": "Talk to the social worker for the assessment."
+      },
+      {
+        "tl": "Hintayin ang release (hanggang 20 araw, dumadaan sa Mayor's Office, Budget, Accounting at Treasury).",
+        "en": "Wait for release (up to 20 days; it passes through the Mayor's Office, Budget, Accounting and Treasury)."
+      }
+    ],
+    "free": true,
+    "free_note": {
+      "tl": "Hanggang 20 araw bago ma-release",
+      "en": "Up to 20 days to release"
+    },
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "negosyo",
+      "business",
+      "puhunan",
+      "capital",
+      "ofw",
+      "kabuhayan",
+      "livelihood"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-free-skills-training",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "student",
+      "solo_parent",
+      "pwd",
+      "mother"
+    ],
+    "kind": "education",
+    "title": {
+      "tl": "Libreng skills training (TVET) sa CMDC",
+      "en": "Free skills training (TVET) at CMDC"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Libreng enrollment at training",
+      "en": "Free enrollment and training"
+    },
+    "frequency": {
+      "tl": "Ayon sa schedule ng training",
+      "en": "Based on the training schedule"
+    },
+    "summary": {
+      "tl": "Libreng technical-vocational training sa Calamba Manpower Development Center. May employment assistance para sa mga nagtapos.",
+      "en": "Free technical-vocational training at the Calamba Manpower Development Center, with employment assistance for graduates."
+    },
+    "who": {
+      "tl": "Mamamayan ng Calamba na gustong mag-enroll.",
+      "en": "Calamba residents who want to enroll."
+    },
+    "rules": {
+      "resident": true
+    },
+    "needs": [
+      [
+        "psa_birth"
+      ]
+    ],
+    "requirements": [
+      {
+        "doc": "psa_birth",
+        "tl": "Birth certificate",
+        "en": "Birth certificate"
+      },
+      {
+        "tl": "Patunay ng tirahan sa Calamba (voter's ID, ID ng lessor, o kopya ng property tax)",
+        "en": "Proof of Calamba residency (voter's ID, lessor's ID, or a property tax copy)"
+      },
+      {
+        "tl": "Diploma, transcript, ALS certificate, Form 137 o Form 138",
+        "en": "Diploma, transcript, ALS certificate, Form 137 or Form 138"
+      }
+    ],
+    "office": "cmdc-calamba",
+    "steps": [
+      {
+        "tl": "Pumunta sa CMDC dala ang mga dokumento.",
+        "en": "Go to CMDC with your documents."
+      },
+      {
+        "tl": "Kumuha ng aptitude test at mag-enroll.",
+        "en": "Take the aptitude test and enroll."
+      },
+      {
+        "tl": "Pagkatapos ng training, puwedeng humingi ng employment assistance.",
+        "en": "After training, you can request employment assistance."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "City Government of Calamba – City Social Services Office Citizen's Charter (PDF)",
+        "url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na Citizen's Charter ng Calamba.",
+        "en": "Official Calamba Citizen's Charter."
+      }
+    },
+    "keywords": [
+      "training",
+      "tesda",
+      "tvet",
+      "skills",
+      "trabaho",
+      "work",
+      "kurso"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa Citizen's Charter ng City Social Services.",
+        "en": "Added from the City Social Services Citizen's Charter."
+      }
+    ]
+  },
+  {
+    "id": "calamba-indigency-certificate",
+    "level": "local",
+    "city": "calamba",
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "id",
+    "guide": true,
+    "provides": "indigency",
+    "title": {
+      "tl": "Certificate of Indigency",
+      "en": "Certificate of Indigency"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Susi sa tulong pinansyal ng lungsod at DSWD",
+      "en": "The key to city and DSWD financial aid"
+    },
+    "frequency": {
+      "tl": "Kapag kailangan (karaniwang may bisa nang ilang buwan)",
+      "en": "When needed (usually valid for a few months)"
+    },
+    "summary": {
+      "tl": "Patunay mula sa barangay na mababa ang kita ng pamilya. Kailangan ito sa karamihan ng tulong pinansyal ng Calamba at DSWD.",
+      "en": "Barangay proof that the family has low income. Most Calamba and DSWD financial aid requires it."
+    },
+    "who": {
+      "tl": "Residente ng barangay na mababa o walang kita.",
+      "en": "Barangay residents with low or no income."
+    },
+    "rules": {
+      "resident": true,
+      "income": [
+        "low"
+      ]
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Valid ID at patunay ng tirahan sa barangay",
+        "en": "Valid ID and proof of residence in the barangay",
+        "note": {
+          "tl": "Kumpirmahin sa barangay kung may iba pang hinihingi.",
+          "en": "Confirm with the barangay if anything else is needed."
+        }
+      }
+    ],
+    "office": "barangay",
+    "steps": [
+      {
+        "tl": "Pumunta sa barangay hall at sabihin kung para saan ang certificate (hal. tulong sa ospital).",
+        "en": "Go to the barangay hall and say what the certificate is for (e.g. hospital aid)."
+      },
+      {
+        "tl": "Ipakita ang ID at sagutan ang form.",
+        "en": "Show your ID and fill out the form."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "secondary",
+        "label": "Barangay Directory – Calamba barangay services",
+        "url": "https://www.barangaydirectory.com/barangay/city-of-calamba/puting-lupa"
+      }
+    ],
+    "verification": {
+      "status": "reported",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Galing sa direktoryo ng barangay; kumpirmahin sa inyong barangay kung may bayad o iba pang requirement.",
+        "en": "From a barangay directory; confirm with your barangay whether there is a fee or other requirement."
+      }
+    },
+    "keywords": [
+      "indigency",
+      "indigent",
+      "barangay",
+      "certificate",
+      "mahirap"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag bilang gabay.",
+        "en": "Added as a guide."
+      }
+    ]
+  },
+  {
+    "id": "aics",
+    "level": "national",
+    "city": null,
+    "groups": [
+      "family",
+      "senior",
+      "pwd",
+      "solo_parent",
+      "student",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "AICS: tulong ng DSWD sa panahon ng krisis",
+      "en": "AICS: DSWD aid in a crisis"
+    },
+    "amount_php": 5000,
+    "amount_note": {
+      "tl": "pinakamataas na cash sa parehong araw; mas mataas kung may social case study",
+      "en": "maximum same-day cash; more with a social case study"
+    },
+    "frequency": {
+      "tl": "Isang beses kada uri ng tulong, bawat 3 buwan",
+      "en": "Once per type of aid, every 3 months"
+    },
+    "summary": {
+      "tl": "Tulong ng DSWD para sa pamilyang may krisis: gastos sa ospital, gamot, libing, pag-aaral, pamasahe pauwi, o pagkain. Inuuna ang mahihirap at nangangailangan.",
+      "en": "DSWD help for families in crisis: hospital, medicine, burial, school, fare home, or food. Indigent and vulnerable families come first."
+    },
+    "who": {
+      "tl": "Indibidwal o pamilyang nasa krisis, ayon sa assessment ng social worker.",
+      "en": "Individuals or families in crisis, as assessed by a social worker."
+    },
+    "rules": {},
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Valid ID",
+        "en": "Valid ID"
+      },
+      {
+        "doc": "indigency",
+        "tl": "Barangay certificate o Certificate of Indigency",
+        "en": "Barangay certificate or Certificate of Indigency"
+      },
+      {
+        "tl": "Para sa medikal: medical certificate o clinical abstract (sa loob ng 3 buwan) at bill, reseta o lab request",
+        "en": "For medical: medical certificate or clinical abstract (within 3 months) and the bill, prescription or lab request"
+      },
+      {
+        "tl": "Para sa libing: funeral contract at death certificate",
+        "en": "For burial: funeral contract and death certificate"
+      },
+      {
+        "tl": "Para sa pag-aaral: certificate of enrollment o assessment at school ID",
+        "en": "For school: certificate of enrollment or assessment and school ID"
+      }
+    ],
+    "office": "dswd-ciu",
+    "steps": [
+      {
+        "tl": "Pumunta sa DSWD Crisis Intervention Unit dala ang mga dokumento.",
+        "en": "Go to the DSWD Crisis Intervention Unit with your documents."
+      },
+      {
+        "tl": "Makipag-usap sa social worker.",
+        "en": "Talk to the social worker."
+      },
+      {
+        "tl": "Hanggang ₱5,000: cash na ibinibigay agad. Mas mataas: guarantee letter o tseke.",
+        "en": "Up to ₱5,000: cash released right away. Higher amounts: guarantee letter or check."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "DSWD – Assistance to Individuals in Crisis Situation (AICS)",
+        "url": "https://fo10.dswd.gov.ph/services/assistance-in-crisis-situation/to-individuals"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na website ng DSWD.",
+        "en": "Official DSWD website."
+      }
+    },
+    "keywords": [
+      "aics",
+      "krisis",
+      "crisis",
+      "ospital",
+      "hospital",
+      "libing",
+      "burial",
+      "gamot",
+      "pamasahe",
+      "ayuda",
+      "dswd"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa DSWD.",
+        "en": "Added from DSWD."
+      }
+    ]
+  },
+  {
+    "id": "four-ps",
+    "level": "national",
+    "city": null,
+    "groups": [
+      "family",
+      "solo_parent",
+      "mother"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "4Ps: buwanang cash grant para sa pamilya",
+      "en": "4Ps: monthly cash grant for families"
+    },
+    "amount_php": 750,
+    "amount_note": {
+      "tl": "kada buwan para sa kalusugan, dagdag ₱300–₱700 kada anak na nag-aaral (hanggang 3)",
+      "en": "a month for health, plus ₱300–₱700 per child in school (up to 3)"
+    },
+    "frequency": {
+      "tl": "Buwan-buwan, basta natutupad ang mga kondisyon",
+      "en": "Monthly, as long as the conditions are met"
+    },
+    "summary": {
+      "tl": "Ang 4Ps ay cash grant para sa mahihirap na pamilyang may buntis o anak na 0–18. Kailangang magpa-check-up, pumasok sa paaralan ang mga bata, at dumalo sa Family Development Sessions.",
+      "en": "4Ps is a cash grant for poor families with a pregnant member or children 0–18. Members get check-ups, keep children in school, and attend Family Development Sessions."
+    },
+    "who": {
+      "tl": "Mahirap na pamilyang nasa listahan ng DSWD, may buntis o anak na 0–18.",
+      "en": "Poor families on the DSWD list with a pregnant member or a child 0–18."
+    },
+    "rules": {
+      "income": [
+        "low"
+      ],
+      "children": true,
+      "four_ps": false
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Kailangang matukoy ng DSWD bilang mahirap na pamilya (household assessment)",
+        "en": "The household must be identified as poor by DSWD (household assessment)"
+      }
+    ],
+    "office": "dswd-4ps",
+    "steps": [
+      {
+        "tl": "Magtanong sa 4Ps City Link o social welfare office ng lungsod kung paano ma-assess ang pamilya.",
+        "en": "Ask the city's 4Ps City Link or social welfare office how your household can be assessed."
+      },
+      {
+        "tl": "Kapag napili, dumalo sa orientation at sundin ang mga kondisyon.",
+        "en": "If selected, attend the orientation and follow the conditions."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "law",
+        "label": "Republic Act No. 11310 – Pantawid Pamilyang Pilipino Program Act",
+        "url": "https://lawphil.net/statutes/repacts/ra2019/ra_11310_2019.html"
+      },
+      {
+        "type": "secondary",
+        "label": "Batas Natin – 4Ps summary",
+        "url": "https://batasnatin.com/doctrine/4ps-pantawid-pamilyang-pilipino-program"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Batas (RA 11310). Kumpirmahin ang kasalukuyang halaga sa DSWD.",
+        "en": "Law (RA 11310). Confirm current amounts with DSWD."
+      }
+    },
+    "keywords": [
+      "4ps",
+      "pantawid",
+      "cash grant",
+      "anak",
+      "pamilya",
+      "ayuda",
+      "dswd"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa RA 11310.",
+        "en": "Added from RA 11310."
+      }
+    ]
+  },
+  {
+    "id": "lifeline-rate",
+    "level": "national",
+    "city": null,
+    "groups": [
+      "family"
+    ],
+    "kind": "discount",
+    "title": {
+      "tl": "Lifeline rate: discount sa kuryente ng 4Ps",
+      "en": "Lifeline rate: electricity discount for 4Ps families"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "100% discount (0–50 kWh), 35% (51–70 kWh), 20% (71–100 kWh)",
+      "en": "100% off (0–50 kWh), 35% (51–70 kWh), 20% (71–100 kWh)"
+    },
+    "frequency": {
+      "tl": "Bawat buwan sa bill ng kuryente",
+      "en": "Every month on your electricity bill"
+    },
+    "summary": {
+      "tl": "Discount sa kuryente para sa mga pamilyang 4Ps ayon sa RA 11552. Awtomatiko kung tugma ang record ninyo sa DSWD at sa kompanya ng kuryente.",
+      "en": "An electricity discount for 4Ps families under RA 11552. It's automatic if your DSWD and utility records match."
+    },
+    "who": {
+      "tl": "Pamilyang kasama sa 4Ps.",
+      "en": "Families in 4Ps."
+    },
+    "rules": {
+      "four_ps": true
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Kung hindi awtomatiko: application form ng lifeline rate",
+        "en": "If not automatic: the lifeline rate application form"
+      },
+      {
+        "tl": "Pinakabagong bill ng kuryente",
+        "en": "Latest electricity bill"
+      },
+      {
+        "tl": "Valid ID",
+        "en": "Valid government ID"
+      }
+    ],
+    "office": "power-utility",
+    "steps": [
+      {
+        "tl": "Tingnan ang bill: kung may lifeline discount na, wala nang gagawin.",
+        "en": "Check your bill: if the lifeline discount is already there, you're done."
+      },
+      {
+        "tl": "Kung wala, pumunta sa kompanya ng kuryente dala ang form, bill at ID.",
+        "en": "If not, go to your electricity provider with the form, bill and ID."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "official_site",
+        "label": "DSWD 4Ps – Expanded lifeline rate subsidy (Feb 2026)",
+        "url": "https://pantawid.dswd.gov.ph/2026/02/4ps-families-to-benefit-from-expanded-lifeline-rate-subsidy-program/"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Opisyal na website ng DSWD 4Ps (Pebrero 2026).",
+        "en": "Official DSWD 4Ps website (February 2026)."
+      }
+    },
+    "keywords": [
+      "kuryente",
+      "electricity",
+      "meralco",
+      "bill",
+      "lifeline",
+      "4ps",
+      "discount"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa DSWD.",
+        "en": "Added from DSWD."
+      }
+    ]
+  },
+  {
+    "id": "uplift-2026",
+    "level": "national",
+    "city": null,
+    "groups": [
+      "family"
+    ],
+    "kind": "cash",
+    "no_apply": true,
+    "expires_on": "2026-12-31",
+    "title": {
+      "tl": "UPLIFT: ₱2,000 kada buwan (Hulyo–Disyembre 2026)",
+      "en": "UPLIFT: ₱2,000 a month (July–December 2026)"
+    },
+    "amount_php": 2000,
+    "frequency": {
+      "tl": "Buwan-buwan, Hulyo hanggang Disyembre 2026",
+      "en": "Monthly, July to December 2026"
+    },
+    "summary": {
+      "tl": "Pansamantalang tulong ng DSWD dahil sa taas-presyo ng gasolina at pagkain. Para sa mahihirap at halos-mahirap na pamilyang nasa CBMS ng PSA pero hindi kasama sa 4Ps, at para sa low-income na SSS member. Ang 4Ps families ay may isang beses na ₱2,000.",
+      "en": "Temporary DSWD aid for higher fuel and food prices. For poor and near-poor households in the PSA's CBMS who are not in 4Ps, and for low-income SSS members. 4Ps families get a one-time ₱2,000."
+    },
+    "who": {
+      "tl": "Napili ng DSWD mula sa CBMS, 4Ps at SSS records. Hindi puwedeng mag-apply.",
+      "en": "Selected by DSWD from CBMS, 4Ps and SSS records. You cannot apply."
+    },
+    "rules": {
+      "income": [
+        "low"
+      ],
+      "four_ps": false
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "GCash o Landbank account (para sa payout)",
+        "en": "GCash or Landbank account (for payouts)"
+      }
+    ],
+    "office": "dswd-ciu",
+    "steps": [
+      {
+        "tl": "Abangan ang abiso mula sa DSWD o sa barangay kung kasama kayo.",
+        "en": "Watch for a notice from DSWD or your barangay if you're included."
+      },
+      {
+        "tl": "Mag-ingat sa scam: walang bayad at walang nag-a-apply sa pamamagitan ng link o text.",
+        "en": "Beware of scams: there's no fee, and no one applies through a link or text."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "news",
+        "label": "PTV News – DSWD begins rollout of P2K UPLIFT Assistance (July 2026)",
+        "url": "https://ptvnews.ph/dswd-begins-rollout-of-p2k-uplift-assistance-to-vulnerable-filipinos/"
+      }
+    ],
+    "verification": {
+      "status": "reported",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Galing sa balita ng PTV (Hulyo 2026); hindi pa nakita ang opisyal na guidelines ng DSWD.",
+        "en": "From a PTV news report (July 2026); DSWD's official guidelines not yet located."
+      }
+    },
+    "keywords": [
+      "uplift",
+      "2000",
+      "ayuda",
+      "dswd",
+      "cbms",
+      "gasolina",
+      "fuel"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa balita; matatapos sa Disyembre 2026.",
+        "en": "Added from news; ends December 2026."
+      }
+    ]
+  },
+  {
+    "id": "tupad",
+    "level": "national",
+    "city": null,
+    "groups": [
+      "family",
+      "solo_parent",
+      "pwd"
+    ],
+    "kind": "cash",
+    "title": {
+      "tl": "TUPAD: pansamantalang trabaho mula sa DOLE",
+      "en": "TUPAD: short-term emergency work from DOLE"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Sahod na katumbas ng regional minimum wage",
+      "en": "Pay equal to the regional minimum wage"
+    },
+    "frequency": {
+      "tl": "Isang miyembro kada pamilya, kada taon",
+      "en": "One member per family, per year"
+    },
+    "summary": {
+      "tl": "Pansamantalang trabaho para sa nawalan ng trabaho o kabuhayan. Mula 2026, kasama na rin ang mga magulang, TESDA graduate at micro-entrepreneur na dumaan sa DOLE.",
+      "en": "Short-term work for people who lost a job or livelihood. Since 2026 it also covers parents, TESDA graduates and micro-entrepreneurs assisted by DOLE."
+    },
+    "who": {
+      "tl": "Manggagawang nawalan ng trabaho o kabuhayan, at iba pang sakop ng DOLE Department Order 239-B (2026).",
+      "en": "Workers who lost a job or livelihood, and others covered by DOLE Department Order 239-B (2026)."
+    },
+    "rules": {
+      "lost_job": true
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Valid ID",
+        "en": "Valid ID"
+      },
+      {
+        "tl": "Iba pang hihingin ng DOLE o PESO",
+        "en": "Other documents DOLE or PESO asks for"
+      }
+    ],
+    "office": "dole-peso",
+    "steps": [
+      {
+        "tl": "Magtanong sa PESO ng lungsod o DOLE Field Office kung may bukas na TUPAD slots.",
+        "en": "Ask the city PESO or DOLE Field Office if TUPAD slots are open."
+      },
+      {
+        "tl": "Magtrabaho ayon sa assignment at tanggapin ang sahod sa remittance o e-wallet.",
+        "en": "Work your assignment and receive pay through remittance or e-wallet."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "news",
+        "label": "SunStar – DOLE expands TUPAD beneficiary list (March 2026)",
+        "url": "https://www.sunstar.com.ph/manila/dole-expands-tupad-beneficiary-list"
+      }
+    ],
+    "verification": {
+      "status": "reported",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Galing sa balita (Marso 2026); kumpirmahin sa DOLE o PESO.",
+        "en": "From a news report (March 2026); confirm with DOLE or PESO."
+      }
+    },
+    "keywords": [
+      "trabaho",
+      "work",
+      "job",
+      "tupad",
+      "dole",
+      "peso",
+      "sahod"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag mula sa balita.",
+        "en": "Added from news."
+      }
+    ]
   }
 ]

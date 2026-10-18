@@ -2,40 +2,70 @@
   {
     "id": "osca-calamba",
     "city": "calamba",
-    "name": { "tl": "OSCA (Office of Senior Citizens Affairs), Calamba", "en": "OSCA (Office of Senior Citizens Affairs), Calamba" },
-    "place": { "tl": "Calamba City Hall (Office of the City Mayor – OSCA)", "en": "Calamba City Hall (Office of the City Mayor – OSCA)" },
+    "name": {
+      "tl": "OSCA (Office of Senior Citizens Affairs), Calamba",
+      "en": "OSCA (Office of Senior Citizens Affairs), Calamba"
+    },
+    "place": {
+      "tl": "Calamba City Hall (Office of the City Mayor – OSCA)",
+      "en": "Calamba City Hall (Office of the City Mayor – OSCA)"
+    },
     "map_query": "Calamba City Hall, Calamba, Laguna",
     "source_url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=187"
   },
   {
     "id": "pdao-calamba",
     "city": "calamba",
-    "name": { "tl": "PDAO (Persons with Disability Affairs Office), Calamba", "en": "PDAO (Persons with Disability Affairs Office), Calamba" },
-    "place": { "tl": "Calamba City Hall", "en": "Calamba City Hall" },
+    "name": {
+      "tl": "PDAO (Persons with Disability Affairs Office), Calamba",
+      "en": "PDAO (Persons with Disability Affairs Office), Calamba"
+    },
+    "place": {
+      "tl": "Calamba City Hall",
+      "en": "Calamba City Hall"
+    },
     "map_query": "Calamba City Hall, Calamba, Laguna",
     "source_url": "https://calambacity.gov.ph/maincss/assets/citizencharter/PERSONS_WITH_DISABILITY_AFFAIRS_OFFICE.pdf"
   },
   {
     "id": "csso-calamba",
     "city": "calamba",
-    "name": { "tl": "City Social Services – Family & Community Welfare Division, Calamba", "en": "City Social Services – Family & Community Welfare Division, Calamba" },
-    "place": { "tl": "Calamba City Hall", "en": "Calamba City Hall" },
+    "name": {
+      "tl": "City Social Services – Family & Community Welfare Division, Calamba",
+      "en": "City Social Services – Family & Community Welfare Division, Calamba"
+    },
+    "place": {
+      "tl": "Calamba City Hall",
+      "en": "Calamba City Hall"
+    },
     "map_query": "Calamba City Hall, Calamba, Laguna",
     "source_url": "https://calambacity.gov.ph/Users/Home/ViewServicesPage?createservicesId=60"
   },
   {
     "id": "barangay",
     "city": "calamba",
-    "name": { "tl": "Barangay hall ninyo", "en": "Your barangay hall" },
-    "place": { "tl": "Ang barangay kung saan kayo nakatira sa Calamba", "en": "The barangay where you live in Calamba" },
+    "name": {
+      "tl": "Barangay hall ninyo",
+      "en": "Your barangay hall"
+    },
+    "place": {
+      "tl": "Ang barangay kung saan kayo nakatira sa Calamba",
+      "en": "The barangay where you live in Calamba"
+    },
     "map_query": "Barangay Hall, Calamba, Laguna",
     "source_url": "https://journalnews.com.ph/calamba-scs-to-receive-birthday-cash-gifts/"
   },
   {
     "id": "ccc",
     "city": "calamba",
-    "name": { "tl": "City College of Calamba (CCC)", "en": "City College of Calamba (CCC)" },
-    "place": { "tl": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba", "en": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba" },
+    "name": {
+      "tl": "City College of Calamba (CCC)",
+      "en": "City College of Calamba (CCC)"
+    },
+    "place": {
+      "tl": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba",
+      "en": "Old Municipal Site, Burgos St., Brgy. VII, Poblacion, Calamba"
+    },
     "map_query": "City College of Calamba, Burgos St, Calamba, Laguna",
     "web": "https://ccc.edu.ph/",
     "source_url": "https://ccc.edu.ph/"
@@ -43,8 +73,14 @@
   {
     "id": "yakap-clinic",
     "city": null,
-    "name": { "tl": "PhilHealth YAKAP clinic na pinili ninyo", "en": "Your chosen PhilHealth YAKAP clinic" },
-    "place": { "tl": "Isang YAKAP-accredited na klinika; magparehistro sa PhilHealth office, eGovPH app, o Member Portal", "en": "A YAKAP-accredited clinic; register at a PhilHealth office, the eGovPH app, or the Member Portal" },
+    "name": {
+      "tl": "PhilHealth YAKAP clinic na pinili ninyo",
+      "en": "Your chosen PhilHealth YAKAP clinic"
+    },
+    "place": {
+      "tl": "Isang YAKAP-accredited na klinika; magparehistro sa PhilHealth office, eGovPH app, o Member Portal",
+      "en": "A YAKAP-accredited clinic; register at a PhilHealth office, the eGovPH app, or the Member Portal"
+    },
     "map_query": "PhilHealth YAKAP clinic Calamba Laguna",
     "web": "https://www.philhealth.gov.ph/",
     "source_url": "https://www.sunstar.com.ph/pampanga/philhealth-yakap-gamotlaunched-in-zambales"
@@ -52,17 +88,129 @@
   {
     "id": "employer-sss",
     "city": null,
-    "name": { "tl": "Employer ninyo (at SSS para sa private sector)", "en": "Your employer (and SSS for private-sector workers)" },
-    "place": { "tl": "HR o opisina ng employer ninyo", "en": "Your employer's HR or office" },
+    "name": {
+      "tl": "Employer ninyo (at SSS para sa private sector)",
+      "en": "Your employer (and SSS for private-sector workers)"
+    },
+    "place": {
+      "tl": "HR o opisina ng employer ninyo",
+      "en": "Your employer's HR or office"
+    },
     "map_query": null,
     "source_url": "https://lawphil.net/statutes/repacts/ra2019/ra_11210_2019.html"
   },
   {
     "id": "sucs",
     "city": null,
-    "name": { "tl": "State university, state college, o local college", "en": "State university, state college, or local college" },
-    "place": { "tl": "Registrar ng paaralang papasukan", "en": "The registrar of the school you will enroll in" },
+    "name": {
+      "tl": "State university, state college, o local college",
+      "en": "State university, state college, or local college"
+    },
+    "place": {
+      "tl": "Registrar ng paaralang papasukan",
+      "en": "The registrar of the school you will enroll in"
+    },
     "map_query": null,
     "source_url": "https://lawphil.net/statutes/repacts/ra2017/ra_10931_2017.html"
+  },
+  {
+    "id": "csso-fcwd-calamba",
+    "city": "calamba",
+    "name": {
+      "tl": "City Social Services – Family & Community Welfare Division, Calamba",
+      "en": "City Social Services – Family & Community Welfare Division, Calamba"
+    },
+    "place": {
+      "tl": "Calamba City Hall",
+      "en": "Calamba City Hall"
+    },
+    "map_query": "Calamba City Hall, Calamba, Laguna",
+    "source_url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+  },
+  {
+    "id": "cmdc-calamba",
+    "city": "calamba",
+    "name": {
+      "tl": "Calamba Manpower Development Center (CMDC)",
+      "en": "Calamba Manpower Development Center (CMDC)"
+    },
+    "place": {
+      "tl": "Manpower Development Division, City Social Services ng Calamba",
+      "en": "Manpower Development Division, Calamba City Social Services"
+    },
+    "map_query": "Calamba Manpower Development Center, Calamba, Laguna",
+    "source_url": "https://calambacity.gov.ph/maincss/assets/citizencharter/CITY_SOCIAL_SERVICES_OFFICE.pdf"
+  },
+  {
+    "id": "dswd-ciu",
+    "city": null,
+    "name": {
+      "tl": "DSWD Crisis Intervention Unit (CIU)",
+      "en": "DSWD Crisis Intervention Unit (CIU)"
+    },
+    "place": {
+      "tl": "DSWD Field Office IV-A (CALABARZON) o SWAD office sa probinsya",
+      "en": "DSWD Field Office IV-A (CALABARZON) or the provincial SWAD office"
+    },
+    "map_query": "DSWD Field Office IV-A CALABARZON",
+    "web": "https://fo4a.dswd.gov.ph/",
+    "source_url": "https://fo10.dswd.gov.ph/services/assistance-in-crisis-situation/to-individuals"
+  },
+  {
+    "id": "dswd-4ps",
+    "city": null,
+    "name": {
+      "tl": "DSWD 4Ps (Pantawid Pamilyang Pilipino Program)",
+      "en": "DSWD 4Ps (Pantawid Pamilyang Pilipino Program)"
+    },
+    "place": {
+      "tl": "4Ps City Link o social welfare office ng lungsod",
+      "en": "The city's 4Ps City Link or social welfare office"
+    },
+    "map_query": null,
+    "web": "https://pantawid.dswd.gov.ph/",
+    "source_url": "https://batasnatin.com/doctrine/4ps-pantawid-pamilyang-pilipino-program"
+  },
+  {
+    "id": "power-utility",
+    "city": null,
+    "name": {
+      "tl": "Kompanya ng kuryente ninyo",
+      "en": "Your electricity provider"
+    },
+    "place": {
+      "tl": "Business center ng distribution utility na nakalagay sa inyong bill",
+      "en": "The business center of the utility named on your bill"
+    },
+    "map_query": null,
+    "source_url": "https://pantawid.dswd.gov.ph/2026/02/4ps-families-to-benefit-from-expanded-lifeline-rate-subsidy-program/"
+  },
+  {
+    "id": "dole-peso",
+    "city": null,
+    "name": {
+      "tl": "DOLE Field Office o PESO ng lungsod",
+      "en": "DOLE Field Office or the city's PESO"
+    },
+    "place": {
+      "tl": "DOLE Laguna Field Office o Public Employment Service Office ng lungsod",
+      "en": "DOLE Laguna Field Office or the city's Public Employment Service Office"
+    },
+    "map_query": "DOLE Laguna Field Office",
+    "source_url": "https://www.sunstar.com.ph/manila/dole-expands-tupad-beneficiary-list"
+  },
+  {
+    "id": "barangay-any",
+    "city": null,
+    "name": {
+      "tl": "Barangay hall ninyo",
+      "en": "Your barangay hall"
+    },
+    "place": {
+      "tl": "Ang barangay kung saan kayo nakatira",
+      "en": "The barangay where you live"
+    },
+    "map_query": null,
+    "source_url": "https://www.barangaydirectory.com/barangay/city-of-calamba/puting-lupa"
   }
 ]

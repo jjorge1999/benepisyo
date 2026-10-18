@@ -139,15 +139,44 @@ async def main():
         await page.goto(BASE + "/calamba/")
         await page.fill("#search", "gamot")
         visible = await page.locator(".card:visible").count()
-        check(0 < visible < 18, f"search 'gamot' narrows the list ({visible})")
+        total = await page.locator(".card").count()
+        check(0 < visible < total, f"search 'gamot' narrows the list ({visible} of {total})")
         await page.fill("#search", "")
         await page.click('[data-filter="student"]')
         visible = await page.locator(".card:visible").count()
-        check(visible == 5, f"student filter shows 5 benefits ({visible})")
+        expected = await page.locator('.card[data-groups~="student"]').count()
+        check(visible == expected and visible < total, f"student filter shows only student benefits ({visible})")
         await page.screenshot(path=f"{SHOTS}/10-city.png", full_page=True)
         await no_overflow(page, "city")
 
-        # 13. Dark mode detail
+        # 13. Household flow
+        fam = await browser.new_context(viewport={"width": 390, "height": 844})
+        fp = await fam.new_page()
+        await fp.goto(BASE + "/")
+        await fp.fill("#city-input", "Calamba")
+        await fp.click("#city-next")
+        await fp.click('[data-group="family"]')
+        await fp.click("#who-next")
+        for _ in range(2):
+            pass
+        await fp.click('.choice:has-text("Oo")')                       # resident
+        await fp.click("text=Minimum wage pababa, o walang regular na kita")
+        t4 = await fp.text_content("#q-title")
+        check("Kasama ba ang pamilya mo sa 4Ps?" in t4, f"4Ps question ({t4.strip()})")
+        await fp.click('.choice:has-text("Hindi")')                    # not in 4Ps
+        await fp.click('.choice:has-text("Oo")')                       # has children
+        await fp.click('.choice:has-text("Hindi")')                    # did not lose job
+        await fp.click('[data-doc="__none"]')
+        await fp.click("#q-done")
+        await fp.wait_for_selector(".unlock")
+        ft = await fp.inner_text("#app")
+        check("4Ps: buwanang cash grant" in ft, "household sees 4Ps")
+        check("Kumuha muna ng Certificate of Indigency" in ft, "household told to get a Certificate of Indigency first")
+        check("Tulong pinansyal sa pagpapalibing" in ft, "household sees Calamba burial aid")
+        check("Hanggang" in ft and "UPLIFT" in ft, "UPLIFT shows its end date")
+        await fp.screenshot(path=f"{SHOTS}/13-household.png", full_page=True)
+
+        # 14. Dark mode detail
         dark = await browser.new_context(viewport={"width": 390, "height": 844}, color_scheme="dark", device_scale_factor=2)
         dp = await dark.new_page()
         await dp.goto(BASE + "/calamba/senior-milestone-cash-gift/")

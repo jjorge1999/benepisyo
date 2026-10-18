@@ -1,26 +1,150 @@
 {
-  "data_version": "2026-10-19.1",
+  "data_version": "2026-10-19.2",
   "cities": [
-    { "id": "calamba", "name": "Calamba", "province": "Laguna", "supported": true, "psgc": null }
+    {
+      "id": "calamba",
+      "name": "Calamba",
+      "province": "Laguna",
+      "supported": true,
+      "psgc": null
+    }
   ],
   "laguna_lgus": [
-    "Alaminos", "Bay", "Biñan", "Cabuyao", "Calamba", "Calauan", "Cavinti", "Famy", "Kalayaan", "Liliw",
-    "Los Baños", "Luisiana", "Lumban", "Mabitac", "Magdalena", "Majayjay", "Nagcarlan", "Paete", "Pagsanjan", "Pakil",
-    "Pangil", "Pila", "Rizal", "San Pablo", "San Pedro", "Santa Cruz", "Santa Maria", "Santa Rosa", "Siniloan", "Victoria"
+    "Alaminos",
+    "Bay",
+    "Biñan",
+    "Cabuyao",
+    "Calamba",
+    "Calauan",
+    "Cavinti",
+    "Famy",
+    "Kalayaan",
+    "Liliw",
+    "Los Baños",
+    "Luisiana",
+    "Lumban",
+    "Mabitac",
+    "Magdalena",
+    "Majayjay",
+    "Nagcarlan",
+    "Paete",
+    "Pagsanjan",
+    "Pakil",
+    "Pangil",
+    "Pila",
+    "Rizal",
+    "San Pablo",
+    "San Pedro",
+    "Santa Cruz",
+    "Santa Maria",
+    "Santa Rosa",
+    "Siniloan",
+    "Victoria"
   ],
   "groups": [
-    { "id": "senior", "tl": "Senior citizen", "en": "Senior citizen", "hint": { "tl": "60 taong gulang pataas", "en": "60 years old and up" } },
-    { "id": "pwd", "tl": "PWD", "en": "PWD", "hint": { "tl": "May kapansanan", "en": "Person with disability" } },
-    { "id": "solo_parent", "tl": "Solo parent", "en": "Solo parent", "hint": { "tl": "Mag-isang nagpapalaki ng anak", "en": "Raising a child alone" } },
-    { "id": "student", "tl": "Estudyante", "en": "Student", "hint": { "tl": "Papasok o nasa kolehiyo", "en": "Entering or in college" } },
-    { "id": "mother", "tl": "Buntis o bagong nanay", "en": "Pregnant or new mother", "hint": { "tl": "Kasama ang may trabaho", "en": "Including working mothers" } }
+    {
+      "id": "family",
+      "tl": "Pamilya / household",
+      "en": "Family / household",
+      "hint": {
+        "tl": "Para sa buong pamilya, anuman ang edad",
+        "en": "For the whole household, any age"
+      }
+    },
+    {
+      "id": "senior",
+      "tl": "Senior citizen",
+      "en": "Senior citizen",
+      "hint": {
+        "tl": "60 taong gulang pataas",
+        "en": "60 years old and up"
+      }
+    },
+    {
+      "id": "pwd",
+      "tl": "PWD",
+      "en": "PWD",
+      "hint": {
+        "tl": "May kapansanan",
+        "en": "Person with disability"
+      }
+    },
+    {
+      "id": "solo_parent",
+      "tl": "Solo parent",
+      "en": "Solo parent",
+      "hint": {
+        "tl": "Mag-isang nagpapalaki ng anak",
+        "en": "Raising a child alone"
+      }
+    },
+    {
+      "id": "student",
+      "tl": "Estudyante",
+      "en": "Student",
+      "hint": {
+        "tl": "Papasok o nasa kolehiyo",
+        "en": "Entering or in college"
+      }
+    },
+    {
+      "id": "mother",
+      "tl": "Buntis o bagong nanay",
+      "en": "Pregnant or new mother",
+      "hint": {
+        "tl": "Kasama ang may trabaho",
+        "en": "Including working mothers"
+      }
+    }
   ],
   "docs": [
-    { "id": "senior_id", "tl": "Senior Citizen ID", "en": "Senior Citizen ID", "groups": ["senior"] },
-    { "id": "pwd_id", "tl": "PWD ID", "en": "PWD ID", "groups": ["pwd"] },
-    { "id": "solo_parent_id", "tl": "Solo Parent ID", "en": "Solo Parent ID", "groups": ["solo_parent"] },
-    { "id": "national_id", "tl": "National ID (PhilSys)", "en": "National ID (PhilSys)", "groups": null },
-    { "id": "psa_birth", "tl": "PSA birth certificate", "en": "PSA birth certificate", "groups": null },
-    { "id": "philhealth", "tl": "PhilHealth (member o dependent)", "en": "PhilHealth (member or dependent)", "groups": null }
+    {
+      "id": "senior_id",
+      "tl": "Senior Citizen ID",
+      "en": "Senior Citizen ID",
+      "groups": [
+        "senior"
+      ]
+    },
+    {
+      "id": "pwd_id",
+      "tl": "PWD ID",
+      "en": "PWD ID",
+      "groups": [
+        "pwd"
+      ]
+    },
+    {
+      "id": "solo_parent_id",
+      "tl": "Solo Parent ID",
+      "en": "Solo Parent ID",
+      "groups": [
+        "solo_parent"
+      ]
+    },
+    {
+      "id": "national_id",
+      "tl": "National ID (PhilSys)",
+      "en": "National ID (PhilSys)",
+      "groups": null
+    },
+    {
+      "id": "psa_birth",
+      "tl": "PSA birth certificate",
+      "en": "PSA birth certificate",
+      "groups": null
+    },
+    {
+      "id": "philhealth",
+      "tl": "PhilHealth (member o dependent)",
+      "en": "PhilHealth (member or dependent)",
+      "groups": null
+    },
+    {
+      "id": "indigency",
+      "tl": "Certificate of Indigency (barangay)",
+      "en": "Certificate of Indigency (barangay)",
+      "groups": null
+    }
   ]
 }
