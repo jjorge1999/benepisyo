@@ -7,6 +7,7 @@
   var LINKS = body.getAttribute('data-links') || 'pretty';
   var API = body.getAttribute('data-api') || '';
   var PAGE = body.getAttribute('data-page');
+  var SITE_HOST = body.getAttribute('data-site') || location.host;
   var TODAY = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); /* Philippine date (UTC+8) */
   var MAX_PEOPLE = 6;
   var DATA = null;
@@ -656,7 +657,7 @@
         ctx.font = '400 30px ' + body;
         var foot = t('checked', { date: fmtDate(checked) }) + ' · ' + t('card_confirm');
         wrapText(ctx, foot, CW).forEach(function (ln) { if (draw) { ctx.fillStyle = C.muted; ctx.fillText(ln, PAD, y); } y += 42; });
-        if (draw) { ctx.fillStyle = C.accent; ctx.font = '700 30px ' + body; ctx.fillText('benepisyo.pages.dev', PAD, y + 8); }
+        if (draw) { ctx.fillStyle = C.accent; ctx.font = '700 30px ' + body; ctx.fillText(SITE_HOST, PAD, y + 8); }
         y += 60;
         return y;
       }

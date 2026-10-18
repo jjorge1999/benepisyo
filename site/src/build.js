@@ -16,6 +16,9 @@ const DATA = path.resolve(ROOT, '..', 'data');
 const OUT = path.resolve(ROOT, args.out || (LINKS === 'file' ? 'dist-preview' : 'dist'));
 const SITE_URL = (process.env.SITE_URL || 'https://benepisyo.pages.dev').replace(/\/$/, '');
 const API_BASE = process.env.API_BASE || '';
+// Path the site is served under, e.g. '/benepisyo/' on GitHub Pages; '/' on its own domain.
+const BASE_PATH = ('/' + (process.env.BASE_PATH || '/').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
+const SITE_HOST = SITE_URL.replace(/^https?:\/\//, '');
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const meta = JSON.parse(read(path.join(DATA, 'meta.json')));
@@ -110,7 +113,7 @@ html:not([data-lang="en"]) [data-l="en"]{display:none!important}
 html[data-lang="en"] [data-l="tl"]{display:none!important}</style>
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 </head>
-<body data-page="${page}" data-root="${rootPrefix}" data-links="${LINKS}" data-api="${esc(API_BASE)}" data-today="${today}">
+<body data-page="${page}" data-root="${rootPrefix}" data-links="${LINKS}" data-api="${esc(API_BASE)}" data-today="${today}" data-site="${esc(SITE_HOST)}">
 <div id="offline" class="offline-bar" hidden>${biKey('offline')}</div>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="${href(rootPrefix, '')}"><b>Benepisyo<span>.</span></b><small>${biKey('brand_tag')}</small></a>
@@ -294,8 +297,8 @@ function aboutPage() {
 }
 
 function notFoundPage() {
-  const body = `<div class="wrap stack" style="padding-block:40px"><h1>${biKey('not_found')}</h1><a class="btn" href="/">Benepisyo</a></div>`;
-  return layout({ title: 'Benepisyo', description: T('not_found'), rootPrefix: '/', page: 'notfound', body, canonicalPath: '', active: '' });
+  const body = `<div class="wrap stack" style="padding-block:40px"><h1>${biKey('not_found')}</h1><a class="btn" href="${BASE_PATH}">Benepisyo</a></div>`;
+  return layout({ title: 'Benepisyo', description: T('not_found'), rootPrefix: BASE_PATH, page: 'notfound', body, canonicalPath: '', active: '' });
 }
 
 /* Preview hosts that supply their own <html>/<head>/<body>: keep title, styles and content only. */
@@ -400,6 +403,7 @@ async function main() {
   writeFile('sw.js', serviceWorker(pagePaths.filter(Boolean)));
   writeFile('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`);
   writeFile('sitemap.xml', sitemap(pagePaths));
+  writeFile('.nojekyll', '');
   writeFile('_headers', `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: geolocation=(), camera=(), microphone=()\n/sw.js\n  Cache-Control: no-cache\n/data.json\n  Cache-Control: no-cache\n`);
   for (const f of fs.readdirSync(path.join(ROOT, 'public'))) {
     fs.copyFileSync(path.join(ROOT, 'public', f), path.join(OUT, f));

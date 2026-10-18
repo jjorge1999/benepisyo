@@ -1,13 +1,11 @@
-name: Test and deploy
+name: Deploy to Cloudflare (manual)
 
 # Needs two repository secrets: CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID.
 # The first run creates the D1 database, loads the seed benefits, deploys the API,
 # creates the Pages project "benepisyo" and publishes the site.
 
+# Manual for now: the live site is on GitHub Pages (see pages.yml).
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
   repository_dispatch:
     types: [content-published]
