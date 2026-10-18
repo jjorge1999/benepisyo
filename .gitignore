@@ -1,9 +1,10 @@
 .dev.vars
 node_modules/
-site/.build/
+site/.angular/
 site/dist-live/
 site/dist-preview/
 site/dist/
 site/node_modules/
+site/src/generated/
 site/test-shots/
 worker/.wrangler/

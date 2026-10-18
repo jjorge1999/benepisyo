@@ -76,9 +76,13 @@ jobs:
           echo "API URL: $URL"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
       - name: Build site from published content
-        run: node site/src/build.js
+        working-directory: site
+        run: npm ci && npm run build
         env:
+          SITE_URL: https://${{ env.PAGES_PROJECT }}.pages.dev
           API_BASE: ${{ steps.api.outputs.url }}
           BENEFITS_URL: ${{ steps.api.outputs.url }}/api/public/benefits
 
@@ -88,4 +92,4 @@ jobs:
 
       - name: Deploy site to Cloudflare Pages
         working-directory: worker
-        run: npx wrangler pages deploy ../site/dist --project-name="$PAGES_PROJECT" --branch=main --commit-dirty=true
+        run: npx wrangler pages deploy ../site/dist/browser --project-name="$PAGES_PROJECT" --branch=main --commit-dirty=true

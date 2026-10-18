@@ -19,6 +19,19 @@ def check(cond, msg):
         failures.append(msg)
 
 
+async def title_is(page, text, timeout=5000):
+    """Wait until the question title shows `text` (the UI redraws on the next tick), then return it."""
+    try:
+        await page.wait_for_function("t => (document.querySelector('#q-title')||{}).textContent && document.querySelector('#q-title').textContent.includes(t)", arg=text, timeout=timeout)
+    except Exception:
+        pass
+    return (await page.text_content("#q-title")) or ""
+
+
+async def settle(page):
+    await page.wait_for_timeout(250)
+
+
 async def no_overflow(page, label):
     w = await page.evaluate("[document.documentElement.scrollWidth, window.innerWidth]")
     check(w[0] <= w[1], f"{label}: no horizontal scroll ({w[0]} <= {w[1]})")
@@ -52,15 +65,17 @@ async def main():
         await page.click("#who-next")
 
         # 4. Questions
-        title = await page.text_content("#q-title")
+        title = await title_is(page, "Ilang taon na si Nanay?")
         check(title.strip() == "Ilang taon na si Nanay?", f"age question uses the name ({title.strip()})")
         await page.click("text=60 hanggang 79")
-        title = await page.text_content("#q-title")
+        title = await title_is(page, "Nakatira ba si Nanay sa Calamba?")
         check("Nakatira ba si Nanay sa Calamba?" in title, f"resident question ({title.strip()})")
         await page.click('.choice:has-text("Oo")')
+        await title_is(page, "kita")
         await page.click("text=Minimum wage pababa, o walang regular na kita")
+        await title_is(page, "pension")
         await page.click('.choice:has-text("Hindi")')  # no pension
-        title = await page.text_content("#q-title")
+        title = await title_is(page, "Alin ang mayroon na si Nanay?")
         check("Alin ang mayroon na si Nanay?" in title, f"documents question ({title.strip()})")
         await page.click('[data-doc="__none"]')
         await page.screenshot(path=f"{SHOTS}/03-docs.png")
@@ -103,15 +118,15 @@ async def main():
         with open(f"{SHOTS}/08-visit-card.png", "wb") as f:
             f.write(bytes(card))
         await page.click(".ant-modal-close")
-        await page.wait_for_selector(".ant-modal-wrap", state="detached", timeout=5000)
+        await page.wait_for_selector(".ant-modal", state="hidden", timeout=5000)
         visits = await page.evaluate("JSON.parse(localStorage.getItem('bp.visits')||'[]').length")
         check(visits >= 1, "visit recorded for the check-in")
 
         # 9. Report form without API -> queued
         await page.click("#report-btn")
         await page.click('#report-form button[type="submit"]')
-        await page.wait_for_selector(".ant-form-item-explain-error")
-        check(await page.is_visible(".ant-form-item-explain-error"), "empty report shows a validation message")
+        await page.wait_for_selector("#rep-err")
+        check(await page.is_visible("#rep-err"), "empty report shows a validation message")
         await page.fill("#rep-what", "Ngayong 2026 ₱1,500 na raw ang cash gift.")
         await page.click('#report-form button[type="submit"]')
         await page.wait_for_selector(".ant-message-notice")
@@ -121,7 +136,7 @@ async def main():
         check(outbox >= 1, "report saved in outbox")
 
         # 10. Language toggle
-        await page.wait_for_selector(".ant-modal-wrap", state="detached", timeout=5000)
+        await page.wait_for_selector(".ant-modal", state="hidden", timeout=5000)
         await page.click("#lang-toggle")
         check(await page.is_visible("text=Birthday cash gift for senior citizens"), "English title visible after toggle")
         check(not await page.is_visible("text=Birthday cash gift para sa senior citizen"), "Tagalog title hidden after toggle")
@@ -136,6 +151,7 @@ async def main():
         check("Nakuha mo ba" in await page.inner_text("#checkin"), "check-in prompt shown on return")
         await page.screenshot(path=f"{SHOTS}/09-checkin.png")
         await page.click('[data-ans="yes"]')
+        await settle(page)
         check(await page.is_visible("text=Salamat! Nakakatulong ito"), "check-in thanks shown")
 
         # 12. City page search and filter
@@ -145,20 +161,24 @@ async def main():
         cards = await page.locator(".card").count()
         check(cards == 8 and total > 8, f"only one page of cards is rendered ({cards} of {total})")
         first = await page.text_content(".card .title")
-        await page.click(".ant-pagination-item-2")
+        await page.click('.ant-pagination-item[title="2"]')
         await page.wait_for_timeout(300)
         check(await page.text_content(".card .title") != first, "page 2 shows different benefits")
         await page.fill("#search", "gamot")
+        await settle(page)
         n = int((await page.text_content("#result-count")).split()[0])
         check(0 < n < total and await page.locator(".card").count() == min(n, 8), f"search 'gamot' narrows the list ({n} of {total})")
         await page.fill("#search", "")
+        await settle(page)
         await page.click('[data-filter="student"]')
+        await settle(page)
         groups = await page.eval_on_selector_all(".card", "els => els.map(e => e.dataset.groups)")
         sn = int((await page.text_content("#result-count")).split()[0])
         check(groups and all("student" in g.split() for g in groups) and sn < total, f"student filter shows only student benefits ({sn} of {total})")
         await page.click('.ant-segmented-item:has-text("Calamba")')
         await page.click('[data-filter="all"]')
-        lv = await page.eval_on_selector_all(".card .meta .ant-tag:first-child", "els => els.map(e => e.textContent)")
+        await settle(page)
+        lv = await page.eval_on_selector_all(".card app-level-tag .ant-tag", "els => els.map(e => e.textContent)")
         check(lv and all("Calamba" in x for x in lv), "Calamba-only toggle shows local benefits")
         await page.screenshot(path=f"{SHOTS}/10-city.png", full_page=True)
         await no_overflow(page, "city")
@@ -172,12 +192,16 @@ async def main():
         await fp.click('[data-group="family"]')
         await fp.click("#who-next")
         await fp.click('.choice:has-text("Oo")')                       # resident
+        await title_is(fp, "kita")
         await fp.click("text=Minimum wage pababa, o walang regular na kita")
-        t4 = await fp.text_content("#q-title")
+        t4 = await title_is(fp, "Kasama ba ang pamilya mo sa 4Ps?")
         check("Kasama ba ang pamilya mo sa 4Ps?" in t4, f"4Ps question ({t4.strip()})")
         await fp.click('.choice:has-text("Hindi")')                    # not in 4Ps
+        await title_is(fp, "anak")
         await fp.click('.choice:has-text("Oo")')                       # has children
+        await title_is(fp, "trabaho")
         await fp.click('.choice:has-text("Hindi")')                    # did not lose job
+        await title_is(fp, "Alin ang mayroon")
         await fp.click('[data-doc="__none"]')
         await fp.click("#q-done")
         await fp.wait_for_selector(".unlock")

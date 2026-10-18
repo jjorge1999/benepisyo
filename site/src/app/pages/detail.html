@@ -1,0 +1,114 @@
+<div class="col gap16 detail" [attr.data-benefit]="b().id">
+  @if (ready()) { <app-checkin [today]="today()" /> }
+  <nav class="crumbs" aria-label="Breadcrumb"><a [routerLink]="['/', c().id]"><nz-icon nzType="arrow-left" /><span>{{ app.t('city_page_title', { city: c().name }) }}</span></a></nav>
+
+  <nz-card>
+    <div class="col gap8">
+      <div class="row wrap gap6"><app-level-tag [b]="b()" /><nz-tag>{{ app.t('kind_' + b().kind) }}</nz-tag></div>
+      <h1 class="detail-title">{{ app.L(b().title) }}</h1>
+      <app-amount [b]="b()" size="lg" />
+      <span class="muted">{{ app.L(b().frequency) }}</span>
+      <div class="row wrap gap6 center">
+        <app-status-tag [b]="b()" [today]="app.built" />
+        <span class="muted">{{ app.t('checked', { date: app.fmtDate(b().verification.checked_on) }) }}</span>
+        @if (count()) { <span class="muted" id="checkin-count">· {{ app.t('checkin_count', { n: count() }) }}</span> }
+      </div>
+      @if (st() === 'outdated') { <nz-alert nzType="error" nzShowIcon [nzMessage]="app.t('outdated_warn')" /> }
+      @if (st() === 'reported') { <nz-alert nzType="warning" nzShowIcon [nzMessage]="app.t('reported_warn') + (b().verification.method ? ' ' + app.L(b().verification.method) : '')" /> }
+      @if (b().expires_on) { <nz-alert nzType="warning" nzShowIcon [nzMessage]="app.t('ends_on', { date: app.fmtDate(b().expires_on) })" /> }
+      @if (b().no_apply) { <nz-alert nzType="info" nzShowIcon [nzMessage]="app.t('no_apply')" /> }
+      <p class="m0">{{ app.L(b().summary) }}</p>
+    </div>
+  </nz-card>
+
+  @if (why(); as w) {
+    <nz-alert class="why-box" nzType="success" nzShowIcon [nzMessage]="whyT" [nzDescription]="whyD" />
+    <ng-template #whyT><b>{{ w.title }}</b></ng-template>
+    <ng-template #whyD><ul>@for (i of w.items; track i) { <li>{{ i }}</li> }</ul><app-maybe [res]="w.res" /></ng-template>
+  }
+
+  <nz-card [nzTitle]="app.t('detail_who')"><p class="m0">{{ app.L(b().who) }}</p></nz-card>
+
+  <nz-card [nzTitle]="bringT">
+    <ng-template #bringT><nz-icon nzType="file-text" /> {{ app.t('detail_bring') }}</ng-template>
+    <ul class="checklist" id="checklist">
+      @for (r of b().requirements; track $index) {
+        <li [attr.data-doc]="r.doc || ''" [class.have]="has(r.doc)">
+          @if (has(r.doc)) { <nz-icon class="tick on" nzType="check-circle" nzTheme="fill" /> } @else { <span class="tick" aria-hidden="true"></span> }
+          <span>{{ app.L(r) }}@if (r.note) { <span class="muted req-note"> {{ app.L(r.note) }}</span> }@if (has(r.doc)) { <span class="have-label"> · {{ app.t('detail_have') }}</span> }</span>
+        </li>
+      }
+    </ul>
+    @if (b().free) {
+      <div class="col gap8 mt12"><nz-tag class="free-stamp self-start">{{ app.t('card_free') }}</nz-tag><span>{{ app.t('detail_free_more') }}{{ b().free_note ? ' ' + app.L(b().free_note) : '' }}</span></div>
+    }
+  </nz-card>
+
+  <nz-card class="office" [nzTitle]="whereT">
+    <ng-template #whereT><nz-icon nzType="environment" /> {{ app.t('detail_where') }}</ng-template>
+    <p class="m0"><b>{{ app.L(office().name) }}</b></p>
+    <p class="muted">{{ app.L(office().place) }}</p>
+    <div class="row wrap gap8">
+      @if (mapUrl()) { <a nz-button [href]="mapUrl()" target="_blank" rel="noopener"><nz-icon nzType="environment" /><span>{{ app.t('map') }}</span></a> }
+      @if (office().web) { <a nz-button [href]="office().web" target="_blank" rel="noopener"><nz-icon nzType="global" /><span>{{ app.t('website') }}</span></a> }
+    </div>
+  </nz-card>
+
+  <nz-card [nzTitle]="howT">
+    <ng-template #howT><nz-icon nzType="schedule" /> {{ app.t('detail_how') }}</ng-template>
+    <nz-steps nzDirection="vertical" nzSize="small" [nzCurrent]="-1">
+      @for (s of b().steps; track $index) { <nz-step nzStatus="process" [nzTitle]="stepT" /><ng-template #stepT><span class="step-text">{{ app.L(s) }}</span></ng-template> }
+    </nz-steps>
+  </nz-card>
+
+  <nz-card [nzTitle]="srcT">
+    <ng-template #srcT><nz-icon nzType="link" /> {{ app.t('detail_source') }}</ng-template>
+    <ul class="sources">@for (s of b().sources; track s.url) { <li><a [href]="s.url" rel="noopener" target="_blank">{{ s.label }}</a></li> }</ul>
+    <p class="muted">{{ app.L(b().verification.method) }}</p>
+    @if (history().length) {
+      <h3 class="h5">{{ app.t('detail_history') }}</h3>
+      <nz-timeline ngSkipHydration>@for (h of history(); track $index) { <nz-timeline-item><b>{{ app.fmtDate(h.date) }}</b>: {{ app.L(h) }}</nz-timeline-item> }</nz-timeline>
+    }
+  </nz-card>
+
+  <div class="sticky-cta">
+    <button nz-button nzType="primary" nzSize="large" id="plan-visit" (click)="openVisit()"><nz-icon nzType="file-text" /><span>{{ app.t('plan_visit') }}</span></button>
+    <button nz-button nzSize="large" id="share-btn" (click)="share()"><nz-icon nzType="share-alt" /><span>{{ app.t('share') }}</span></button>
+    <button nz-button nzType="link" id="report-btn" (click)="reportOpen.set(true)"><nz-icon nzType="flag" /><span>{{ app.t('report_btn') }}</span></button>
+  </div>
+</div>
+
+<nz-modal [nzVisible]="reportOpen()" (nzOnCancel)="reportOpen.set(false)" [nzTitle]="app.t('report_title')" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <form id="report-form" class="col gap12" novalidate (ngSubmit)="sendReport()">
+      <label for="rep-what">{{ app.t('report_what') }}</label>
+      <textarea nz-input id="rep-what" name="what" rows="4" maxlength="1000" [(ngModel)]="repWhat" (ngModelChange)="repErr.set(false)"></textarea>
+      @if (repErr()) { <nz-alert id="rep-err" class="form-error" nzType="error" nzShowIcon [nzMessage]="app.t('report_need')" /> }
+      <label for="rep-photo">{{ app.t('report_photo') }}</label>
+      <input id="rep-photo" type="file" accept="image/*" (change)="pickFile($event)" />
+      <label for="rep-contact">{{ app.t('report_contact') }}</label>
+      <input nz-input id="rep-contact" name="contact" maxlength="100" autocomplete="off" [(ngModel)]="repContact" />
+      <button nz-button nzType="primary" nzBlock nzSize="large" type="submit" [nzLoading]="repBusy()"><span>{{ app.t('report_send') }}</span></button>
+    </form>
+  </ng-container>
+</nz-modal>
+
+<nz-modal [nzVisible]="visitOpen()" (nzOnCancel)="visitOpen.set(false)" [nzTitle]="app.t('plan_title')" [nzFooter]="null">
+  <ng-container *nzModalContent>
+    <div class="col gap12">
+      @if (others().length && !bundle()) {
+        <nz-alert id="bundle" nzType="info" nzShowIcon [nzMessage]="app.t('plan_bundle', { n: others().length, office: app.L(office().name) })" [nzAction]="bundleA" />
+        <ng-template #bundleA><button nz-button nzSize="small" nzType="primary" id="bundle-yes" (click)="bundle.set(true); draw()"><span>{{ app.t('plan_bundle_yes') }}</span></button></ng-template>
+      }
+      @if (p() && !p()!.self && p()!.name) {
+        <label nz-checkbox id="card-name" [ngModel]="withName()" (ngModelChange)="withName.set($event); draw()">{{ app.t('plan_name') }}</label>
+      }
+      @if (cardUrl()) { <img class="card-preview" id="card-img" [src]="cardUrl()" [alt]="app.t('plan_title') + ': ' + app.L(b().title)" /> } @else { <div class="card-preview placeholder"></div> }
+      <div class="row wrap gap8">
+        <button nz-button nzType="primary" id="card-save" (click)="saveCard()"><span>{{ app.t('plan_save') }}</span></button>
+        <button nz-button id="card-share" (click)="shareCard()"><nz-icon nzType="share-alt" /><span>{{ app.t('plan_share') }}</span></button>
+      </div>
+      <span class="muted">{{ app.t('plan_hold') }}</span>
+    </div>
+  </ng-container>
+</nz-modal>

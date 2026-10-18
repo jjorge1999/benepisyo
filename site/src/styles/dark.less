@@ -1,0 +1,17 @@
+// Loaded only when the phone is in dark mode (see index.html).
+@root-entry-name: dark;
+@import './components.less';
+@import './tokens.less';
+@primary-color: #3fb99c;
+@link-color: #5fd0b3;
+html, body { background: #000; color: rgba(255, 255, 255, 0.85); }
+.bp-layout { background: #000; color: rgba(255, 255, 255, 0.85); }
+.bp-head { background: #0b3d34 !important; }
+.bp-nav { background: #141414 !important; border-bottom-color: #303030 !important; }
+.amount { color: #5fd0b3 !important; }
+.muted, .ant-empty-description { color: rgba(255, 255, 255, 0.55) !important; }
+.sticky-cta { background: rgba(20, 20, 20, 0.94) !important; border-top-color: rgba(255, 255, 255, 0.1) !important; }
+.filter-tag { border-color: rgba(255, 255, 255, 0.2) !important; }
+.tick { border-color: rgba(255, 255, 255, 0.6); }
+app-choice.on .choice.ant-btn, app-choice.on .choice.ant-btn:hover, app-choice.on .choice.ant-btn:focus { background: #0f3a31 !important; border-color: #3fb99c !important; color: #e6fff7 !important; }
+app-choice.on .choice.ant-btn .anticon { color: #3fb99c !important; }

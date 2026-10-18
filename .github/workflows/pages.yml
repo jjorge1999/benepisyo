@@ -19,24 +19,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
+        with: { node-version: 24 }
       - name: Test eligibility logic, translations and data
         run: node --test site/test/match.test.js site/test/i18n.test.js
       - name: Test API
         working-directory: worker
         run: npm ci && npm test
-      - name: Install site dependencies (React, Ant Design, esbuild)
+      - name: Install site dependencies (Angular, ng-zorro-antd)
         working-directory: site
         run: npm ci
-      - name: Build site
-        run: node site/src/build.js
+      - name: Build site (pre-render every page)
+        working-directory: site
+        run: npm run build -- --base-href /${{ github.event.repository.name }}/
         env:
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-          BASE_PATH: /${{ github.event.repository.name }}/
           API_BASE: ${{ vars.API_BASE }}
       - name: Publish to the gh-pages branch
         if: github.event_name != 'pull_request'
-        working-directory: site/dist
+        working-directory: site/dist/browser
         run: |
           git init -q
           git checkout -q -b gh-pages

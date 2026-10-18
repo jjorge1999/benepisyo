@@ -1,0 +1,185 @@
+<div class="col gap16">
+  @if (view() === 'city') {
+    <section class="hero">
+      <h1>{{ app.t('hero_title') }}</h1>
+      <p class="muted">{{ app.t('hero_sub') }}</p>
+    </section>
+  }
+
+  <div id="app" aria-live="polite">
+    @switch (view()) {
+      @case ('city') {
+        <nz-card class="panel">
+          <div class="col gap16">
+            <nz-progress [nzPercent]="25" [nzSteps]="4" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#0b5d4e" aria-hidden="true" />
+            <label class="q-title" for="city-input">{{ app.t('step_city') }}</label>
+            <span class="muted">{{ app.t('step_city_hint') }}</span>
+            <input #cityInput nz-input nzSize="large" id="city-input" autocomplete="off" [placeholder]="app.t('city_placeholder')"
+              [ngModel]="d().cityLabel" (ngModelChange)="patch({ cityLabel: $event, cityTouched: true })" [nzAutocomplete]="auto" />
+            <nz-autocomplete #auto>
+              @for (o of options(); track o) { <nz-auto-option [nzValue]="o">{{ o }}</nz-auto-option> }
+            </nz-autocomplete>
+            <button nz-button id="geo-btn" type="button" [nzLoading]="geo().state === 'finding'" (click)="findMe()" class="self-start">
+              @if (geo().state !== 'finding') { <nz-icon nzType="aim" /> }
+              <span>{{ geo().state === 'finding' ? app.t('geo_finding') : app.t('geo_btn') }}</span>
+            </button>
+            @if (geo().state === 'found') { <span class="muted" id="geo-note">{{ app.t('geo_found', { city: geo().name }) }}</span> }
+            @if (geo().state === 'far' || geo().state === 'denied' || geo().state === 'unavailable') {
+              <nz-alert nzType="info" nzShowIcon [nzMessage]="app.t('geo_' + geo().state)" />
+            }
+            <div id="city-note">
+              @if (cityText() && supported()) { <nz-alert nzType="success" nzShowIcon [nzMessage]="app.t('city_supported')" /> }
+              @if (cityText() && !supported()) {
+                <nz-alert nzType="warning" nzShowIcon [nzMessage]="app.t('city_unsupported', { city: cityText() })" [nzAction]="req" />
+                <ng-template #req><button nz-button nzType="link" nzSize="small" id="req-city" (click)="requestCity()"><span>{{ app.t('city_request') }}</span></button></ng-template>
+              }
+            </div>
+            <div class="row between gap8">
+              @if (list().length) { <button nz-button nzType="text" id="to-family" (click)="toFamily()"><nz-icon nzType="team" /><span>{{ app.t('nav_family') }}</span></button> } @else { <span></span> }
+              <button nz-button nzType="primary" nzSize="large" id="city-next" (click)="cityNext()"><span>{{ app.t('next') }}</span><nz-icon nzType="arrow-right" /></button>
+            </div>
+          </div>
+        </nz-card>
+      }
+
+      @case ('who') {
+        <nz-card class="panel">
+          <div class="col gap16">
+            <nz-progress [nzPercent]="50" [nzSteps]="4" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#0b5d4e" aria-hidden="true" />
+            <h2 class="q-title">{{ app.t('step_who') }}</h2>
+            <div class="row gap8" role="radiogroup">
+              <app-choice class="grow" data-self="1" icon="user" [on]="d().self" (click)="patch({ self: true })">{{ app.t('who_self') }}</app-choice>
+              <app-choice class="grow" data-self="0" icon="team" [on]="!d().self" (click)="patch({ self: false })">{{ app.t('who_family') }}</app-choice>
+            </div>
+            @if (!d().self) {
+              <div class="col gap4">
+                <label for="who-name">{{ app.t('who_name') }}</label>
+                <input nz-input nzSize="large" id="who-name" maxlength="30" [placeholder]="app.t('who_name_ph')" [ngModel]="d().name" (ngModelChange)="patch({ name: $event })" />
+              </div>
+            }
+            <b>{{ app.t('who_groups') }}</b>
+            <div class="col gap8">
+              @for (g of app.meta.groups; track g.id) {
+                <app-choice [attr.data-group]="g.id" [multi]="true" [on]="d().groups.includes(g.id)" [hint]="app.L(g.hint)" (click)="toggleGroup(g.id)">{{ g[app.lang()] }}</app-choice>
+              }
+            </div>
+            @if (whoErr()) { <nz-alert id="who-err" nzType="error" nzShowIcon [nzMessage]="app.t('need_group')" /> }
+            <div class="row between">
+              <button nz-button nzType="text" id="who-back" (click)="back()"><nz-icon nzType="arrow-left" /><span>{{ app.t('back') }}</span></button>
+              <button nz-button nzType="primary" nzSize="large" id="who-next" (click)="whoNext()"><span>{{ app.t('next') }}</span><nz-icon nzType="arrow-right" /></button>
+            </div>
+          </div>
+        </nz-card>
+      }
+
+      @case ('q') {
+        <nz-card class="panel">
+          <div class="col gap16">
+            <nz-progress [nzPercent]="75" [nzSteps]="4" [nzShowInfo]="false" [nzStrokeWidth]="6" nzStrokeColor="#0b5d4e" aria-hidden="true" />
+            <h2 class="q-title" id="q-title">{{ qTitle() }}</h2>
+            @if (q() === 'docs') {
+              <span class="muted">{{ app.t('q_docs_hint') }}</span>
+              <div class="col gap8" aria-labelledby="q-title">
+                @for (x of docOptions(); track x.id) {
+                  <app-choice [attr.data-doc]="x.id" [multi]="true" [on]="d().docs.includes(x.id)" (click)="toggleDoc(x.id)">{{ x[app.lang()] }}</app-choice>
+                }
+                <app-choice data-doc="__none" [multi]="true" [on]="!!d().noDocs" (click)="patch({ docs: [], noDocs: true })">{{ app.t('none_yet') }}</app-choice>
+              </div>
+              <div class="row between">
+                <button nz-button nzType="text" id="q-back" (click)="qBack()"><nz-icon nzType="arrow-left" /><span>{{ app.t('back') }}</span></button>
+                <button nz-button nzType="primary" nzSize="large" id="q-done" (click)="finish()"><span>{{ app.t('see_results') }}</span></button>
+              </div>
+            } @else {
+              <div class="col gap8" role="radiogroup" aria-labelledby="q-title">
+                @for (o of opts(); track $index) {
+                  <app-choice [on]="isOn(o[0])" (click)="answer(o[0])">{{ o[1] }}</app-choice>
+                }
+              </div>
+              <div class="row between">
+                <button nz-button nzType="text" id="q-back" (click)="qBack()"><nz-icon nzType="arrow-left" /><span>{{ app.t('back') }}</span></button>
+                <button nz-button nzType="link" id="q-skip" (click)="skip()"><span>{{ app.t('skip') }}</span></button>
+              </div>
+            }
+          </div>
+        </nz-card>
+      }
+
+      @case ('results') {
+        @if (person() && results(); as r) {
+          <div class="col gap16 results">
+            <div class="result-head">
+              <h2 class="h2">{{ resultLabel() }}</h2>
+              <span class="muted">{{ countLine() }}</span>
+            </div>
+            <nz-divider nzOrientation="left" class="section-label" [nzText]="readyT" />
+            <ng-template #readyT>{{ app.t('ready_title') }} <nz-badge nzStandalone [nzCount]="r.ready.length" [nzShowZero]="true" nzColor="green" /></ng-template>
+            <span class="muted">{{ app.t('ready_sub') }}</span>
+            @if (r.ready.length) {
+              <div class="col gap10">@for (x of r.ready; track x.benefit.id) { <app-benefit-card [b]="x.benefit" [res]="x.result" [today]="today" /> }</div>
+            } @else { <nz-empty nzNotFoundImage="simple" /> }
+            @if (r.blocked.length) {
+              <nz-divider nzOrientation="left" class="section-label" [nzText]="blockedT" />
+              <ng-template #blockedT>{{ app.t('blocked_title') }} <nz-badge nzStandalone [nzCount]="blockedN()" nzColor="gold" /></ng-template>
+            }
+            @for (g of r.blocked; track g.key) {
+              <nz-card nzSize="small" class="unlock">
+                <div class="col gap10">
+                  <b class="lead"><nz-icon nzType="unlock" /> {{ blockLead(g) }}</b>
+                  @if (g.unlocker) { <a nz-button nzType="primary" nzGhost class="wrap-btn" [routerLink]="app.benefitLink(g.unlocker)"><span>{{ blockHow(g) }}</span></a> }
+                  @for (x of g.items; track x.benefit.id) { <app-benefit-card [b]="x.benefit" [res]="x.result" [today]="today" /> }
+                </div>
+              </nz-card>
+            }
+            <nz-card class="panel">
+              <div class="col gap8">
+                <b>{{ app.t('add_member') }}</b>
+                <div class="row wrap gap8">
+                  @if (list().length < MAX) { <button nz-button nzType="primary" id="add-member" (click)="addMember(person()!)"><nz-icon nzType="plus" /><span>{{ app.t('add_member_btn') }}</span></button> }
+                  <button nz-button id="to-family" (click)="toFamily()"><nz-icon nzType="team" /><span>{{ app.t('nav_family') }}</span></button>
+                </div>
+              </div>
+            </nz-card>
+          </div>
+        }
+      }
+
+      @case ('family') {
+        <div class="col gap16">
+          <app-checkin [today]="today" />
+          @if (changed().length && !newsGone()) {
+            <nz-alert id="news" nzType="info" nzShowIcon nzCloseable (nzOnClose)="dismissNews()" [nzMessage]="newsT" [nzDescription]="newsD" />
+            <ng-template #newsT><b>{{ app.t('whats_new') }}</b></ng-template>
+            <ng-template #newsD><ul>@for (b of changed(); track b.id) { <li><a [routerLink]="app.benefitLink(b)">{{ app.t('whats_new_item', { title: app.L(b.title) }) }}</a></li> }</ul></ng-template>
+          }
+          <div class="result-head">
+            <h2 class="h2">{{ app.t('family_title') }}</h2>
+            <span class="muted">{{ app.t('family_sub') }}</span>
+          </div>
+          <div class="col gap10 family">
+            @for (s of summaries(); track s.p.id) {
+              <nz-card nzSize="small" class="person" [nzActions]="[openA, editA, removeA]">
+                <div class="row gap10">
+                  <nz-icon class="person-icon" [nzType]="s.p.self ? 'user' : 'team'" />
+                  <div class="col gap4">
+                    <b>{{ s.p.self ? app.t('results_for_self') : (s.p.name || app.t('who_family')) }}</b>
+                    <span class="muted">{{ personGroups(s.p) }}</span>
+                    <span>{{ app.t('family_counts', { ready: s.ready, blocked: s.blocked }) }}</span>
+                  </div>
+                </div>
+              </nz-card>
+              <ng-template #openA><button nz-button nzType="link" [attr.data-open]="s.p.id" (click)="open(s.p.id)"><span>{{ app.t('open') }}</span></button></ng-template>
+              <ng-template #editA><button nz-button nzType="text" [attr.data-edit]="s.p.id" (click)="edit(s.p)"><nz-icon nzType="edit" /><span>{{ app.t('edit') }}</span></button></ng-template>
+              <ng-template #removeA><button nz-button nzType="text" nzDanger [attr.data-remove]="s.p.id" (click)="remove(s.p)"><span>{{ app.t('remove') }}</span></button></ng-template>
+            }
+          </div>
+          <div class="row wrap gap8">
+            @if (list().length < MAX) { <button nz-button nzType="primary" id="add-member" (click)="addMember()"><nz-icon nzType="plus" /><span>{{ app.t('add_member_btn') }}</span></button> }
+            <a nz-button routerLink="/calamba"><span>{{ app.t('nav_city') }}</span></a>
+          </div>
+          <button nz-button nzType="link" nzDanger id="clear-all" class="self-start" nz-popconfirm [nzPopconfirmTitle]="app.t('clear_confirm')"
+            [nzOkText]="app.t('clear_yes')" [nzCancelText]="app.t('cancel')" nzOkDanger (nzOnConfirm)="clearAll()"><span>{{ app.t('clear_all') }}</span></button>
+        </div>
+      }
+    }
+  </div>
+</div>

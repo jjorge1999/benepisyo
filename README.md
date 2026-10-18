@@ -7,7 +7,7 @@ A free, Tagalog-first web app that shows Filipinos every government benefit they
 | Folder | What it is |
 | --- | --- |
 | `data/` | The content: `benefits.json` (17 benefits), `offices.json`, `meta.json` (cities, groups, documents) |
-| `site/` | Public site built with React + Ant Design (`src/ui/`). `src/build.js` bundles it with esbuild, pre-renders one indexable page per benefit (with its antd styles inlined), and the browser hydrates each page. One small script per page type; offline via service worker. Run `npm ci` in `site/` first. |
+| `site/` | Public site built with **Angular 22 + ng-zorro-antd** (Ant Design for Angular). Every page is pre-rendered to static HTML at build time (one indexable page per benefit) and hydrated in the browser; each page is a lazy chunk; offline via service worker. Needs Node 22.22.3+ or 24. `npm ci && npm run build` (add `-- --base-href /benepisyo/` for GitHub Pages); output in `site/dist/browser`. |
 | `worker/` | Cloudflare Worker API and editor admin: reports, post-visit check-ins, city requests, verification queue, four-eyes publishing, D1 schema |
 | `.github/workflows/deploy.yml` | Tests on every push; deploys the Worker and the site on `main` |
 
@@ -16,8 +16,9 @@ A free, Tagalog-first web app that shows Filipinos every government benefit they
 ```bash
 # Site
 cd site
-node src/build.js            # writes site/dist
-python3 -m http.server 8765 --directory dist
+npm ci
+npm run build                # pre-renders every page into site/dist/browser
+python3 -m http.server 8765 --directory dist/browser
 # open http://localhost:8765
 
 # Tests
