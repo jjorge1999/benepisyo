@@ -1,6 +1,9 @@
 <div class="col gap16 detail" [attr.data-benefit]="b().id">
   @if (ready()) { <app-checkin [today]="today()" /> }
-  <nav class="crumbs" aria-label="Breadcrumb"><a [routerLink]="['/', c().id]"><nz-icon nzType="arrow-left" /><span>{{ app.t('city_page_title', { city: c().name }) }}</span></a></nav>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    @if (c(); as cc) { <a [routerLink]="['/', cc.id]"><nz-icon nzType="arrow-left" /><span>{{ app.t('city_page_title', { city: cc.name }) }}</span></a> }
+    @else { <a routerLink="/"><nz-icon nzType="arrow-left" /><span>Benepisyo</span></a> }
+  </nav>
 
   <nz-card>
     <div class="col gap8">

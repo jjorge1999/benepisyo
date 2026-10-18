@@ -28,9 +28,12 @@
               <nz-alert nzType="info" nzShowIcon [nzMessage]="app.t('geo_' + geo().state)" />
             }
             <div id="city-note">
-              @if (cityText() && supported()) { <nz-alert nzType="success" nzShowIcon [nzMessage]="app.t('city_supported')" /> }
-              @if (cityText() && !supported()) {
-                <nz-alert nzType="warning" nzShowIcon [nzMessage]="app.t('city_unsupported', { city: cityText() })" [nzAction]="req" />
+              @if (cityText() && place(); as pl) {
+                @if (app.isFull(pl.id)) { <nz-alert nzType="success" nzShowIcon [nzMessage]="app.t('city_full')" /> }
+                @else { <nz-alert nzType="info" nzShowIcon [nzMessage]="app.t('city_basic', { city: pl.name })" /> }
+              }
+              @if (cityText() && !place()) {
+                <nz-alert nzType="warning" nzShowIcon [nzMessage]="app.t('city_notfound', { city: cityText() })" [nzAction]="req" />
                 <ng-template #req><button nz-button nzType="link" nzSize="small" id="req-city" (click)="requestCity()"><span>{{ app.t('city_request') }}</span></button></ng-template>
               }
             </div>

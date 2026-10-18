@@ -35,8 +35,21 @@
     return !v.checked_on || daysBetween(v.checked_on, today) > STALE_DAYS;
   }
 
+  /* national: everywhere. local: one city. lgu: every city and town (required by national law), unless the city has its own entry. */
   function appliesToCity(benefit, cityId) {
-    return benefit.level === 'national' || (cityId && benefit.city === cityId);
+    if (benefit.level === 'national') return true;
+    if (benefit.level === 'lgu') return !!cityId;
+    return !!cityId && benefit.city === cityId;
+  }
+
+  /* All benefits for a city, with law-based "lgu" entries replaced by the city's own verified version when it has one. */
+  function cityBenefits(benefits, cityId) {
+    var own = {};
+    benefits.forEach(function (b) { if (b.level === 'local' && b.city === cityId && b.provides) own[b.provides] = true; });
+    return benefits.filter(function (b) {
+      if (!appliesToCity(b, cityId)) return false;
+      return !(b.level === 'lgu' && b.provides && own[b.provides]);
+    });
   }
 
   function hasDoc(person, docId) {
@@ -140,7 +153,7 @@
     return out;
   }
 
-  function levelRank(b) { return b.level === 'local' ? 0 : 1; }
+  function levelRank(b) { return b.level === 'local' ? 0 : b.level === 'lgu' ? 1 : 2; }
 
   function sortBenefits(list) {
     return list.slice().sort(function (x, y) {
@@ -167,7 +180,8 @@
    * blocked: [{key, docs:[...], unlocker, items:[{benefit,result}]}]  grouped by the first missing document
    * guides:  ID benefits the person can apply for (they also appear in ready)
    */
-  function buildResults(benefits, person, today) {
+  function buildResults(allBenefits, person, today) {
+    var benefits = cityBenefits(allBenefits, person.city);
     var ready = [];
     var blockedMap = {};
     var blockedOrder = [];
@@ -225,8 +239,7 @@
     var terms = q.split(/\s+/);
     var expanded = [];
     terms.forEach(function (t) { expanded.push(t); (SYNONYMS[t] || []).forEach(function (s) { expanded.push(normalize(s)); }); });
-    return benefits.filter(function (b) {
-      if (!appliesToCity(b, cityId)) return false;
+    return cityBenefits(benefits, cityId).filter(function (b) {
       var hay = normalize([b.title.tl, b.title.en, b.summary.tl, b.summary.en, (b.keywords || []).join(' ')].join(' '));
       return expanded.some(function (t) { return hay.indexOf(t) !== -1; });
     });
@@ -248,6 +261,7 @@
     effectiveStatus: effectiveStatus,
     needsRecheck: needsRecheck,
     appliesToCity: appliesToCity,
+    cityBenefits: cityBenefits,
     evaluate: evaluate,
     buildResults: buildResults,
     questionsFor: questionsFor,

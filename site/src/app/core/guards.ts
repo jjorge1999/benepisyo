@@ -1,10 +1,10 @@
 import { CanMatchFn } from '@angular/router';
 import DATA from '../../generated/data.json';
-import M from '../../match.js';
 
 const d: any = DATA;
-const isCity = (id: string) => d.meta.cities.some((c: any) => c.supported && c.id === id);
+const lgus = () => import('./lgus').then((m) => m.LGU_BY_ID);
 
-/* Only real cities and benefits get a page; anything else falls through to "not found". */
-export const supportedCity: CanMatchFn = (_r, seg) => isCity(seg[0]?.path);
-export const benefitInCity: CanMatchFn = (_r, seg) => isCity(seg[0]?.path) && d.benefits.some((b: any) => b.id === seg[1]?.path && M.appliesToCity(b, seg[0].path));
+/* Only real cities/towns and benefits get a page; anything else falls through to "not found". */
+export const isLgu: CanMatchFn = async (_r, seg) => (await lgus()).has(seg[0]?.path);
+export const localBenefit: CanMatchFn = (_r, seg) => d.benefits.some((b: any) => b.level === 'local' && b.city === seg[0]?.path && b.id === seg[1]?.path);
+export const sharedBenefit: CanMatchFn = (_r, seg) => d.benefits.some((b: any) => b.level !== 'local' && b.id === seg[1]?.path);

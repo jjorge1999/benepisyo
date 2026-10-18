@@ -4,6 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import I18N from '../../i18n.js';
 import M from '../../match.js';
 import DATA from '../../generated/data.json';
+import { LGU_NAMES } from './names';
 
 export { M };
 export const MAX_PEOPLE = 6;
@@ -61,9 +62,18 @@ export class AppService {
   fmtDate = (iso: string) => {
     try { return new Date(iso + 'T00:00:00Z').toLocaleDateString(this.lang() === 'en' ? 'en-PH' : 'fil-PH', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }); } catch { return iso; }
   };
-  cityName = (id: string | null) => this.meta.cities.find((c: any) => c.id === id)?.name || '';
+  cityName = (id: string | null) => (id ? LGU_NAMES[id] || this.meta.cities.find((c: any) => c.id === id)?.name || '' : '');
+  /** Cities with full, verified local data (others get national + law-based benefits). */
+  isFull = (id: string | null) => !!id && this.meta.cities.some((c: any) => c.id === id && c.supported);
+  /** Office names like "OSCA ng {city}" filled in for a town, or "your city or town" when unknown. */
+  officeFor = (o: any, cityId: string | null) => {
+    if (!o?.template) return o;
+    const c = this.cityName(cityId);
+    const fill = (x: any) => ({ tl: x.tl.replace('{city}', c || 'inyong lungsod o bayan'), en: x.en.replace('{city}', c || 'your city or town') });
+    return { ...o, name: fill(o.name), place: fill(o.place), map_query: c ? o.map_query.replace('{city}', c) : null };
+  };
   docName = (id: string) => this.meta.docs.find((d: any) => d.id === id)?.[this.lang()] || id;
-  benefitLink = (b: any) => ['/', b.level === 'local' ? b.city : 'calamba', b.id];
+  benefitLink = (b: any) => (b.level === 'local' ? ['/', b.city, b.id] : ['/b', b.id]);
   benefitById = (id: string) => this.data.benefits.find((b: any) => b.id === id);
   officeById = (id: string) => this.data.offices.find((o: any) => o.id === id);
   subj = (p: Person) => (p.self ? this.t('subj_self') : p.name ? this.t('subj_other', { name: p.name }) : this.t('subj_other_plain'));

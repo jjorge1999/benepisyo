@@ -21,10 +21,10 @@ for (const f of pages) {
 }
 
 // GitHub Pages serves 404.html for unknown paths.
-if (fs.existsSync(path.join(OUT, '404/index.html'))) fs.copyFileSync(path.join(OUT, '404/index.html'), path.join(OUT, '404.html'));
-for (const f of ['index.csr.html']) fs.rmSync(path.join(OUT, f), { force: true });
+// GitHub Pages serves 404.html for any path without a file: the client shell renders towns that are not pre-built.
+if (fs.existsSync(path.join(OUT, 'index.csr.html'))) fs.renameSync(path.join(OUT, 'index.csr.html'), path.join(OUT, '404.html'));
 
-const htmlPaths = walk(OUT).filter((f) => f.endsWith('index.html')).map((f) => rel(f).replace(/index\.html$/, '')).filter((p) => p !== '404/').sort();
+const htmlPaths = walk(OUT).filter((f) => f.endsWith('index.html')).map((f) => rel(f).replace(/index\.html$/, '')).sort();
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${htmlPaths.map((p) => `  <url><loc>${data.site_url}/${p}</loc><lastmod>${data.built}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${data.site_url}/sitemap.xml\n`);
 write('data.json', JSON.stringify(data));
@@ -38,7 +38,9 @@ write('_headers', `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: str
 
 // Offline: cache the app shell, scripts, styles and every page; network first so updates show when online.
 const assets = walk(OUT).map(rel).filter((p) => /\.(js|css|png|webmanifest)$/.test(p) && !p.startsWith('og'));
-const shell = ['./'].concat(htmlPaths.filter(Boolean), assets);
+// Pre-cache the shell and every benefit page; city pages are cached as they are visited (there are 150 of them).
+const benefitPages = htmlPaths.filter((p) => p.split('/').length === 3);
+const shell = ['./', '404.html', 'tungkol/'].concat(benefitPages, assets);
 write('sw.js', `/* Benepisyo service worker: offline lists, checklists and office info. */
 const CACHE = 'benepisyo-${data.version}-${Date.now().toString(36)}';
 const SHELL = ${JSON.stringify(shell)};
@@ -56,7 +58,7 @@ self.addEventListener('fetch', (e) => {
   }
   if (url.pathname.includes('/api/')) return;
   e.respondWith(fetch(req).then((res) => { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); return res; })
-    .catch(() => caches.match(req).then((hit) => hit || caches.match('./'))));
+    .catch(() => caches.match(req).then((hit) => hit || caches.match('404.html'))));
 });
 `);
 console.log(`postbuild: ${htmlPaths.length} pages, dark theme ${dark || 'missing'}, ${assets.length} cached assets`);

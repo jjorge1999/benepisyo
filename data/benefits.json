@@ -2994,5 +2994,305 @@
         "en": "Added from news."
       }
     ]
+  },
+  {
+    "id": "lgu-senior-id",
+    "level": "lgu",
+    "groups": [
+      "senior"
+    ],
+    "kind": "id",
+    "guide": true,
+    "provides": "senior_id",
+    "title": {
+      "tl": "Senior Citizen ID mula sa OSCA",
+      "en": "Senior Citizen ID from OSCA"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Libreng ID; susi sa 20% discount, VAT exemption at iba pang benepisyo",
+      "en": "Free ID; the key to the 20% discount, VAT exemption and other benefits"
+    },
+    "frequency": {
+      "tl": "Isang beses (ID na pangmatagalan)",
+      "en": "Once (long-term ID)"
+    },
+    "summary": {
+      "tl": "Bawat lungsod at bayan ay may OSCA (Office of Senior Citizens Affairs) na nagbibigay ng libreng Senior Citizen ID, ayon sa RA 9994.",
+      "en": "Every city and town has an OSCA (Office of Senior Citizens Affairs) that issues a free Senior Citizen ID, under RA 9994."
+    },
+    "who": {
+      "tl": "Pilipinong 60 taong gulang pataas na nakatira sa lungsod o bayan.",
+      "en": "Filipinos aged 60 and above living in the city or town."
+    },
+    "rules": {
+      "age_min": 60,
+      "resident": true
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Patunay ng edad: PSA birth certificate o valid ID na may petsa ng kapanganakan",
+        "en": "Proof of age: PSA birth certificate or a valid ID showing your birth date",
+        "doc": "psa_birth|national_id"
+      },
+      {
+        "tl": "Patunay na nakatira dito: barangay certificate of residency",
+        "en": "Proof of residence: barangay certificate of residency"
+      },
+      {
+        "tl": "1x1 o 2x2 na litrato (karaniwang 2 piraso)",
+        "en": "1x1 or 2x2 photos (usually 2)"
+      }
+    ],
+    "office": "osca-lgu",
+    "steps": [
+      {
+        "tl": "Pumunta sa OSCA sa city o municipal hall dala ang mga dokumento.",
+        "en": "Go to OSCA at the city or municipal hall with your documents."
+      },
+      {
+        "tl": "Sagutan ang application form at isumite.",
+        "en": "Fill out and submit the application form."
+      },
+      {
+        "tl": "Tanggapin ang ID (minsan sa parehong araw, minsan babalikan).",
+        "en": "Receive the ID (sometimes the same day, sometimes on a return visit)."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "law",
+        "label": "RA 9994 – Expanded Senior Citizens Act of 2010 (LawPhil)",
+        "url": "https://lawphil.net/statutes/repacts/ra2010/ra_9994_2010.html"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Itinatakda ng pambansang batas para sa bawat lungsod at bayan. Iba-iba ang eksaktong dokumento at proseso bawat LGU, kaya kumpirmahin sa opisina.",
+        "en": "Required by national law in every city and town. Exact documents and steps vary by LGU, so confirm with the office."
+      }
+    },
+    "keywords": [
+      "senior",
+      "id",
+      "osca",
+      "discount",
+      "matanda"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag para sa lahat ng lungsod at bayan.",
+        "en": "Added for every city and town."
+      }
+    ]
+  },
+  {
+    "id": "lgu-pwd-id",
+    "level": "lgu",
+    "groups": [
+      "pwd"
+    ],
+    "kind": "id",
+    "guide": true,
+    "provides": "pwd_id",
+    "title": {
+      "tl": "PWD ID mula sa PDAO o social welfare office",
+      "en": "PWD ID from PDAO or the social welfare office"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Libreng ID; susi sa 20% discount at VAT exemption",
+      "en": "Free ID; the key to the 20% discount and VAT exemption"
+    },
+    "frequency": {
+      "tl": "Isang beses, may renewal",
+      "en": "Once, with renewal"
+    },
+    "summary": {
+      "tl": "Ang PWD ID ay ibinibigay ng PDAO (o ng social welfare office kung wala pang PDAO) ng lungsod o bayan, ayon sa RA 10070 at RA 10754.",
+      "en": "The PWD ID is issued by the city or town's PDAO (or its social welfare office where there is no PDAO yet), under RA 10070 and RA 10754."
+    },
+    "who": {
+      "tl": "Taong may kapansanan na nakatira sa lungsod o bayan, anuman ang edad.",
+      "en": "Persons with disability living in the city or town, of any age."
+    },
+    "rules": {
+      "resident": true
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Medical certificate o certificate of disability mula sa lisensyadong doktor (hindi kailangan kung halata ang kapansanan, sa ilang LGU)",
+        "en": "Medical certificate or certificate of disability from a licensed doctor (some LGUs waive this for apparent disabilities)"
+      },
+      {
+        "tl": "Barangay certificate of residency",
+        "en": "Barangay certificate of residency"
+      },
+      {
+        "tl": "1x1 o 2x2 na litrato",
+        "en": "1x1 or 2x2 photos"
+      },
+      {
+        "tl": "Valid ID o birth certificate",
+        "en": "Valid ID or birth certificate",
+        "doc": "psa_birth|national_id"
+      }
+    ],
+    "office": "pdao-lgu",
+    "steps": [
+      {
+        "tl": "Kumuha ng medical certificate o certificate of disability.",
+        "en": "Get a medical certificate or certificate of disability."
+      },
+      {
+        "tl": "Pumunta sa PDAO o social welfare office at sagutan ang application form.",
+        "en": "Go to PDAO or the social welfare office and fill out the application form."
+      },
+      {
+        "tl": "Tanggapin ang PWD ID at alamin kung kailan ang renewal.",
+        "en": "Receive the PWD ID and ask when it needs renewal."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "law",
+        "label": "RA 10754 – benefits and privileges of PWDs (LawPhil)",
+        "url": "https://lawphil.net/statutes/repacts/ra2016/ra_10754_2016.html"
+      },
+      {
+        "type": "law",
+        "label": "RA 10070 – PDAO in every LGU (LawPhil)",
+        "url": "https://lawphil.net/statutes/repacts/ra2010/ra_10070_2010.html"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Itinatakda ng pambansang batas para sa bawat lungsod at bayan. Iba-iba ang eksaktong dokumento at proseso bawat LGU, kaya kumpirmahin sa opisina.",
+        "en": "Required by national law in every city and town. Exact documents and steps vary by LGU, so confirm with the office."
+      }
+    },
+    "keywords": [
+      "pwd",
+      "id",
+      "kapansanan",
+      "disability",
+      "pdao",
+      "discount"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag para sa lahat ng lungsod at bayan.",
+        "en": "Added for every city and town."
+      }
+    ]
+  },
+  {
+    "id": "lgu-solo-parent-id",
+    "level": "lgu",
+    "groups": [
+      "solo_parent"
+    ],
+    "kind": "id",
+    "guide": true,
+    "provides": "solo_parent_id",
+    "title": {
+      "tl": "Solo Parent ID mula sa social welfare office",
+      "en": "Solo Parent ID from the social welfare office"
+    },
+    "amount_php": null,
+    "value": {
+      "tl": "Libreng ID; susi sa solo parent leave, discount at subsidy",
+      "en": "Free ID; the key to solo parent leave, discounts and subsidy"
+    },
+    "frequency": {
+      "tl": "Taun-taon ang renewal",
+      "en": "Renewed yearly"
+    },
+    "summary": {
+      "tl": "Ang City o Municipal Social Welfare and Development Office ang nagbibigay ng Solo Parent ID, ayon sa RA 11861.",
+      "en": "The City or Municipal Social Welfare and Development Office issues the Solo Parent ID, under RA 11861."
+    },
+    "who": {
+      "tl": "Solo parent na nakatira sa lungsod o bayan nang hindi bababa sa 6 na buwan.",
+      "en": "Solo parents who have lived in the city or town for at least 6 months."
+    },
+    "rules": {
+      "resident": true
+    },
+    "needs": [],
+    "requirements": [
+      {
+        "tl": "Barangay certificate na nakatira ka dito nang hindi bababa sa 6 na buwan",
+        "en": "Barangay certificate that you have lived here for at least 6 months"
+      },
+      {
+        "tl": "Birth certificate ng anak o mga anak",
+        "en": "Birth certificate of your child or children",
+        "doc": "psa_birth"
+      },
+      {
+        "tl": "Patunay ng pagiging solo parent (hal. death certificate ng asawa, court decision, o affidavit; depende sa sitwasyon)",
+        "en": "Proof of solo parent status (e.g. spouse's death certificate, court decision, or affidavit, depending on your situation)"
+      },
+      {
+        "tl": "Patunay ng kita o certificate of indigency, kung hinihingi",
+        "en": "Proof of income or certificate of indigency, if asked"
+      }
+    ],
+    "office": "mswdo-lgu",
+    "steps": [
+      {
+        "tl": "Pumunta sa social welfare office ng lungsod o bayan dala ang mga dokumento.",
+        "en": "Go to the city or town social welfare office with your documents."
+      },
+      {
+        "tl": "Sagutan ang application form; maaaring may maikling interview.",
+        "en": "Fill out the application form; there may be a short interview."
+      },
+      {
+        "tl": "Tanggapin ang Solo Parent ID at tandaan na kailangan itong i-renew taun-taon.",
+        "en": "Receive the Solo Parent ID and remember it must be renewed every year."
+      }
+    ],
+    "free": true,
+    "sources": [
+      {
+        "type": "law",
+        "label": "RA 11861 – Expanded Solo Parents Welfare Act (LawPhil)",
+        "url": "https://lawphil.net/statutes/repacts/ra2022/ra_11861_2022.html"
+      }
+    ],
+    "verification": {
+      "status": "confirmed",
+      "checked_on": "2026-10-19",
+      "method": {
+        "tl": "Itinatakda ng pambansang batas para sa bawat lungsod at bayan. Iba-iba ang eksaktong dokumento at proseso bawat LGU, kaya kumpirmahin sa opisina.",
+        "en": "Required by national law in every city and town. Exact documents and steps vary by LGU, so confirm with the office."
+      }
+    },
+    "keywords": [
+      "solo parent",
+      "id",
+      "magulang",
+      "anak",
+      "mswdo"
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "tl": "Idinagdag para sa lahat ng lungsod at bayan.",
+        "en": "Added for every city and town."
+      }
+    ]
   }
 ]

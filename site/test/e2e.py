@@ -54,7 +54,7 @@ async def main():
 
         # 2. City
         await page.fill("#city-input", "Calamba")
-        check(await page.is_visible("text=Kumpleto ang lokal na benepisyo dito."), "Calamba recognised as supported")
+        check(await page.is_visible("text=Kumpleto at beripikado ang lokal na benepisyo dito."), "Calamba recognised as fully covered")
         await page.click("#city-next")
 
         # 3. Who: for family member Nanay, senior
@@ -68,8 +68,8 @@ async def main():
         title = await title_is(page, "Ilang taon na si Nanay?")
         check(title.strip() == "Ilang taon na si Nanay?", f"age question uses the name ({title.strip()})")
         await page.click("text=60 hanggang 79")
-        title = await title_is(page, "Nakatira ba si Nanay sa Calamba?")
-        check("Nakatira ba si Nanay sa Calamba?" in title, f"resident question ({title.strip()})")
+        title = await title_is(page, "Nakatira ba si Nanay sa Calamba City?")
+        check("Nakatira ba si Nanay sa Calamba City?" in title, f"resident question ({title.strip()})")
         await page.click('.choice:has-text("Oo")')
         await title_is(page, "kita")
         await page.click("text=Minimum wage pababa, o walang regular na kita")
@@ -213,7 +213,7 @@ async def main():
         await fp.screenshot(path=f"{SHOTS}/13-household.png", full_page=True)
 
         # 14. Location prefill (computed on the phone)
-        for coords, label, expect in [((14.2117, 121.1653), "Calamba", "Calamba"), ((14.3122, 121.1114), "Santa Rosa", "Santa Rosa")]:
+        for coords, label, expect in [((14.2117, 121.1653), "Calamba", "Calamba City, Laguna"), ((14.3122, 121.1114), "Santa Rosa", "Santa Rosa City, Laguna")]:
             gctx = await browser.new_context(viewport={"width": 390, "height": 844}, geolocation={"latitude": coords[0], "longitude": coords[1]}, permissions=["geolocation"])
             gp = await gctx.new_page()
             await gp.goto(BASE + "/")
@@ -221,16 +221,16 @@ async def main():
             val = await gp.input_value("#city-input")
             check(val == expect, f"location in {label} prefills the city ({val})")
             if label == "Calamba":
-                check(await gp.is_visible("text=Kumpleto ang lokal na benepisyo dito."), "prefilled Calamba is recognised as supported")
+                check(await gp.is_visible("text=Kumpleto at beripikado ang lokal na benepisyo dito."), "prefilled Calamba is recognised as fully covered")
                 await gp.screenshot(path=f"{SHOTS}/14-geo.png")
             else:
-                check(await gp.is_visible("text=Wala pa kaming lokal na benepisyo para sa Santa Rosa"), "prefilled unsupported town shows the national-only note")
+                check(await gp.is_visible("text=Hindi pa namin na-verify ang ibang lokal na tulong ng Santa Rosa City"), "prefilled town without verified local data says so")
             await gctx.close()
-        far = await browser.new_context(viewport={"width": 390, "height": 844}, geolocation={"latitude": 10.3157, "longitude": 123.8854}, permissions=["geolocation"])
+        far = await browser.new_context(viewport={"width": 390, "height": 844}, geolocation={"latitude": 13.0, "longitude": 118.3}, permissions=["geolocation"])
         fp2 = await far.new_page()
         await fp2.goto(BASE + "/")
-        await fp2.wait_for_selector("text=Mukhang wala ka sa Laguna", timeout=8000)
-        check(await fp2.input_value("#city-input") == "", "outside Laguna leaves the city empty")
+        await fp2.wait_for_selector("text=Hindi matukoy ang lungsod mo", timeout=8000)
+        check(await fp2.input_value("#city-input") == "", "far from any town leaves the city empty")
         await far.close()
         nogeo = await browser.new_context(viewport={"width": 390, "height": 844})
         np_ = await nogeo.new_page()
@@ -239,10 +239,41 @@ async def main():
         check(await np_.input_value("#city-input") == "", "no prompt or prefill without permission")
         await nogeo.close()
 
-        # 15. Dark mode detail
+        # 15. Nationwide: a town without verified local data
+        nw = await browser.new_context(viewport={"width": 390, "height": 844})
+        np2 = await nw.new_page()
+        await np2.goto(BASE + "/")
+        await np2.fill("#city-input", "Nasugbu")
+        check(await np2.is_visible("text=Hindi pa namin na-verify ang ibang lokal na tulong ng Nasugbu"), "Nasugbu is recognised with national + law-based coverage")
+        await np2.click("#city-next")
+        await np2.click('[data-group="senior"]')
+        await np2.click("#who-next")
+        await np2.click("text=60 hanggang 79")
+        await title_is(np2, "Nasugbu")
+        await np2.click('.choice:has-text("Oo")')
+        await title_is(np2, "kita")
+        await np2.click("text=Minimum wage pababa, o walang regular na kita")
+        await title_is(np2, "pension")
+        await np2.click('.choice:has-text("Hindi")')
+        await title_is(np2, "Alin ang mayroon")
+        await np2.click('[data-doc="__none"]')
+        await np2.click("#q-done")
+        await np2.wait_for_selector(".unlock")
+        nt = await np2.inner_text("#app")
+        check("Senior Citizen ID mula sa OSCA" in nt and "Birthday cash gift" not in nt, "Nasugbu senior gets the law-based Senior ID and no Calamba-only aid")
+        await np2.goto(BASE + "/nasugbu")
+        await np2.wait_for_selector("#basic-note", timeout=10000)
+        check("Nasugbu" in await np2.text_content("h1"), "town page works without being pre-built (404 shell)")
+        await np2.click('.card:has-text("Senior Citizen ID mula sa OSCA") .title')
+        await np2.wait_for_selector(".office")
+        await settle(np2)
+        check("OSCA ng Nasugbu" in await np2.inner_text(".office"), "law-based ID page names the town's office")
+        await nw.close()
+
+        # 16. Dark mode detail
         dark = await browser.new_context(viewport={"width": 390, "height": 844}, color_scheme="dark", device_scale_factor=2)
         dp = await dark.new_page()
-        await dp.goto(BASE + "/calamba/senior-milestone-cash-gift/")
+        await dp.goto(BASE + "/b/senior-milestone-cash-gift/")
         await dp.screenshot(path=f"{SHOTS}/11-detail-dark.png", full_page=True)
         await dp.wait_for_timeout(800)
         bg = await dp.evaluate("getComputedStyle(document.querySelector('.bp-layout')).backgroundColor")

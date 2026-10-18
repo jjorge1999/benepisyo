@@ -17,7 +17,8 @@ const C = {
   priv: { tl: 'Walang account. Ang inyong mga sagot at listahan ng pamilya ay naka-save lang sa phone ninyo. Kung gagamitin ang lokasyon, sa phone lang ito tinitingnan para hulaan ang lungsod; hindi ito ipinapadala o sine-save. Hindi kami humihingi ng ID number, eksaktong kita o birthday. Ang contact sa report ay opsyonal at binubura pagkalipas ng 90 araw (RA 10173, Data Privacy Act).', en: 'No accounts. Your answers and family list are saved on your phone only. If you use your location, it is only checked on your phone to guess your city; it is never sent or saved. We never ask for ID numbers, exact income or birthdays. Contact details on reports are optional and deleted after 90 days (RA 10173, Data Privacy Act).' },
   free: { tl: 'Walang bayad, walang fixer', en: 'Free, no fixers' },
   free2: { tl: 'Libre ang mga benepisyong nakalista dito. Huwag magbayad sa sinumang nag-aalok na "ilakad" ito.', en: 'The benefits listed here are free. Don\'t pay anyone offering to "process" them for you.' },
-  covered: { tl: 'Ang lungsod na saklaw ngayon: Calamba, Laguna.', en: 'City covered now: Calamba, Laguna.' }
+  covered: { tl: 'Saklaw: lahat ng 1,642 lungsod at bayan para sa pambansang benepisyo at mga ID na itinatakda ng batas. Kumpleto at beripikado ang lokal na benepisyo sa: Calamba, Laguna.', en: 'Coverage: all 1,642 cities and towns for national benefits and IDs required by law. Local benefits are complete and verified in: Calamba, Laguna.' },
+  credits: { tl: 'Listahan ng lungsod at bayan: PSA Philippine Standard Geographic Code (30 Hunyo 2026). Lokasyon ng mga bayan: GeoNames. Parehong CC BY 4.0.', en: 'List of cities and towns: PSA Philippine Standard Geographic Code (30 June 2026). Town locations: GeoNames. Both CC BY 4.0.' }
 } as const;
 
 
@@ -34,6 +35,7 @@ const C = {
       <nz-card nzTitle="Privacy"><p class="m0">{{ app.L(C.priv) }}</p></nz-card>
       <nz-card [nzTitle]="app.L(C.free)"><p class="m0">{{ app.L(C.free2) }}</p></nz-card>
       <span class="muted">Data {{ app.meta.data_version }} · {{ app.L(C.covered) }}</span>
+      <span class="muted small">{{ app.L(C.credits) }}</span>
     </div>`
 })
 export class About {

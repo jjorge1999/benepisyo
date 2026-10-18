@@ -24,7 +24,11 @@ export class StatusTag {
 @Component({
   selector: 'app-level-tag',
   imports: [NzTagModule],
-  template: `@if (b().level === 'local') { <nz-tag nzColor="green">{{ app.t('tag_local', { city: app.cityName(b().city) }) }}</nz-tag> } @else { <nz-tag nzColor="blue">{{ app.t('tag_national') }}</nz-tag> }`
+  template: `@switch (b().level) {
+    @case ('local') { <nz-tag nzColor="green">{{ app.t('tag_local', { city: app.cityName(b().city) }) }}</nz-tag> }
+    @case ('lgu') { <nz-tag nzColor="cyan">{{ app.t('tag_lgu') }}</nz-tag> }
+    @default { <nz-tag nzColor="blue">{{ app.t('tag_national') }}</nz-tag> }
+  }`
 })
 export class LevelTag {
   app = inject(AppService);
@@ -64,7 +68,7 @@ export class MaybeLine {
   template: `
     <nz-card nzSize="small" nzHoverable>
       <div class="col gap4">
-        <a class="title" [routerLink]="app.benefitLink(b())">{{ app.L(b().title) }}</a>
+        <a class="title" [routerLink]="app.benefitLink(b())" [queryParams]="b().level === 'lgu' && place() ? { lugar: place() } : null">{{ app.L(b().title) }}</a>
         <app-amount [b]="b()" />
         <span class="muted">{{ app.L(b().frequency) }}</span>
         @if (b().expires_on) { <span class="maybe"><nz-icon nzType="clock-circle" /> {{ app.t('ends_on', { date: app.fmtDate(b().expires_on) }) }}</span> }
@@ -82,6 +86,8 @@ export class BenefitCard {
   app = inject(AppService);
   b = input.required<any>();
   res = input<any>(null);
+  /** City or town the list is for, so law-based entries open with that town's office. */
+  place = input<string | null>(null);
   today = input.required<string>();
 }
 

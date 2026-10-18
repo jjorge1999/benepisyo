@@ -11,6 +11,19 @@ A free, Tagalog-first web app that shows Filipinos every government benefit they
 | `worker/` | Cloudflare Worker API and editor admin: reports, post-visit check-ins, city requests, verification queue, four-eyes publishing, D1 schema |
 | `.github/workflows/deploy.yml` | Tests on every push; deploys the Worker and the site on `main` |
 
+## Coverage
+
+- **Every city and municipality (1,642)** from the PSA PSGC (30 June 2026) is in `data/lgus.json`, with town-centre
+  coordinates from GeoNames where a confident match exists (used only on the phone for location detection).
+  Rebuild it with `data/scripts/build_lgus.py` (instructions inside). Both sources are CC BY 4.0.
+- **Benefit levels:** `national` (everyone), `lgu` (every city/town must provide it by law: Senior, PWD and Solo Parent IDs;
+  the office name is filled in per town), `local` (one city's own verified program). A city's own entry replaces the
+  law-based one (Calamba's Senior ID replaces the generic one).
+- **Fully verified local data:** Calamba. To add a city: add `local` entries in `data/benefits.json`, its offices in
+  `data/offices.json`, and list it in `data/meta.json` → `cities` with `"supported": true`.
+- **Pages:** the 149 cities, Calamba's own benefits and every shared benefit (`/b/<id>`) are pre-rendered; the other
+  ~1,490 municipalities open in the app through `404.html`, which keeps the site at about 11 MB.
+
 ## Run it locally
 
 ```bash
@@ -18,7 +31,7 @@ A free, Tagalog-first web app that shows Filipinos every government benefit they
 cd site
 npm ci
 npm run build                # pre-renders every page into site/dist/browser
-python3 -m http.server 8765 --directory dist/browser
+python3 test/serve.py dist/browser 8765   # serves 404.html for towns, like GitHub Pages
 # open http://localhost:8765
 
 # Tests

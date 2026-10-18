@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -8,22 +9,27 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { AppService, M } from '../core/app.service';
+import { AppService, M, manilaToday, store } from '../core/app.service';
 import { SeoService } from '../core/seo.service';
 import { BenefitCard } from '../shared/ui';
+import { LGU_BY_ID } from '../core/lgus';
 
 export const PAGE_SIZE = 8;
 
 /* All benefits for a city. Only the current page of cards is rendered, so long lists stay fast on cheap phones. */
 @Component({
   selector: 'app-city',
-  imports: [FormsModule, RouterLink, NzButtonModule, NzEmptyModule, NzIconModule, NzInputModule, NzPaginationModule, NzSegmentedModule, NzTagModule, BenefitCard],
+  imports: [FormsModule, RouterLink, NzAlertModule, NzButtonModule, NzEmptyModule, NzIconModule, NzInputModule, NzPaginationModule, NzSegmentedModule, NzTagModule, BenefitCard],
   template: `
     <div class="col gap16">
       <section class="hero">
         <h1>{{ app.t('city_page_title', { city: c().name }) }}</h1>
         <p class="muted">{{ app.t('city_page_sub', { city: c().name }) }}</p>
       </section>
+      @if (!app.isFull(city())) {
+        <nz-alert id="basic-note" nzType="info" nzShowIcon [nzMessage]="app.t('city_basic_note', { city: c().name })" [nzAction]="reqA" />
+        <ng-template #reqA><button nz-button nzSize="small" nzType="link" id="req-city" (click)="requestCity()"><span>{{ app.t('city_request_full', { city: c().name }) }}</span></button></ng-template>
+      }
       <a nz-button nzType="primary" nzSize="large" nzBlock routerLink="/"><span>{{ app.t('start_quiz') }}</span></a>
       <nz-input-wrapper nzSize="large" class="search">
         <nz-icon nzInputPrefix nzType="search" />
@@ -37,7 +43,7 @@ export const PAGE_SIZE = 8;
       </div>
       <span class="muted" id="result-count">{{ app.t('showing', { n: filtered().length, total: all().length }) }}</span>
       <div class="col gap10" id="benefit-list">
-        @for (b of shown(); track b.id) { <app-benefit-card [b]="b" [today]="app.built" /> }
+        @for (b of shown(); track b.id) { <app-benefit-card [b]="b" [place]="city()" [today]="app.built" /> }
         @empty { <nz-empty id="search-none" nzNotFoundImage="simple" [nzNotFoundContent]="app.t('search_none')" /> }
       </div>
       @if (filtered().length > size) {
@@ -55,14 +61,15 @@ export class City {
   level = signal<string>('all');
   page = signal(1);
 
-  c = computed(() => this.app.meta.cities.find((x: any) => x.id === this.city()));
-  all = computed(() => this.app.data.benefits
-    .filter((b: any) => M.appliesToCity(b, this.city()))
-    .sort((a: any, b: any) => (a.level === b.level ? 0 : a.level === 'local' ? -1 : 1)));
+  c = computed(() => { const l = LGU_BY_ID.get(this.city())!; return { id: l.id, name: l.name, where: l.where }; });
+  all = computed(() => {
+    const rank = (b: any) => (b.level === 'local' ? 0 : b.level === 'lgu' ? 1 : 2);
+    return M.cityBenefits(this.app.data.benefits, this.city()).sort((a: any, b: any) => rank(a) - rank(b));
+  });
   filtered = computed(() => {
     const hits = this.q().trim() ? new Set(M.search(this.all(), this.q(), this.city()).map((b: any) => b.id)) : null;
     return this.all().filter((b: any) => (this.group() === 'all' || b.groups.includes(this.group()))
-      && (this.level() === 'all' || b.level === this.level()) && (!hits || hits.has(b.id)));
+      && (this.level() === 'all' || (this.level() === 'local' ? b.level !== 'national' : b.level === 'national')) && (!hits || hits.has(b.id)));
   });
   shown = computed(() => this.filtered().slice((this.page() - 1) * this.size, this.page() * this.size));
   levelOptions = computed(() => { this.app.lang(); return [
@@ -76,11 +83,18 @@ export class City {
     const c = this.c();
     const list = this.all();
     this.seo.set({
-      title: `Benepisyo sa ${c.name}`,
+      title: `Benepisyo sa ${c.name}, ${c.where}`,
       description: this.app.t('city_page_sub', { city: c.name }),
       path: `${c.id}/`,
       jsonld: { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: list.map((b: any, i: number) => ({ '@type': 'ListItem', position: i + 1, url: this.seo.canonical(`${c.id}/${b.id}/`), name: b.title.tl })) }
     });
+  }
+
+  requestCity() {
+    const c = this.c();
+    const reqs = store.get<any[]>('cityRequests', []); reqs.push({ city: c.id, at: manilaToday() }); store.set('cityRequests', reqs);
+    this.app.send('/api/city-requests', { city: c.name + ', ' + c.where });
+    this.app.toast('success', this.app.t('city_requested', { city: c.name }));
   }
 
   go(p: number) {

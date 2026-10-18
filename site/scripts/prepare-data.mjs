@@ -33,4 +33,12 @@ const out = {
 };
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, JSON.stringify(out));
-console.log(`data: ${benefits.length} benefits, built ${today}, site ${siteUrl}`);
+
+// Every city and municipality, compact: { w: [province or region labels], l: [[id, name, whereIndex, lat, lng, isCity]] }
+const lgus = read('lgus.json');
+const short = (r) => (r.match(/\(([^)]+)\)/) || [, r])[1];
+const where = [];
+const wi = (s) => { let i = where.indexOf(s); if (i < 0) { i = where.length; where.push(s); } return i; };
+const compact = { w: where, l: lgus.map((x) => [x.id, x.name, wi(x.province || short(x.region)), x.lat ?? null, x.lng ?? null, x.type === 'city' ? 1 : 0]) };
+fs.writeFileSync(path.resolve(here, '../src/generated/lgus.json'), JSON.stringify(compact));
+console.log(`data: ${lgus.length} cities and towns, ${benefits.length} benefits, built ${today}, site ${siteUrl}`);

@@ -14,7 +14,8 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { AppService, M, MAX_PEOPLE, Person, manilaToday, store, uid } from '../core/app.service';
 import { SeoService } from '../core/seo.service';
-import { locate, locationAllowed, nearestLgu } from '../core/geo';
+import { locate, locationAllowed } from '../core/geo';
+import { Lgu, lguLabel, nearestLgu, resolveLgu, suggestLgus } from '../core/lgus';
 import { BenefitCard, Choice } from '../shared/ui';
 import { Checkin } from '../shared/checkin';
 
@@ -58,7 +59,7 @@ export class Home {
   }
 
   newDraft(extra: Partial<Person> = {}): Person {
-    return { id: uid(), self: true, name: '', city: 'calamba', cityLabel: '', groups: [], answers: {}, docs: [], created: this.today, ...extra };
+    return { id: uid(), self: true, name: '', city: null, cityLabel: '', groups: [], answers: {}, docs: [], created: this.today, ...extra };
   }
   patch(p: Partial<Person>) { this.d.update((x) => ({ ...x, ...p })); }
   go(v: View) { this.history.push(this.view()); this.view.set(v); this.top(); }
@@ -67,14 +68,9 @@ export class Home {
 
   /* ---------- city step ---------- */
   cityText = computed(() => (this.d().cityLabel || '').trim());
-  supported = computed(() => {
-    const norm = this.cityText().toLowerCase().replace(/\s*city$/, '').replace(/^city of\s*/, '').trim();
-    return this.app.meta.cities.find((c: any) => c.supported && c.name.toLowerCase() === norm) || null;
-  });
-  options = computed(() => {
-    const v = this.cityText().toLowerCase();
-    return (this.app.meta.laguna_lgus as string[]).filter((c) => !v || c.toLowerCase().includes(v));
-  });
+  /** The city or town the typed text points to (unambiguous match from the official list), or null. */
+  place = computed<Lgu | null>(() => resolveLgu(this.cityText()));
+  options = computed(() => suggestLgus(this.cityText()).map(lguLabel));
 
   /* Prefill without a prompt only when location was already allowed for this site. */
   prefillFromLocation() {
@@ -84,9 +80,9 @@ export class Home {
   findMe(silent = false) {
     this.geo.set({ state: 'finding' });
     locate().then(({ lat, lng }) => {
-      const near = nearestLgu(lat, lng, this.app.meta.lgu_coords || {});
+      const near = nearestLgu(lat, lng);
       if (!near) { this.geo.set({ state: 'far' }); return; }
-      this.patch({ cityLabel: near.name });
+      this.patch({ cityLabel: lguLabel(near) });
       this.geo.set({ state: 'found', name: near.name });
     }).catch((e) => this.geo.set({ state: silent ? 'idle' : e.message }));
   }
@@ -99,9 +95,9 @@ export class Home {
   cityNext() {
     const v = this.cityText();
     if (!v) { this.cityInput()?.nativeElement.focus(); return; }
-    const hit = this.supported();
+    const hit = this.place();
     this.acTrigger()?.closePanel();
-    this.patch({ city: hit ? hit.id : null, cityLabel: v });
+    this.patch({ city: hit ? hit.id : null, cityLabel: hit ? lguLabel(hit) : v });
     this.go('who');
   }
 

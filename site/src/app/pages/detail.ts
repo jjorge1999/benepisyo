@@ -16,6 +16,7 @@ import { SeoService } from '../core/seo.service';
 import { makeCard } from '../core/visit-card.js';
 import { Amount, LevelTag, MaybeLine, StatusTag } from '../shared/ui';
 import { Checkin } from '../shared/checkin';
+import { LGU_BY_ID } from '../core/lgus';
 
 function shrinkImage(file: File): Promise<string | null> {
   return new Promise((resolve) => {
@@ -39,12 +40,16 @@ function shrinkImage(file: File): Promise<string | null> {
 export class Detail {
   app = inject(AppService);
   seo = inject(SeoService);
-  city = input.required<string>();
+  city = input<string | undefined>(undefined); // route param, only for a city's own benefits
   id = input.required<string>();
+  lugar = input<string | undefined>(undefined); // ?lugar= town, for benefits every LGU gives
 
   b = computed(() => this.app.benefitById(this.id()));
-  c = computed(() => this.app.meta.cities.find((x: any) => x.id === this.city()));
-  office = computed(() => this.app.officeById(this.b().office));
+  isLocal = computed(() => this.b().level === 'local');
+  /** Town shown on the page. Shared pages render generic first (same as the pre-rendered HTML), then fill in the town. */
+  place = signal<string | null>(null);
+  c = computed(() => { const l = LGU_BY_ID.get(this.place() || ''); return l ? { id: l.id, name: l.name, where: l.where } : null; });
+  office = computed(() => this.app.officeFor(this.app.officeById(this.b().office), this.place()));
   st = computed(() => M.effectiveStatus(this.b(), this.app.built));
   mapUrl = computed(() => (this.office()?.map_query ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(this.office().map_query) : null));
   history = computed(() => (this.b().history || []).slice().sort((x: any, y: any) => (x.date < y.date ? 1 : -1)));
@@ -56,7 +61,12 @@ export class Detail {
 
   constructor() {
     afterNextRender(() => {
-      this.p.set(this.app.activePerson());
+      const p = this.app.activePerson();
+      this.p.set(p);
+      if (!this.isLocal()) {
+        const q = this.lugar();
+        this.place.set(q && LGU_BY_ID.has(q) ? q : p?.city && LGU_BY_ID.has(p.city) ? p.city : null);
+      }
       this.today.set(manilaToday());
       this.ready.set(true);
       if (this.app.api) {
@@ -67,17 +77,20 @@ export class Detail {
   }
 
   ngOnInit() {
-    const b = this.b(); const c = this.c(); const office = this.office();
+    const b = this.b();
+    if (this.isLocal()) this.place.set(this.city() || b.city);
+    const c = this.c(); const office = this.office();
+    const path = this.isLocal() ? `${b.city}/${b.id}/` : `b/${b.id}/`;
     this.seo.set({
-      title: `${b.title.tl} – ${c.name}`,
+      title: `${b.title.tl} – ${c ? c.name : 'Benepisyo'}`,
       description: b.summary.tl.slice(0, 155),
-      path: `${c.id}/${b.id}/`,
+      path,
       jsonld: {
         '@context': 'https://schema.org', '@type': 'GovernmentService',
         name: b.title.tl, alternateName: b.title.en, description: b.summary.tl,
-        areaServed: b.level === 'local' ? { '@type': 'City', name: c.name + ', ' + c.province } : { '@type': 'Country', name: 'Philippines' },
+        areaServed: this.isLocal() && c ? { '@type': 'City', name: c.name + ', ' + c.where } : { '@type': 'Country', name: 'Philippines' },
         provider: { '@type': 'GovernmentOrganization', name: office.name.en },
-        isAccessibleForFree: !!b.free, url: this.seo.canonical(`${c.id}/${b.id}/`)
+        isAccessibleForFree: !!b.free, url: this.seo.canonical(path)
       }
     });
   }
@@ -136,9 +149,9 @@ export class Detail {
   private blob: Blob | null = null;
   others = computed(() => {
     const b = this.b(); const p = this.p();
-    return this.app.data.benefits.filter((x: any) => {
+    return M.cityBenefits(this.app.data.benefits, this.place()).filter((x: any) => {
       if (x.id === b.id || x.office !== b.office) return false;
-      if (!p) return M.appliesToCity(x, 'calamba');
+      if (!p) return true;
       const res = M.evaluate(x, p, this.today()); return res.fit !== 'no' && !res.missing.length;
     });
   });

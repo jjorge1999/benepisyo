@@ -89,7 +89,11 @@ app-benefit-card { display: block; position: relative; }
 .filter-tag { font-size: 14px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(0, 0, 0, .12); margin: 0; cursor: pointer; }
 .ant-segmented-item-label { white-space: normal; line-height: 1.25; padding-block: 6px; }
 .pager { display: flex; justify-content: center; margin-top: 8px; }
-.ant-alert-message { overflow-wrap: anywhere; }
+/* alerts: text wraps normally; an action button goes on its own line under the text */
+.ant-alert { flex-wrap: wrap; }
+.ant-alert-content { flex: 1 1 0; min-width: 0; }
+.ant-alert-message, .ant-alert-description { overflow-wrap: break-word; }
+.ant-alert-action { flex-basis: 100%; margin: 6px 0 0 30px; }
 nz-steps, .ant-steps { display: block; max-width: 100%; }
 .ant-steps-vertical > .ant-steps-item { display: block; max-width: 100%; }
 .ant-steps-item-container, .ant-steps-item-content { max-width: 100%; min-width: 0; }

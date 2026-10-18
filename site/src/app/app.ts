@@ -1,4 +1,4 @@
-import { Component, afterNextRender, inject } from '@angular/core';
+import { Component, afterNextRender, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -25,7 +25,7 @@ import { AppService } from './core/app.service';
       <nav class="bp-nav" aria-label="Main">
         <div class="wrap row gap4">
           <a nz-button nzType="text" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page"><span>{{ app.t('nav_family') }}</span></a>
-          <a nz-button nzType="text" routerLink="/calamba" routerLinkActive="active" ariaCurrentWhenActive="page"><span>{{ app.t('nav_city') }}</span></a>
+          <a nz-button nzType="text" [routerLink]="['/', navCity()]" routerLinkActive="active" ariaCurrentWhenActive="page"><span>{{ app.t('nav_city') }}</span></a>
           <a nz-button nzType="text" routerLink="/tungkol" routerLinkActive="active" ariaCurrentWhenActive="page"><span>{{ app.t('nav_about') }}</span></a>
         </div>
       </nav>
@@ -41,9 +41,13 @@ import { AppService } from './core/app.service';
 })
 export class App {
   app = inject(AppService);
+  /** "All benefits" opens the saved person's city; Calamba until someone is saved. */
+  navCity = signal('calamba');
   constructor() {
     afterNextRender(() => {
       this.app.initBrowser();
+      const c = this.app.activePerson()?.city;
+      if (c) this.navCity.set(c);
       try {
         if ('serviceWorker' in navigator && location.protocol === 'https:' && window.self === window.top) {
           navigator.serviceWorker.register(document.baseURI.replace(/[^/]*$/, '') + 'sw.js').catch(() => {});

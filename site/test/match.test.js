@@ -121,3 +121,27 @@ test('household questions stay within six', () => {
   const q = M.questionsFor({ groups: ['family'], answers: {} }, 'calamba');
   assert.deepEqual(q, ['resident', 'income', 'four_ps', 'children', 'lost_job', 'docs']);
 });
+
+test('every city and town gets the law-based IDs; Calamba keeps its own verified version', () => {
+  const senior = { groups: ['senior'], docs: [], answers: { age_band: '60_79', resident: true } };
+  const nas = ids(M.buildResults(benefits, { ...senior, city: 'nasugbu' }, '2026-10-19').ready);
+  assert.ok(nas.includes('lgu-senior-id'), 'Nasugbu senior sees the law-based Senior ID');
+  assert.ok(!nas.some((id) => id.startsWith('calamba-')), 'no Calamba-only benefits outside Calamba');
+  const cal = ids(M.buildResults(benefits, { ...senior, city: 'calamba' }, '2026-10-19').ready);
+  assert.ok(cal.includes('calamba-senior-id') && !cal.includes('lgu-senior-id'), 'Calamba uses its own Senior ID entry');
+  const g = M.buildResults(benefits, { ...senior, city: 'nasugbu' }, '2026-10-19').blocked.find((x) => x.key === 'senior_id');
+  assert.equal(g.unlocker.id, 'lgu-senior-id', 'the law-based ID unlocks the senior discount anywhere');
+});
+
+test('no city chosen: national benefits only', () => {
+  const r = M.buildResults(benefits, { city: null, groups: ['pwd'], docs: [], answers: {} }, '2026-10-19');
+  assert.ok(ids(r.ready).concat(r.blocked.flatMap((g) => ids(g.items))).every((id) => benefits.find((b) => b.id === id).level === 'national'));
+});
+
+test('every LGU in the list has a unique id and a name', () => {
+  const lgus = require('../../data/lgus.json');
+  assert.ok(lgus.length > 1600);
+  assert.equal(new Set(lgus.map((x) => x.id)).size, lgus.length);
+  assert.ok(lgus.every((x) => x.name && x.region && (x.type === 'city' || x.type === 'municipality')));
+  assert.ok(lgus.find((x) => x.id === 'calamba' && x.province === 'Laguna'));
+});

@@ -1,45 +1,13 @@
 {
-  "data_version": "2026-10-19.3",
+  "data_version": "2026-10-19.4",
   "cities": [
     {
       "id": "calamba",
-      "name": "Calamba",
+      "name": "Calamba City",
       "province": "Laguna",
       "supported": true,
-      "psgc": null
+      "psgc": "0403405000"
     }
-  ],
-  "laguna_lgus": [
-    "Alaminos",
-    "Bay",
-    "Biñan",
-    "Cabuyao",
-    "Calamba",
-    "Calauan",
-    "Cavinti",
-    "Famy",
-    "Kalayaan",
-    "Liliw",
-    "Los Baños",
-    "Luisiana",
-    "Lumban",
-    "Mabitac",
-    "Magdalena",
-    "Majayjay",
-    "Nagcarlan",
-    "Paete",
-    "Pagsanjan",
-    "Pakil",
-    "Pangil",
-    "Pila",
-    "Rizal",
-    "San Pablo",
-    "San Pedro",
-    "Santa Cruz",
-    "Santa Maria",
-    "Santa Rosa",
-    "Siniloan",
-    "Victoria"
   ],
   "groups": [
     {
@@ -146,127 +114,5 @@
       "en": "Certificate of Indigency (barangay)",
       "groups": null
     }
-  ],
-  "lgu_coords": {
-    "Alaminos": [
-      14.0639,
-      121.2464
-    ],
-    "Bay": [
-      14.1833,
-      121.2833
-    ],
-    "Biñan": [
-      14.3333,
-      121.0833
-    ],
-    "Cabuyao": [
-      14.2725,
-      121.125
-    ],
-    "Calamba": [
-      14.2117,
-      121.1653
-    ],
-    "Calauan": [
-      14.15,
-      121.3167
-    ],
-    "Cavinti": [
-      14.2453,
-      121.5072
-    ],
-    "Famy": [
-      14.4333,
-      121.45
-    ],
-    "Kalayaan": [
-      14.35,
-      121.4667
-    ],
-    "Liliw": [
-      14.1333,
-      121.4333
-    ],
-    "Los Baños": [
-      14.1667,
-      121.2167
-    ],
-    "Luisiana": [
-      14.1833,
-      121.5167
-    ],
-    "Lumban": [
-      14.3,
-      121.4667
-    ],
-    "Mabitac": [
-      14.4333,
-      121.4167
-    ],
-    "Magdalena": [
-      14.2,
-      121.4333
-    ],
-    "Majayjay": [
-      14.15,
-      121.4667
-    ],
-    "Nagcarlan": [
-      14.1333,
-      121.4167
-    ],
-    "Paete": [
-      14.3667,
-      121.4833
-    ],
-    "Pagsanjan": [
-      14.2667,
-      121.45
-    ],
-    "Pakil": [
-      14.3833,
-      121.4833
-    ],
-    "Pangil": [
-      14.4,
-      121.4667
-    ],
-    "Pila": [
-      14.2333,
-      121.3667
-    ],
-    "Rizal": [
-      14.1,
-      121.4
-    ],
-    "San Pablo": [
-      14.0667,
-      121.325
-    ],
-    "San Pedro": [
-      14.35,
-      121.0167
-    ],
-    "Santa Cruz": [
-      14.2833,
-      121.4167
-    ],
-    "Santa Maria": [
-      14.4667,
-      121.4333
-    ],
-    "Santa Rosa": [
-      14.3167,
-      121.1167
-    ],
-    "Siniloan": [
-      14.4167,
-      121.45
-    ],
-    "Victoria": [
-      14.2333,
-      121.3333
-    ]
-  }
+  ]
 }

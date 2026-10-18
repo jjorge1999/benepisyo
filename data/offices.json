@@ -212,5 +212,50 @@
     },
     "map_query": null,
     "source_url": "https://www.barangaydirectory.com/barangay/city-of-calamba/puting-lupa"
+  },
+  {
+    "id": "osca-lgu",
+    "city": null,
+    "template": true,
+    "name": {
+      "tl": "OSCA ng {city}",
+      "en": "OSCA of {city}"
+    },
+    "place": {
+      "tl": "City o municipal hall ng {city}",
+      "en": "{city} city or municipal hall"
+    },
+    "map_query": "City Hall {city}",
+    "source_url": "https://lawphil.net/statutes/repacts/ra2010/ra_9994_2010.html"
+  },
+  {
+    "id": "pdao-lgu",
+    "city": null,
+    "template": true,
+    "name": {
+      "tl": "PDAO o Social Welfare Office ng {city}",
+      "en": "PDAO or Social Welfare Office of {city}"
+    },
+    "place": {
+      "tl": "City o municipal hall ng {city}",
+      "en": "{city} city or municipal hall"
+    },
+    "map_query": "City Hall {city}",
+    "source_url": "https://lawphil.net/statutes/repacts/ra2010/ra_10070_2010.html"
+  },
+  {
+    "id": "mswdo-lgu",
+    "city": null,
+    "template": true,
+    "name": {
+      "tl": "Social Welfare and Development Office ng {city}",
+      "en": "Social Welfare and Development Office of {city}"
+    },
+    "place": {
+      "tl": "City o municipal hall ng {city}",
+      "en": "{city} city or municipal hall"
+    },
+    "map_query": "City Hall {city}",
+    "source_url": "https://lawphil.net/statutes/repacts/ra2022/ra_11861_2022.html"
   }
 ]
